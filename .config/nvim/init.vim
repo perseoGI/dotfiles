@@ -17,7 +17,7 @@ set updatetime=50
 
 " + Text editor -------------------------------------------------------------{{{
 set tabstop=8 softtabstop=4
-set shiftwidth=4
+set shiftwidth=3
 set expandtab                   " Convert tab character to spaces
 set smartindent                 " Best job to indent for you
 " + }}}
@@ -32,6 +32,7 @@ set noswapfile                  " Dont create vim.swp files
 set nobackup                    " Dont make a backup
 set undodir=~/.vim/undodir      " Store a backup in undo directory
 set undofile                    " Store modified file per file in undo directory
+"set autoread
 " + }}}
 
 " + GUI settings ------------------------------------------------------------{{{
@@ -49,7 +50,6 @@ set shortmess+=c
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 " + }}}
-
 
 " }}}
 
@@ -358,27 +358,33 @@ if ! has('node')  && ! has('nvim-0.5')
         nmap <buffer> <leader>gr <plug>(lsp-references)
         nmap <buffer> <leader>gi <plug>(lsp-implementation)
         nmap <buffer> <leader>gt <plug>(lsp-type-definition)
-        nmap <buffer> <leader>rn <plug>(lsp-rename)
+        nmap <buffer> <leader>rr <plug>(lsp-rename)
         nmap <buffer> <leader>[ <plug>(lsp-previous-diagnostic)
         nmap <buffer> <leader>] <plug>(lsp-next-diagnostic)
-        nmap <buffer> <leader>K <plug>(lsp-hover)
-        inoremap <buffer> <expr><c-f> lsp#scroll(+4)
-        inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+        "nmap <buffer> <leader>K <plug>(lsp-hover)
+        "inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+        "inoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
         let g:lsp_format_sync_timeout = 1000
         autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 
         " refer to doc to add more commands
-    endfunction
 
+    endfunction
+    if ! has('patch-8.1.1517')
+        " Completly dissable popup (https://github.com/prabirshrestha/vim-lsp/issues/53)
+        let g:lsp_signature_help_enabled = 0
+	      set completeopt-=preview
+	      let g:lsp_preview_float = 0
+    endif
     let g:lsp_highlight_references_enabled = 0
     let g:lsp_signs_enabled = 1
     let g:lsp_diagnostics_echo_cursor = 1
     let g:lsp_diagnostics_float_cursor = 1
     "let g:lsp_signs_error = {'text': '✗'}
-    let g:lsp_signs_error = {'text': 'e'}
-    let g:lsp_signs_warning = {'text': 'ѡ'}
-    let g:lsp_signs_warning = {'text': 'Ꭵ'}
+    "let g:lsp_signs_error = {'text': 'e'}
+    "let g:lsp_signs_warning = {'text': 'ѡ'}
+    "let g:lsp_signs_warning = {'text': 'Ꭵ'}
 
     augroup lsp_install
         au!
@@ -426,8 +432,11 @@ nnoremap <leader>l :wincmd l<CR>
 " see open buffers)
 nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
-" Close buffer
+
+" Close current buffer
 nnoremap <C-w>c :bd<CR>
+" Close all buffers but current
+nmap <Leader><C-w>c :call CloseAllBuffersButCurrent()<CR>
 
 " Buffer resizing
 nnoremap <Leader>+ :vertical resize +5<CR>
@@ -525,18 +534,19 @@ nnoremap <Leader>i gg=G<C-o>
 " Capitalize or lower case current word
 inoremap <C-u> <esc>viw~ea
 
-" Operator pending mappings
+" Operator pending mappings -------------------------------------------------{{{
 " Same as Xi(  shorted to Xp
 onoremap p i(
 onoremap l i{
-onoremap b /return<cr>
+onoremap r /return<cr>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap il{ :<c-u>normal! F}vi{<cr>
+" + }}}
 
 
-" Open terminal mappings
+" Open terminal mappings ----------------------------------------------------{{{
 if has ('nvim')
     " Horizontal term
     nnoremap <leader>t :sp<CR><C-w>r:term<CR>:set nonumber<CR>:set norelativenumber<CR>
@@ -549,34 +559,27 @@ else
     " Vertical term
     nnoremap <leader>T :vert term<CR><C-w>r
 endif
+" + }}}
+
+
+" Visual Line macros: apply a macro to multiple lines by:
+"   1. Recording a macro
+"   2. Selecting multiple lines with V-Line mode
+"   3. Applying macro to those lines
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
 " Quick fix list ------------------------------------------------------------{{{
 
-" TIP: <c-q> inside fzf search and it will load all results on quickfix list
+" TIP: <c-q> inside Telescope search and it will load all results on quickfix list
+" TIP: <a-a> or <Tab>/<S-Tab> inside Rg search to select files and <Enter> to
+" load all results on quickfix list
+"
+" :cfdo <command>
+" Example: :cfdo s/pattern/replacePattern/gc | update
 
 if exists(':cbefore')
-    nnoremap <c-j> <cmd>call QFList(1)<CR>
-    nnoremap <c-k> <cmd>call QFList(0)<CR>
-
-    function! QFList(forwards)
-        try
-            if a:forwards
-                execute ':cafter'
-            else
-                execute ':cbefore'
-            endif
-        catch
-            try
-                if a:forwards
-                    execute ':cnext'
-                else
-                    execute ':cprev'
-                endif
-            catch
-                echo 'No more items'
-            endtry
-        endtry
-    endfunction
+    nnoremap <c-j> :call QFList(1)<CR>
+    nnoremap <c-k> :call QFList(0)<CR>
 else
     " Vim <= 8.1 compatibility
     nnoremap <c-j> :cnext<CR>
@@ -584,6 +587,12 @@ else
 endif
 
 " + }}}
+
+" Automatically save movements larger than 5 lines to the jumplist (useful for
+" relativenumber)
+" TODO va muy mal con ssh
+"nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+"nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " + }}}
 
@@ -827,9 +836,6 @@ let g:closetag_filenames = '*.html,*.xhtml,*.js,*.ts,*.jsx,*.tsx'
 " Vimspector mappings --------------------------------------------------------{{{
 " TODO personalizar
 command! -nargs=+ Vfb call vimspector#AddFunctionBreakpoint(<f-args>)
-" ++ }}}
-
-
 
 let maplocalleader="\<space>"
 "let g:vimspector_enable_mappings = 'HUMAN'
@@ -889,42 +895,33 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
+" Trim whitespaces on buffer write
 autocmd BufWritePre * :call TrimWhitespace()
 
-fun! TrimWhitespace()
+" Automatically aqualize splits when terminal is resized
+autocmd VimResized * wincmd =
+
+" }}}
+
+" Commands ------------------------------------------------------------------{{{
+command! -range JsonFormat <line1>,<line2>call JsonFormatFunction()
+command! -range SplitToLines <line1>,<line2>call SplitToLinesFunction()
+
+" }}}
+
+" Functions -----------------------------------------------------------------{{{
+
+function! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
-endfun
+endfunction
 
-
-" Visual Line macros: apply a macro to multiple lines by:
-"   1. Recording a macro
-"   2. Selecting multiple lines with V-Line mode
-"   3. Applying macro to those lines
-xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 function! ExecuteMacroOverVisualRange()
     echo "@".getcmdline()
     execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
-
-" }}}
-
-" Custom abbreviations ------------------------------------------------------{{{
-iabbrev clog console.log(
-iabbrev @@ perseo.gi98@gmail.com
-iabbrev af () => {}<left><CR><Tab>
-iabbrev intmain int main (int argc, char *arcv[], char *envp[]){
-" }}}
-
-" Deprecated stuff ----------------------------------------------------------{{{
-" Vim-man
-"map <C-k> <Plug>(Man)
-" }}}
-
-
-" Experimental stuff
 function! CloseAllBuffersButCurrent()
     let curr = bufnr("%")
     let last = bufnr("$")
@@ -933,16 +930,6 @@ function! CloseAllBuffersButCurrent()
     if curr < last | silent! execute (curr+1).",".last."bd" | endif
 endfunction
 
-nmap <Leader><C-w>c CloseAllBuffersButCurrent()<CR>
-
-" This is to be improved to detect character and column under the cursor on a
-" visual selection
-function! Indent(char, column) range
-    let column_1 = a:column - 1
-    let current_pos = getpos(".")
-    execute a:firstline . "," . a:lastline . "normal! 0f". a:char . a:column . "i \ed" . column_1 . "|"."2wdT".a:char."i "
-    call setpos(".", current_pos)
-endfunction
 
 " Custom function to between header and source files of C/C++ (similar to
 " coc-clangd.switchSourceHeader)
@@ -972,17 +959,13 @@ function! SwitchSourceHeader()
         endfor
         echo 'No source file exist'
     endif
-
 endfunction
 
-" TODO organize this
-command! -range JsonFormat <line1>,<line2>call JsonFormatFunction()
 " Use python power to format json
 function! JsonFormatFunction() range
     execute a:firstline . "," . a:lastline . "! python -m json.tool"
 endfunction
 
-command! -range SplitToLines <line1>,<line2>call SplitToLinesFunction()
 function SplitToLinesFunction() range
   for lnum in range(a:lastline, a:firstline, -1)
     let words = split(getline(lnum))
@@ -990,5 +973,45 @@ function SplitToLinesFunction() range
     call append(lnum-1, words)
   endfor
 endfunction
+
+
+" TODO This is to be improved to detect character and column under the cursor on a
+" visual selection
+function! Indent(char, column) range
+    let column_1 = a:column - 1
+    let current_pos = getpos(".")
+    execute a:firstline . "," . a:lastline . "normal! 0f". a:char . a:column . "i \ed" . column_1 . "|"."2wdT".a:char."i "
+    call setpos(".", current_pos)
+endfunction
+
+" Quick Fix List custom mapping to first move in current buffer
+function! QFList(forwards)
+    try
+        if a:forwards
+            execute ':cafter'
+        else
+            execute ':cbefore'
+        endif
+    catch
+        try
+            if a:forwards
+                execute ':cnext'
+            else
+                execute ':cprev'
+            endif
+        catch
+            echo 'No more items'
+        endtry
+    endtry
+endfunction
+
+" }}}
+
+" Custom abbreviations ------------------------------------------------------{{{
+iabbrev clog console.log(
+iabbrev @@ perseo.gi98@gmail.com
+iabbrev af () => {}<left><CR><Tab>
+iabbrev intmain int main (int argc, char *arcv[], char *envp[]){
+" }}}
 
 " vim:foldmethod=marker:foldlevel=4
