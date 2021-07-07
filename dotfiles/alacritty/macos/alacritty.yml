@@ -1,0 +1,109 @@
+
+env:
+  TERM: xterm-256color
+colors:
+  # Default colors
+  primary:
+    background: '#171a1b'
+    foreground: '#ebdbb2'
+
+  # Normal colors
+  normal:
+    black: '#282828'
+    red: '#cc241d'
+    green: '#98971a'
+    yellow: '#d79921'
+    blue: '#458588'
+    magenta: '#b16286'
+    cyan: '#689d6a'
+    white: '#a89984'
+
+  # Bright colors
+  bright:
+    black: '#928374'
+    red: '#fb4934'
+    green: '#b8bb26'
+    yellow: '#fabd2f'
+    blue: '#83a598'
+    magenta: '#d3869b'
+    cyan: '#8ec07c'
+    white: '#ebdbb2'
+
+
+font:
+  normal:
+    family: SauceCodePro Nerd Font Mono
+    #family: JetBrains Mono Nerd Font Mono
+    style: Regular
+
+  bold:
+    #family: Source Code Pro
+    family: SauceCodePro Nerd Font Mono
+    style: Bold
+
+  italic:
+    #family: Source Code Pro
+    family: SauceCodePro Nerd Font Mono
+    style: Italic
+
+  bold_italic:
+    family: SauceCodePro Nerd Font Mono
+    #family: Source Code Pro
+    style: Italic
+  size: 15
+
+  offset:
+      x: 0
+      y: 0
+
+key_bindings:
+  - { key: Slash,                        action: ReceiveChar           }
+  - { key: Slash,  mods: Shift,          action: ReceiveChar         }
+  - { key: Slash, mods: Control,            action: ReceiveChar         }
+
+bell:
+  animation: EaseOutExpo
+  duration: 0
+# Bell
+#
+# The bell is rung every time the BEL control character is received.
+#bell:
+  # Visual Bell Animation
+  #
+  # Animation effect for flashing the screen when the visual bell is rung.
+  #
+  # Values for `animation`:
+  #   - Ease
+  #   - EaseOut
+  #   - EaseOutSine
+  #   - EaseOutQuad
+  #   - EaseOutCubic
+  #   - EaseOutQuart
+  #   - EaseOutQuint
+  #   - EaseOutExpo
+  #   - EaseOutCirc
+  #   - Linear
+  #animation: EaseOutExpo
+
+  # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
+  # disable the visual bell animation.
+  #duration: 0
+
+  # Visual bell animation color.
+  #color: '#ffffff'
+
+  # Bell Command
+  #
+  # This program is executed whenever the bell is rung.
+  #
+  # When set to `command: None`, no command will be executed.
+  #
+  # Example:
+  #   command:
+  #     program: notify-send
+  #     args: ["Hello, World!"]
+  #
+  #command: None
+  #command:
+  #program: notify-send
+  #args: ["Hello, World!"]

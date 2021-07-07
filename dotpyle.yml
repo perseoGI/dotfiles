@@ -1,0 +1,10 @@
+dotfiles:
+  alacritty:
+    macos:
+      paths:
+      - alacritty.yml
+      root: /Users/perseo/.config/alacritty
+settings:
+  profiles:
+  - default
+version: 0
