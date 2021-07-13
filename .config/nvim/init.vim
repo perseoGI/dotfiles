@@ -139,6 +139,8 @@ if has('nvim-0.5')
     " Get better at vim from the best streamer ever
     Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    Plug 'kyazdani42/nvim-tree.lua'
     " NEW
     " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
@@ -408,7 +410,11 @@ let g:presence_debounce_timeout  = 15
 
 " + markdown-preview.nvim config --------------------------------------------------------{{{
 function! g:Open_browser(url)
-    silent exec "!brave " . a:url . " &"
+    if has('mac') || has('maxunix')
+        silent exec '!open -na  "Brave Browser"' . a:url . " &"
+    else
+        silent exec "!brave " . a:url . " &"
+    endif
 endfunction
 let g:mkdp_browserfunc = 'g:Open_browser'
 " }}}
@@ -693,6 +699,8 @@ endif
 " before coc pluggin
 if isdirectory($HOME."/.config/coc/extensions/node_modules/coc-explorer")
     nnoremap <leader>pv :CocCommand explorer --quit-on-open<CR>
+elseif has('nvim-0.5')
+    nnoremap <leader>pv :NvimTreeToggle<CR>
 else
     " Open classical Ex-plorer on the left
     "nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
