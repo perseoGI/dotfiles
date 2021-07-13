@@ -9,6 +9,15 @@ dotfiles:
       paths:
       - init.vim
       root: /Users/perseo/.config/nvim
+  vim:
+    default:
+      paths:
+      - .vimrc
+      post:
+      - command -v vim
+      pre:
+      - sudo pacman -S vim
+      root: '~'
 settings:
   profiles:
   - default
