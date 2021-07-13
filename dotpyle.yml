@@ -4,6 +4,11 @@ dotfiles:
       paths:
       - alacritty.yml
       root: /Users/perseo/.config/alacritty
+  neovim:
+    macos:
+      paths:
+      - init.vim
+      root: /Users/perseo/.config/nvim
 settings:
   profiles:
   - default
