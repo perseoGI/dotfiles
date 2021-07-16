@@ -18,6 +18,13 @@ dotfiles:
       pre:
       - sudo pacman -S vim
       root: '~'
+  xkb:
+    arch:
+      paths:
+      - dvorak-es
+      - prog-dvorak-es
+      - real-prog-dvorak-es
+      root: /home/perseo/.config/xkb/symbols/
 settings:
   profiles:
   - default
