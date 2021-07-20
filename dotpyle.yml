@@ -25,6 +25,11 @@ dotfiles:
       - prog-dvorak-es
       - real-prog-dvorak-es
       root: /home/perseo/.config/xkb/symbols/
+  yabai:
+    macos:
+      paths:
+      - yabairc
+      root: ~/.config/yabai
 settings:
   profiles:
   - default
