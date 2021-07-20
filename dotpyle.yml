@@ -9,6 +9,11 @@ dotfiles:
       paths:
       - init.vim
       root: /Users/perseo/.config/nvim
+  skhd:
+    macos:
+      paths:
+      - skhdrc
+      root: ~/.config/skhd
   vim:
     default:
       paths:
