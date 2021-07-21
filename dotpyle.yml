@@ -3,12 +3,16 @@ dotfiles:
     macos:
       paths:
       - alacritty.yml
-      root: /Users/perseo/.config/alacritty
+      root: ~/.config/alacritty
   neovim:
     macos:
       paths:
       - init.vim
-      root: /Users/perseo/.config/nvim
+      root: ~/.config/nvim
+    work:
+      paths:
+      - init.vim
+      root: ~/.config/nvim
   skhd:
     macos:
       paths:
@@ -29,7 +33,7 @@ dotfiles:
       - dvorak-es
       - prog-dvorak-es
       - real-prog-dvorak-es
-      root: /home/perseo/.config/xkb/symbols/
+      root: ~/.config/xkb/symbols/
   yabai:
     macos:
       paths:
