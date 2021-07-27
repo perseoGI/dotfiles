@@ -90,85 +90,60 @@ Plug 'justinmk/vim-gtfo'
 Plug 'jdhao/better-escape.vim'          " Essential to exit to normal mode with jk or kj
 Plug 'honza/vim-snippets'
 
-if executable('git')
-    Plug 'tpope/vim-fugitive'               " Git blames, logs...
-endif
+Plug 'tpope/vim-fugitive'               " Git blames, logs...
 
 if has('python3')
     Plug 'puremourning/vimspector', {
                 \ 'do': 'python3 install_gadget.py --enable-vscode-cpptools'
                 \ }
     " Plug 'codota/tabnine-vim'           " Im testing it :3
-endif
+ endif
 
-if has('node')
-    " TODO: add CocConfig to dotfiles
-    " Coc meta plugin needs nodejs
-    " To avoid file not found errors on C/C++, compile_commands.json must be
-    " created on the path. Use $ bear make ... to generate automatically
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'ryanoasis/vim-devicons'           " Icons for coc-explorer
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-endif
+ " TODO: add CocConfig to dotfiles
+ " Coc meta plugin needs nodejs
+ " To avoid file not found errors on C/C++, compile_commands.json must be
+ " created on the path. Use $ bear make ... to generate automatically
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ Plug 'ryanoasis/vim-devicons'           " Icons for coc-explorer
+ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 
-" Apple support to V-Block copy-paste
-if has('mac') || has('maxunix')
+ " Apple support to V-Block copy-paste
+ if has('mac') || has('maxunix')
     Plug 'bfredl/nvim-miniyank'
-endif
+ endif
 
-" Discord vimscene
-if has('mac') && executable('/Applications/Discord.app/Contents/MacOS/Discord') ||
-            \ has('unix') && (executable('discord') || executable('discord-canary'))
+ " Discord vimscene
+ if has('mac') && executable('/Applications/Discord.app/Contents/MacOS/Discord') ||
+          \ has('unix') && (executable('discord') || executable('discord-canary'))
     Plug 'andweeb/presence.nvim'    " Much faster than hugolgst/vimsence.vim
-endif
+ endif
 
 
-if has('nvim-0.5')
-    " Telescope (>=neovim 5.0)
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'nvim-telescope/telescope-fzy-native.nvim'
+ " Telescope (>=neovim 5.0)
+ Plug 'nvim-lua/popup.nvim'
+ Plug 'nvim-lua/plenary.nvim'
+ Plug 'nvim-telescope/telescope.nvim'
+ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-    " LSP config
-    Plug 'neovim/nvim-lspconfig'
-    " Improves LSP completion
-    Plug 'nvim-lua/completion-nvim'
+ " LSP config
+ Plug 'neovim/nvim-lspconfig'
+ " Improves LSP completion
+ Plug 'nvim-lua/completion-nvim'
 
-    " Get better at vim from the best streamer ever
-    Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+ " Get better at vim from the best streamer ever
+ Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
-    Plug 'kyazdani42/nvim-web-devicons' " for file icons
-    Plug 'kyazdani42/nvim-tree.lua'
-    " NEW
-    " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-endif
+ Plug 'kyazdani42/nvim-web-devicons' " for file icons
+ Plug 'kyazdani42/nvim-tree.lua'
+ " NEW
 
-if ! has('node')  && ! has('nvim-0.5')
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'prabirshrestha/asyncomplete-file.vim'
-    Plug 'machakann/vim-highlightedyank'
-endif
-
-" Not using stuff
-"
-" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-" Plug 'floobits/floobits-neovim'         " Colaborate Vim ~= VSCode Live Share pluggin or Atom Teletype
-" Plug 'mcchrish/nnn.vim'
-" Plug 'soywod/iris.vim'                  " Email client
-" Plug 'justinmk/vim-sneak'               " Vim search word given two letters  TODO pensar si cambiarlo a f
-" Plug 'vim-utils/vim-man'                " Man pages
-
-call plug#end()
+ call plug#end()
 
 
-" + Vim pluggins settings ---------------------------------------------------{{{
+ " + Vim pluggins settings ---------------------------------------------------{{{
 
-" ++ Theme customization ----------------------------------------------------{{{
+ " ++ Theme customization ----------------------------------------------------{{{
 
 " +++ Vim Airline settings --------------------------------------------------{{{
 
@@ -231,26 +206,10 @@ let g:vim_be_good_floating = 0
 " ++ }}}
 
 
-" ++ fzf settings '-------------------------------------------------------{{{
+" ++ fzf settings -----------------------------------------------------------{{{
 
 " Vim 8.2 or neovim support floating windows
-if v:version > 802 || has('nvim')
-    let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-else
-    " Greps for systems without Rg or Ag installed
-    let g:fzf_layout = { 'down': '40%' }
-    command! -bang -nargs=* GitGrep
-                \ call fzf#vim#grep(
-                \   'git grep --line-number -- '.shellescape(<q-args>), 0,
-                \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
-    " No git
-    command! -bang -nargs=* OldGrep
-                \ call fzf#vim#grep(
-                \   'grep -n --line-buffered -r --exclude-dir={node_modules,.svn,.git} --exclude=\*.{a,o,so} '.shellescape(<q-args>). ' .', 0,
-                \   fzf#vim#with_preview(), <bang>0)
-endif
-
+"let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 
 if has('mac')
     set rtp+=/usr/local/opt/fzf
@@ -287,19 +246,6 @@ let g:better_escape_shortcut = ['jk', 'kj', 'JK', 'KJ']
 let g:bujo#window_width = 70
 "++ }}}
 
-
-" Iris settings -------------------------------------------------------------{{{
-"let g:iris_name = "Perseo"
-"let g:iris_mail = "perseo.gi98@gmail.com"
-"let g:iris_imap_host  = "imap.gmail.com"
-"let g:iris_imap_port  = 993
-"let g:iris_smtp_host  = "smtp.gmail.com"
-"let g:iris_smtp_port  = 587
-"let g:iris_imap_passwd_filepath = "/home/perseo/.config/nvim/gmail_password_iris.gpg"
-"let g:iris_smtp_passwd_filepath = "/home/perseo/.config/nvim/gmail_password_iris.gpg""
-
-"++ }}}
-
 " nnn settings  -------------------------------------------------------------{{{
 "let g:nnn#layout = { 'left': '~30%' }
 " Floating window (neovim latest and vim with patch 8.2.191)
@@ -315,90 +261,9 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 " + asyncomplete.vim --------------------------------------------------------{{{
 
-" Register LSP server for C/C++/Objective-C
-if ! has('node')  && ! has('nvim-0.5')
-    if executable('clangd')
-        au User lsp_setup call lsp#register_server({
-                    \ 'name': 'clangd',
-                    \ 'cmd': {server_info->['clangd', '-background-index']},
-                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-                    \ })
-    endif
-
-    " Register LSP server for Python
-    if executable('pyls')
-        au User lsp_setup call lsp#register_server({
-                    \ 'name': 'pyls',
-                    \ 'cmd': {server_info->['pyls']},
-                    \ 'whitelist': ['python'],
-                    \ })
-    endif
-endif
 " + }}}
 
-" + asyncomplete-file.vim ---------------------------------------------------{{{
-if ! has('node')  && ! has('nvim-0.5')
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-                \ 'name': 'file',
-                \ 'whitelist': ['*'],
-                \ 'priority': 10,
-                \ 'completor': function('asyncomplete#sources#file#completor')
-                \ }))
-endif
-" + }}}
-
-" + vim-lsp -----------------------------------------------------------------{{{
-if ! has('node')  && ! has('nvim-0.5')
-    " TODO this should be on Mappings secction this is WIP
-    function! s:on_lsp_buffer_enabled() abort
-        setlocal omnifunc=lsp#complete
-        setlocal signcolumn=yes
-        if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-        nmap <leader>gd <plug>(lsp-definition)
-        nmap <buffer> <leader>gs <plug>(lsp-document-symbol-search)
-        nmap <buffer> <leader>gS <plug>(lsp-workspace-symbol-search)
-        nmap <buffer> <leader>gr <plug>(lsp-references)
-        nmap <buffer> <leader>gi <plug>(lsp-implementation)
-        nmap <buffer> <leader>gt <plug>(lsp-type-definition)
-        nmap <buffer> <leader>rr <plug>(lsp-rename)
-        nmap <buffer> <leader>[ <plug>(lsp-previous-diagnostic)
-        nmap <buffer> <leader>] <plug>(lsp-next-diagnostic)
-        "nmap <buffer> <leader>K <plug>(lsp-hover)
-        "inoremap <buffer> <expr><c-f> lsp#scroll(+4)
-        "inoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-        let g:lsp_format_sync_timeout = 1000
-        autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
-        " refer to doc to add more commands
-
-    endfunction
-    if ! has('patch-8.1.1517')
-        " Completly dissable popup (https://github.com/prabirshrestha/vim-lsp/issues/53)
-        let g:lsp_signature_help_enabled = 0
-	      set completeopt-=preview
-	      let g:lsp_preview_float = 0
-    endif
-    let g:lsp_highlight_references_enabled = 0
-    let g:lsp_signs_enabled = 1
-    let g:lsp_diagnostics_echo_cursor = 1
-    let g:lsp_diagnostics_float_cursor = 1
-    "let g:lsp_signs_error = {'text': '✗'}
-    "let g:lsp_signs_error = {'text': 'e'}
-    "let g:lsp_signs_warning = {'text': 'ѡ'}
-    "let g:lsp_signs_warning = {'text': 'Ꭵ'}
-
-    augroup lsp_install
-        au!
-        "call s:on_lsp_buffer_enabled only for languages that has the server registered.
-        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-    augroup END
-endif
-" + }}}
-
-" + }}}
-
-" presence.vim (Discord) configuration ---------------------------------------{{{
+" presence.vim (Discord) configuration --------------------------------------{{{
 let g:presence_auto_update       = 1
 let g:presence_editing_text      = "Olfateanding %s"
 let g:presence_workspace_text    = "Curranding on %s"
@@ -408,14 +273,7 @@ let g:presence_client_id         = "793271441293967371"
 let g:presence_debounce_timeout  = 15
 " ++ }}}
 
-" + markdown-preview.nvim config --------------------------------------------------------{{{
-function! g:Open_browser(url)
-    if has('mac') || has('maxunix')
-        silent exec '!open -na  "Brave Browser"' . a:url . " &"
-    else
-        silent exec "!brave " . a:url . " &"
-    endif
-endfunction
+" + markdown-preview.nvim config --------------------------------------------{{{
 let g:mkdp_browserfunc = 'g:Open_browser'
 " }}}
 
@@ -553,18 +411,10 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 
 
 " Open terminal mappings ----------------------------------------------------{{{
-if has ('nvim')
-    " Horizontal term
-    nnoremap <leader>t :sp<CR><C-w>r:term<CR>:set nonumber<CR>:set norelativenumber<CR>
-    " Vertical term
-    nnoremap <leader>T :vs<CR><C-w>r:term<CR>:set nonumber<CR>:set norelativenumber<CR>
-else
-    " Vim does not open term with line numbers
-    " Horizontal term
-    nnoremap <leader>t :term<CR><C-w>r
-    " Vertical term
-    nnoremap <leader>T :vert term<CR><C-w>r
-endif
+" Horizontal term
+nnoremap <leader>t :sp<CR><C-w>r:term<CR>:set nonumber<CR>:set norelativenumber<CR>
+" Vertical term
+nnoremap <leader>T :vs<CR><C-w>r:term<CR>:set nonumber<CR>:set norelativenumber<CR>
 " + }}}
 
 
@@ -583,14 +433,8 @@ xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 " :cfdo <command>
 " Example: :cfdo s/pattern/replacePattern/gc | update
 
-if exists(':cbefore')
-    nnoremap <c-j> :call QFList(1)<CR>
-    nnoremap <c-k> :call QFList(0)<CR>
-else
-    " Vim <= 8.1 compatibility
-    nnoremap <c-j> :cnext<CR>
-    nnoremap <c-k> :cprev<CR>
-endif
+nnoremap <c-j> :call QFList(1)<CR>
+nnoremap <c-k> :call QFList(0)<CR>
 
 " + }}}
 
@@ -650,91 +494,25 @@ nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 " Open vim help for current word
 nnoremap <leader>vhw :h <C-R>=expand("<cword>")<CR><CR>
 
-if has('nvim-0.5') && isdirectory($HOME.'/.vim/plugged/telescope.nvim')
-    " Telescope mappings --------------------------------------------------------{{{
-    nnoremap <leader>ps <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-    nnoremap <leader>pw <cmd>lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-    nnoremap <leader>pg <cmd>lua require('telescope.builtin').live_grep()<cr>
-    nnoremap <leader>vh <cmd>lua require('telescope.builtin').help_tags()<cr>
-    " ++ }}}
-elseif executable('rg')
-    " Find current word in the project using rg
-    nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
-    " Find a word on project using rg
-    nnoremap <Leader>ps :Rg<CR>
-else
-    " Check if git is accesible
-    silent! !git rev-parse --is-inside-work-tree
-    if v:shell_error == 0
-        " Find current word in the project using git grep command
-        nnoremap <leader>pw :GitGrep <C-R>=expand("<cword>")<CR><CR>
-        " Find a word on project using git grep command
-        nnoremap <Leader>ps :GitGrep<CR>
-    else
-        " Find current word in the project using classical grep
-        nnoremap <leader>pw :OldGrep <C-R>=expand("<cword>")<CR><CR>
-        " Find a word on project using classical grep
-        nnoremap <Leader>ps :OldGrep<CR>
-    endif
-
-endif
+" Telescope mappings --------------------------------------------------------{{{
+nnoremap <leader>ps <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <leader>pw <cmd>lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+nnoremap <leader>pg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>vh <cmd>lua require('telescope.builtin').help_tags()<cr>
+" ++ }}}
 " ++ }}}}
 
 " ++ File explorer mappings -------------------------------------------------{{{
 
-if has('nvim-0.5') && isdirectory($HOME.'/.vim/plugged/telescope.nvim')
-    " Telescope mappings --------------------------------------------------------{{{
-    nnoremap <C-p> <cmd>lua require('telescope.builtin').git_files()<CR>
-    nnoremap <leader>pf <cmd>lua require('telescope.builtin').find_files()<cr>
-    nnoremap <leader>pb <cmd>lua require('telescope.builtin').buffers()<cr>
-    " ++ }}}
-else
-    " GFiles only works with git repo and will only display added files on .git
-    nnoremap <C-p> :GFiles<CR>
-    " Files is the best alternative for GFiles when there is no git initialized
-    nnoremap <Leader>pf :Files<CR>
-endif
-
-" if &runtimepath =~ 'coc-explorer' " this does not work because vimrc loads
-" before coc pluggin
-if isdirectory($HOME."/.config/coc/extensions/node_modules/coc-explorer")
-    nnoremap <leader>pv :CocCommand explorer --quit-on-open<CR>
-elseif has('nvim-0.5')
-    nnoremap <leader>pv :NvimTreeToggle<CR>
-else
-    " Open classical Ex-plorer on the left
-    "nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-    nnoremap <leader>pv :Sex!<CR>
-endif
+" Telescope mappings --------------------------------------------------------{{{
+nnoremap <C-p> <cmd>lua require('telescope.builtin').git_files()<CR>
+nnoremap <leader>pf <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>pb <cmd>lua require('telescope.builtin').buffers()<cr>
+" ++ }}}
+nnoremap <leader>pv :NvimTreeToggle<CR>
 
 " ++ }}}
 
-
-" ++ Coc mappings: GoTo code navigation --------------------------------------{{{
-if has('node')
-    nmap <leader>gd <Plug>(coc-definition)
-    nmap <leader>gt <Plug>(coc-type-definition)
-    nmap <leader>gi <Plug>(coc-implementation)
-    nmap <leader>gr <Plug>(coc-references)
-    nmap <leader>rr <Plug>(coc-rename)
-    nmap <leader>[ <Plug>(coc-diagnostic-prev)
-    nmap <leader>] <Plug>(coc-diagnostic-next)
-    nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
-    nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
-    nnoremap <leader>cr :CocRestart
-
-    "inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-    inoremap <silent><expr> <C-space> coc#refresh()
-
-
-    " Use <C-l> for trigger snippet expand.
-    imap <C-l> <Plug>(coc-snippets-expand)
-    vmap <C-j> <Plug>(coc-snippets-select)
-    " Use <C-j> for both expand and jump (make expand higher priority.)
-    imap <C-j> <Plug>(coc-snippets-expand-jump)
-    " Use <leader>x for convert visual selected code to snippet
-    xmap <leader>x  <Plug>(coc-convert-snippet)
-endif
 
 " Go to header (C/C++)
 if isdirectory($HOME."/.config/coc/extensions/node_modules/coc-clangd")
@@ -753,67 +531,68 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 "inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 
 
-if has('nvim-0.5')
-    " Enable Lua syntax highlight on vim file
-    let g:vimsyn_embed= 'l'
+" Enable Lua syntax highlight on vim file
+let g:vimsyn_embed= 'l'
 
-    lua << EOF
+lua << EOF
 
-        local nvim_lsp = require('lspconfig')
+   local nvim_lsp = require('lspconfig')
 
-        --[ Mapping configuration applied only when LSP is available
+   --[ Mapping configuration applied only when LSP is available
 
-        local custom_attach = function(client, bufnr)
-            local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-            local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+   local custom_attach = function(client, bufnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+      local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-            require'completion'.on_attach(client)
+      require'completion'.on_attach(client)
 
-            buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+      buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-            -- Mappings.
-            local opts = { noremap=true, silent=true }
-            buf_set_keymap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-            buf_set_keymap('n', '<leader>gt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-            buf_set_keymap('n', '<leader>gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-            buf_set_keymap('n', '<leader>gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-            buf_set_keymap('n', '<leader>rr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+      -- Mappings.
+      local opts = { noremap=true, silent=true }
+      buf_set_keymap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+      buf_set_keymap('n', '<leader>gt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+      buf_set_keymap('n', '<leader>gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+      buf_set_keymap('n', '<leader>gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+      buf_set_keymap('n', '<leader>rr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
-            buf_set_keymap('n', '<leader>[', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-            buf_set_keymap('n', '<leader>]', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-        end
+      buf_set_keymap('n', '<leader>[', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+      buf_set_keymap('n', '<leader>]', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
-
-        require'lspconfig'.tsserver.setup{ on_attach=custom_attach }
-
-        --[ This is the perfect sustitute to coc-clangd
-        require'lspconfig'.clangd.setup {
-        on_attach = custom_attach,
-        root_dir = function() return vim.loop.cwd() end
-        }
-
-        -- Ada built in Lsp
-        require'lspconfig'.als.setup{ on_attach=custom_attach, cmd = {"/home/perseo/sources/linux/ada_language_server" } }
-
-        require'lspconfig'.pyright.setup{ on_attach=custom_attach }
-        --[ require'lspconfig'.pyls.setup{ on_attach=custom_attach }
-
-        --[ require'lspconfig'.rust_analyzer.setup{ on_attach=custom_attach }
+      buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+   end
 
 
-        --[[  https://www.reddit.com/r/neovim/comments/l00zzb/improve_style_of_builtin_lsp_diagnostic_messages/gjt2hek?utm_source=share&utm_medium=web2x&context=3
-        [ Remove signs from left bar and change color for the line number
-        ]]
+   require'lspconfig'.tsserver.setup{ on_attach=custom_attach }
 
-        vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
-        vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
-        vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
-        vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
+   --[ This is the perfect sustitute to coc-clangd
+   require'lspconfig'.clangd.setup {
+   on_attach = custom_attach,
+   root_dir = function() return vim.loop.cwd() end
+   }
+
+   -- Ada built in Lsp
+   require'lspconfig'.als.setup{ on_attach=custom_attach, cmd = {"/home/perseo/sources/linux/ada_language_server" } }
+
+   require'lspconfig'.pyright.setup{ on_attach=custom_attach }
+   --[ require'lspconfig'.pyls.setup{ on_attach=custom_attach }
+
+   --[ require'lspconfig'.rust_analyzer.setup{ on_attach=custom_attach }
+
+
+   --[[  https://www.reddit.com/r/neovim/comments/l00zzb/improve_style_of_builtin_lsp_diagnostic_messages/gjt2hek?utm_source=share&utm_medium=web2x&context=3
+   [ Remove signs from left bar and change color for the line number
+   ]]
+
+   vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
+   vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
+   vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
+   vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 
 EOF
-endif
 "let g:python3_host_prog = '/usr/bin/python'
 
+let g:completion_enable_auto_hover = 0
 
 " ++ FuGITive mappings ------------------------------------------------------{{{
 nmap <leader>gh :diffget //3<CR>
@@ -826,15 +605,6 @@ nmap <C-S> <Plug>BujoAddnormal
 imap <C-S> <Plug>BujoAddinsert
 nmap <C-Q> <Plug>BujoChecknormal
 imap <C-Q> <Plug>BujoCheckinsert
-" ++ }}}
-
-
-" Vim-sneak mappings --------------------------------------------------------{{{
-"map t <Plug>Sneak_f
-"map T <Plug>Sneak_F
-" ++ }}}
-
-" Iris mappings --------------------------------------------------------{{{
 " ++ }}}
 
 " Close tags mappings --------------------------------------------------------{{{
@@ -878,11 +648,6 @@ nnoremap <leader>m :MaximizerToggle!<CR>
 
 " Remember last position in buffer
 autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-if has('nvim-0.5')
-    " Nvim built in Lsp allow autocommand pop up diagnostic message
-    autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-endif
 
 " Tab size for JS and TS files
 augroup TabSize
@@ -1013,6 +778,13 @@ function! QFList(forwards)
     endtry
 endfunction
 
+function! g:Open_browser(url)
+    if has('mac') || has('maxunix')
+        silent exec '!open -na  "Brave Browser"' . a:url . " &"
+    else
+        silent exec "!brave " . a:url . " &"
+    endif
+endfunction
 " }}}
 
 " Custom abbreviations ------------------------------------------------------{{{
