@@ -277,6 +277,11 @@ let g:presence_debounce_timeout  = 15
 let g:mkdp_browserfunc = 'g:Open_browser'
 " }}}
 
+" + nvim-trees-lua config --------------------------------------------{{{
+let g:nvim_tree_follow = 1
+let g:nvim_tree_indent_markers = 1
+" }}}
+
 " Mappings ------------------------------------------------------------------{{{
 
 " Configure leader key to spacebar. Leader key allow enter custom user command mode
@@ -296,6 +301,8 @@ nnoremap <leader>l :wincmd l<CR>
 " see open buffers)
 nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
+"nnoremap <Left> :cprev<CR>zzzv
+"nnoremap <Right> :cnext<CR>zzzv
 
 " Close current buffer
 nnoremap <C-w>c :bd<CR>
@@ -316,11 +323,32 @@ nnoremap Y y$
 " X as a i<backspace>
 vnoremap X "_d
 
+" Keep movements centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`zmz
+
+" Undo break points
+inoremap . .<c-g>u
+inoremap , ,<c-g>u
+inoremap ? ?<c-g>u
+inoremap ! !<c-g>u
+
+" Automatically save movements larger than 5 lines to the jumplist (useful for
+" relativenumber)
+" TODO va muy mal con ssh
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
+
 inoremap <C-c> <esc>
 
 " Visual-Line move lines up or down
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" Move lines up/down while on insert mode
+inoremap <c-j> <esc>:m .+1<CR>==a
+inoremap <c-k> <esc>:m .-2<CR>==a
 
 " From justinmk
 " un-join (split) the current line at the cursor position
@@ -437,12 +465,6 @@ nnoremap <c-j> :call QFList(1)<CR>
 nnoremap <c-k> :call QFList(0)<CR>
 
 " + }}}
-
-" Automatically save movements larger than 5 lines to the jumplist (useful for
-" relativenumber)
-" TODO va muy mal con ssh
-"nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
-"nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " + }}}
 
