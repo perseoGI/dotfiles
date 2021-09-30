@@ -42,6 +42,10 @@ dotfiles:
       pre:
       - sudo pacman -S vim
       root: '~'
+    work:
+      paths:
+      - .vimrc
+      root: '~'
   xkb:
     arch:
       paths:
