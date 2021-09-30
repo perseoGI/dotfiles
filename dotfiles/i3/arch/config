@@ -1,0 +1,322 @@
+# FYI: i3-gaps must be installed
+
+set $mod Mod1
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 8
+
+
+# Windows and Gaps config
+for_window [class=".*"] border pixel 3
+
+# Enable gaps only when there is at least two containers open
+#smart_gaps on
+smart_borders on
+
+# Little script for ultrawide monitor (centers an resices to 1/3) one window
+bindsym $mod+g floating enable; resize set 50ppt 90ppt; move position center
+
+# Set inner and outer gaps
+#gaps inner 24
+#gaps outer 10
+
+gaps inner 10
+gaps outer 5
+gaps top 27
+
+
+                          # class                 border  backgr. text    indicator child_border
+#for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+#for_window [class="^.*"] client.urgent           #2F343A #380090 #FFFFFF #380090   #900000
+
+client.focused          #77dd77 #5dc1b9 #ffffff #2e9ef4   #5dc1b9
+client.urgent           #2F343A #380090 #FFFFFF #380090   #FF10C3
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec WINIT_HIDPI_FACTOR=1 alacritty
+bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec terminator
+#bindsym $mod+Return exec urxvt
+
+# File explorer: Ranger
+bindsym $mod+Shift+Return exec alacritty -e ranger
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+# candy-icons need to be installed: https://github.com/EliverLara/candy-icons.git
+set $rofi_theme "~/.config/i3/clean.rasi"
+
+bindsym $mod+space exec rofi -show drun -theme $rofi_theme -icon-theme candy-icons
+
+#bindsym $mod+Shift+d exec rofi -show window -theme $rofi_theme -icon-theme candy-icons
+#bindsym $mod+Shift+space exec rofi -show find -modi find:~/.local/share/rofi/finder.sh #-theme $rofi_theme -icon-theme candy-icons
+bindsym Mod4+space exec exo-open "$(locate home media | rofi -theme $rofi_theme -icon-theme candy-icos -threads 0 -dmenu -i -p "locate")"
+
+bindsym $mod+Shift+space exec rofi -theme $rofi_theme -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+# Rofi calculator: https://github.com/svenstaro/rofi-calc
+bindsym Mod4+Shift+space exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -theme $rofi_theme > /dev/null
+
+#bindsym $mod+d exec rofi i -i -modi run,ssh -dmenu -mesg 'Howdy'`"
+
+# TODO descomentar!!! bindsym $mod+d exec "exec ~/.config/i3/apps/`ls ~/.config/i3/apps | rofi i -i -modi run,ssh -dmenu -mesg 'Howdy'`"
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+z split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+d floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+d focus mode_toggle
+
+# focus the parent container
+#bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+Shift+a focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 nplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available) --> replaced by polybar
+# Testing polybar
+#bar {
+        #height 25
+        #separator_symbol "    "
+		#position top
+        #status_command i3status -c ~/.config/i3/i3status.conf
+        #tray_output primary
+        #font pango:Consolas 10
+#}
+
+
+# ------------------------------------------
+# CUSTOM @perseoGI KEYS START
+# ------------------------------------------
+
+# Dunst (notify-send control)
+# Close topmost notification currently being displayed
+bindsym $mod+C exec dunstctl close
+
+# Pulse Audio controls
+# First setup default output
+exec --no-startup-id pactl set-default-sink alsa_output.pci-0000_00_1b.0.analog-stereo
+
+bindsym $mod+F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym $mod+F10 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym $mod+F9 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
+# Suspend
+bindsym Control+Shift+L exec systemctl suspend
+
+
+
+# Easy save and restore workspaces!
+set $i3_resurrect i3-resurrect
+
+# Save workspace mode.
+# TODO: something is not working...
+mode "save" {
+  bindsym 1 exec $i3_resurrect save -w 1
+  bindsym 2 exec $i3_resurrect save -w 2
+  bindsym 3 exec $i3_resurrect save -w 3
+  bindsym 4 exec $i3_resurrect save -w 4
+  bindsym 5 exec $i3_resurrect save -w 5
+  bindsym 6 exec $i3_resurrect save -w 6
+  bindsym 7 exec $i3_resurrect save -w 7
+  bindsym 8 exec $i3_resurrect save -w 8
+  bindsym 9 exec $i3_resurrect save -w 9
+  bindsym 0 exec $i3_resurrect save -w 0
+
+  # Back to normal: Enter, Escape, or s
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym s mode "default"
+  bindsym $mod+t mode "default"
+}
+# t, bacause s is taken :3
+bindsym $mod+t mode "save"
+
+# Restore workspace mode.
+mode "restore" {
+  bindsym 1 exec $i3_resurrect restore -w 1
+  bindsym 2 exec $i3_resurrect restore -w 2
+  bindsym 3 exec $i3_resurrect restore -w 3
+  bindsym 4 exec $i3_resurrect restore -w 4
+  bindsym 5 exec $i3_resurrect restore -w 5
+  bindsym 6 exec $i3_resurrect restore -w 6
+  bindsym 7 exec $i3_resurrect restore -w 7
+  bindsym 8 exec $i3_resurrect restore -w 8
+  bindsym 9 exec $i3_resurrect restore -w 9
+  bindsym 0 exec $i3_resurrect restore -w 0
+
+  # Back to normal: Enter, Escape, or n
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym n mode "default"
+  bindsym $mod+n mode "default"
+}
+bindsym $mod+n mode "restore"
+
+# Screenshots: scrot & gimp - root
+# --release is needed
+bindsym --release Print exec scrot -e 'mv $f /tmp/ && gimp --class floating /tmp/$f'
+# scrot & gimp - selection
+bindsym --release $mod+F12 exec scrot -s -e 'mv $f /tmp/ && gimp --class floating /tmp/$f'
+# scrot & gimp - window
+bindsym --release $mod+Shift+F12 exec scrot -u -e 'mv $f /tmp/ && gimp --class floating /tmp/$f'
+
+# Class to allow floating startup on the middle of the sceen
+for_window [class="^floating$"] floating enable
+for_window [class="^floating$"] [floating] resize set 1800 1000, move position center
+
+# Open pavucontrol floating below polybar volume control
+for_window [class="Pavucontrol"] floating enable resize set 800 700, move position 3000 30
+for_window [title="BpyTOP"] floating enable resize set 1350 850, move position 1900 30
+
+# Daemons
+## Startup polybar daemon
+#exec_always --no-startup-id pkill polybar; polybar -r main
+exec_always --no-startup-id pkill polybar; $HOME/scripts/launch-i3.sh
+
+# Startup picom compositor daemon
+exec_always --no-startup-id pkill picom; picom --no-use-damage
+#exec_always --no-startup-id pkill picom; picom --config=/dev/null --backend=xrender --experimental-backends
+
+## Set keybaord layout
+### Configure keyboard layout with english international without unconfortable dead keys
+exec_always --no-startup-id /home/perseo/scripts/keyboard-layout/set-keyboard-layout dvorak
+
+## Start up hyperx headset server (remove unlink when fixed socket)
+exec_always --no-startup-id pkill hyperx-service; unlink /tmp/hyperx-service; /home/perseo/scripts/hyperx-cloud-flight/hyperx-service
+
+## Greenclip daemon
+exec_always --no-startup-id greenclip daemon
+
+# Deprectaed or copied
+
+#bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
+#bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
+
+# # Sreen brightness controls
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Alsa audio controls.
+#bindsym $mod+Shift+comma exec ~/.config/i3/scripts/alsa restore
+#bindsym $mod+semicolon exec ~/.config/i3/scripts/alsa down Headphone
+#bindsym $mod+comma exec ~/.config/i3/scripts/alsa up Headphone
+#bindsym $mod+m move workspace to output left

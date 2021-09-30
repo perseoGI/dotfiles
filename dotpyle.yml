@@ -9,6 +9,12 @@ dotfiles:
       paths:
       - .gitconfig
       root: '~'
+  i3:
+    arch:
+      paths:
+      - config
+      - clean.rasi
+      root: ~/.config/i3
   neovim:
     macos:
       paths:
