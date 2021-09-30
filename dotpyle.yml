@@ -50,6 +50,11 @@ dotfiles:
       paths:
       - yabairc
       root: ~/.config/yabai
+  zsh:
+    arch:
+      paths:
+      - .zshrc
+      root: '~'
 settings:
   profiles:
   - default
