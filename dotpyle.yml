@@ -9,6 +9,10 @@ dotfiles:
       paths:
       - .gitconfig
       root: '~'
+    work:
+      paths:
+      - .gitconfig
+      root: '~'
   i3:
     arch:
       paths:
