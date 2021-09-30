@@ -1,38 +1,19 @@
 [user]
-  name = Perseo
-  email = perseo.gi98@gmail.com
+	name = Perseo
+	email = pgutierrezi@eservicios.indra.es
 [core]
-  editor = vim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = vim
 [pretty]
-        onelinedate = %C(auto)%h %C(green)%ad%C(auto)%d%C(reset) %s %C(white)(%an)%C(reset)
+	onelinedate = %C(auto)%h %C(green)%ad%C(auto)%d%C(reset) %s %C(white)(%an)%C(reset)
 [alias]
-        s = status -sb
-        l = log --graph --decorate --oneline
-        co = checkout
-        logd  = log --abbrev-commit --decorate
-        logg  = log --abbrev-commit --decorate --graph
-        logo  = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate
-        logop = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate --first-parent
-        loga  = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate --all
-        logap = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate --all --first-parent
-        wdiff = diff --color-words
-        wshow = show --color-words
-
-[interactive]
-	diffFilter = diff-so-fancy --patch
-[color]
-	ui = true
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = 11
-	frag = magenta bold
-	func = 146 bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+	s = status -s
+	l = log --graph --decorate --oneline
+	co = checkout
+	logd  = log --abbrev-commit --decorate
+	logg  = log --abbrev-commit --decorate --graph
+	logo  = log --abbrev-commit --decorate --graph --date=short
+	logop = log --abbrev-commit --decorate --graph --date=short --first-parent
+	loga  = log --abbrev-commit --decorate --graph --date=short --all
+	logap = log --abbrev-commit --decorate --graph --date=short --all --first-parent
+	wdiff = diff --color-words
+	wshow = show --color-words
