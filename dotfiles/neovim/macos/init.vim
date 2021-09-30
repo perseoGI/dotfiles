@@ -131,6 +131,10 @@ if has('python3')
  " Improves LSP completion
  Plug 'nvim-lua/completion-nvim'
 
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+
  " Get better at vim from the best streamer ever
  Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
@@ -280,6 +284,17 @@ let g:mkdp_browserfunc = 'g:Open_browser'
 " + nvim-trees-lua config --------------------------------------------{{{
 let g:nvim_tree_follow = 1
 let g:nvim_tree_indent_markers = 1
+" }}}
+
+" + coq config --------------------------------------------{{{
+let g:coq_settings = { 'auto_start': v:true }
+let g:coq_settings = { "keymap.recommended": v:false }
+ino <silent><expr> <Esc>   pumvisible() ? "\<C-e><Esc>" : "\<Esc>"
+ino <silent><expr> <C-c>   pumvisible() ? "\<C-e><C-c>" : "\<C-c>"
+ino <silent><expr> <BS>    pumvisible() ? "\<C-e><BS>"  : "\<BS>"
+ino <silent><expr> <CR>    pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"
+"ino <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"ino <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<BS>"
 " }}}
 
 " Mappings ------------------------------------------------------------------{{{
@@ -559,6 +574,7 @@ let g:vimsyn_embed= 'l'
 lua << EOF
 
    local nvim_lsp = require('lspconfig')
+   local coq = require "coq"
 
    --[ Mapping configuration applied only when LSP is available
 
@@ -596,7 +612,8 @@ lua << EOF
    -- Ada built in Lsp
    require'lspconfig'.als.setup{ on_attach=custom_attach, cmd = {"/home/perseo/sources/linux/ada_language_server" } }
 
-   require'lspconfig'.pyright.setup{ on_attach=custom_attach }
+   --[ require'lspconfig'.pyright.setup{ on_attach=custom_attach }
+   require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities({ on_attach=custom_attach }))
    --[ require'lspconfig'.pyls.setup{ on_attach=custom_attach }
 
    --[ require'lspconfig'.rust_analyzer.setup{ on_attach=custom_attach }
