@@ -63,6 +63,8 @@ dotfiles:
       paths:
       - .zshrc
       root: '~'
+scripts:
+  test: test.sh
 settings:
   profiles:
   - default
