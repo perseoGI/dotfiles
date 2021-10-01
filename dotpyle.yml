@@ -63,6 +63,10 @@ dotfiles:
       paths:
       - .zshrc
       root: '~'
+    macos:
+      paths:
+      - .zshrc
+      root: '~'
 settings:
   profiles:
   - default
