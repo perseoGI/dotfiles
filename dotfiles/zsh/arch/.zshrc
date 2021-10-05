@@ -1,8 +1,6 @@
 # Path to your oh-my-zsh installation.
 
 export ZSH="${HOME}/.oh-my-zsh"
-#export ZSH="/home/perseo/.oh-my-zsh"
-#export ZSH="/Users/perseo/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
 
@@ -45,16 +43,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if [[ `uname` == "Darwin" ]]; then
-	alias nvim=~/sources/nvim-osx64/bin/nvim
-  alias python=python3.9
-  alias pip=pip3
-  PATH="/Users/perseo/Library/Python/3.9/bin:$PATH"
-else
-  # Using neovim-nightly-bin package
-	#alias nvim=~/sources/nvim.appimage
-	alias pac='sudo pacman -S'
-fi
+alias pac='sudo pacman -S'
 alias v=nvim
 alias dotfiles='/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}'
 alias alacritty='WINIT_HIDPI_FACTOR=1 alacritty'
@@ -63,10 +52,10 @@ alias alacritty='WINIT_HIDPI_FACTOR=1 alacritty'
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
-	rm="rm -vI" \
+	#rm="rm -vI" \
 	bc="bc -ql" \
 	mkd="mkdir -pv" \
-	ffmpeg="ffmpeg -hide_banner"
+	ffmpeg="ffmpeg -hide_banner" \
 
 # Use exa, ls made in Rust, with color highlighting
 alias l='exa -lagh'
