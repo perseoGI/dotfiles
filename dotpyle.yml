@@ -31,6 +31,12 @@ dotfiles:
       paths:
       - skhdrc
       root: ~/.config/skhd
+  test:
+    default:
+      paths:
+      - b.txt
+      - c.txt
+      root: /Users/perseo/sources/test/
   vim:
     default:
       paths:
