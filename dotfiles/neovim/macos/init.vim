@@ -89,6 +89,8 @@ Plug 'justinmk/vim-gtfo'
 
 Plug 'jdhao/better-escape.vim'          " Essential to exit to normal mode with jk or kj
 Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 Plug 'tpope/vim-fugitive'               " Git blames, logs...
 Plug 'tpope/vim-surround'
@@ -140,7 +142,11 @@ if has('python3')
  " LSP config
  Plug 'neovim/nvim-lspconfig'
  " Improves LSP completion
- Plug 'nvim-lua/completion-nvim'
+ " Plug 'nvim-lua/completion-nvim'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
 
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
@@ -450,7 +456,7 @@ xnoremap <expr> <leader>` {
 nnoremap <Leader>i gg=G<C-o>
 
 " Capitalize or lower case current word
-inoremap <C-u> <esc>viw~ea
+"inoremap <C-u> <esc>viw~ea
 
 " Operator pending mappings -------------------------------------------------{{{
 " Same as Xi(  shorted to Xp
@@ -593,7 +599,46 @@ lua << EOF
       local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
       local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-      require'completion'.on_attach(client)
+      -- require'completion'.on_attach(client)
+
+      -- Setup nvim-cmp.
+      local cmp = require'cmp'
+
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            -- For `vsnip` user.
+            -- vim.fn["vsnip#anonymous"](args.body)
+
+            -- For `luasnip` user.
+            -- require('luasnip').lsp_expand(args.body)
+
+            -- For `ultisnips` user.
+            vim.fn["UltiSnips#Anon"](args.body)
+          end,
+        },
+        mapping = {
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.close(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+
+          -- For vsnip user.
+          -- { name = 'vsnip' },
+
+          -- For luasnip user.
+          -- { name = 'luasnip' },
+
+          -- For ultisnips user.
+          { name = 'ultisnips' },
+
+          { name = 'buffer' },
+        }
+      })
 
       buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -623,9 +668,8 @@ lua << EOF
    -- Ada built in Lsp
    require'lspconfig'.als.setup{ on_attach=custom_attach, cmd = {"/home/perseo/sources/linux/ada_language_server" } }
 
-   --[ require'lspconfig'.pyright.setup{ on_attach=custom_attach }
-   require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities({ on_attach=custom_attach }))
-   --[ require'lspconfig'.pyls.setup{ on_attach=custom_attach }
+    -- require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities({ on_attach=custom_attach }))
+   require'lspconfig'.pyright.setup( coq.lsp_ensure_capabilities({ on_attach=custom_attach , capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())}))
 
    --[ require'lspconfig'.rust_analyzer.setup{ on_attach=custom_attach }
 
