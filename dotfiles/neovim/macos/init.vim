@@ -91,6 +91,17 @@ Plug 'jdhao/better-escape.vim'          " Essential to exit to normal mode with 
 Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-fugitive'               " Git blames, logs...
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+" Vim text objects
+Plug 'kana/vim-textobj-user'            " Base for following plugins
+Plug 'kana/vim-textobj-entire'          " ae, ie
+Plug 'kana/vim-textobj-indent'          " ai, aI, ii, iI
+Plug 'kana/vim-textobj-line'            " al, il
+Plug 'kana/vim-textobj-function'        " af, if
+
+" Plug 'svermeulen/vim-yoink'
 
 if has('python3')
     Plug 'puremourning/vimspector', {
@@ -230,14 +241,14 @@ let loaded_matchparen = 1
 
 " ++ Browser tree configuration ---------------------------------------------{{{
 
-if isdirectory($HOME."/.config/coc/extensions/node_modules/coc-explorer")
-    let loaded_netrwPlugin = 1  " Disable netrw on open
-else
-    let g:netrw_browse_split = 4
-    let g:vrfr_rg = 'true'
-    let g:netrw_banner = 0  " Disable help info on browser tree
-    let g:netrw_winsize = 25
-endif
+" if isdirectory($HOME."/.config/coc/extensions/node_modules/coc-explorer")
+"     let loaded_netrwPlugin = 1  " Disable netrw on open
+" else
+"     let g:netrw_browse_split = 4
+"     let g:vrfr_rg = 'true'
+"     let g:netrw_banner = 0  " Disable help info on browser tree
+"     let g:netrw_winsize = 25
+" endif
 "" ++ }}}
 
 " ++ better-scape -----------------------------------------------------------{{{
@@ -282,7 +293,7 @@ let g:mkdp_browserfunc = 'g:Open_browser'
 " }}}
 
 " + nvim-trees-lua config --------------------------------------------{{{
-let g:nvim_tree_follow = 1
+" let g:nvim_tree_follow = 1
 let g:nvim_tree_indent_markers = 1
 " }}}
 
@@ -628,6 +639,22 @@ lua << EOF
    vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
    vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 
+   --[ nvim-tree.lua
+
+   require'nvim-tree'.setup{
+      -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+      update_focused_file = {
+        -- enables the feature
+        enable      = true,
+        -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
+        -- only relevant when `update_focused_file.enable` is true
+        update_cwd  = false,
+        -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
+        -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
+        ignore_list = {}
+      }
+   }
+
 EOF
 "let g:python3_host_prog = '/usr/bin/python'
 
@@ -676,6 +703,13 @@ nnoremap <localleader>dh :call vimspector#RunToCursor()<cr>
 
 " Maximizer mappings --------------------------------------------------------{{{
 nnoremap <leader>m :MaximizerToggle!<CR>
+" ++ }}}
+
+" Yoink mappings --------------------------------------------------------{{{
+" nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+" nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+" nmap p <plug>(YoinkPaste_p)
+" nmap P <plug>(YoinkPaste_P)
 " ++ }}}
 
 " + }}}
