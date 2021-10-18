@@ -67,7 +67,8 @@ dotfiles:
     macos:
       paths:
       - .zshrc
-scripts: {}
+scripts:
+  test: test.sh
 settings:
   profiles:
   - default
