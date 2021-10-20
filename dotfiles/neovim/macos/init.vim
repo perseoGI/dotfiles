@@ -94,6 +94,7 @@ Plug 'tpope/vim-fugitive'               " Git blames, logs...
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+
 " Vim text objects
 Plug 'kana/vim-textobj-user'            " Base for following plugins
 Plug 'kana/vim-textobj-entire'          " ae, ie

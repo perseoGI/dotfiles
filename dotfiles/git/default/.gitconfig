@@ -4,6 +4,7 @@
 [core]
   editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	autocrlf = input
 [pretty]
         onelinedate = %C(auto)%h %C(green)%ad%C(auto)%d%C(reset) %s %C(white)(%an)%C(reset)
 [alias]
