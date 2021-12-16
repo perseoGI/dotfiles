@@ -88,6 +88,12 @@ element {
     padding-left: 10px;
 }
 
+/* Needed from last update */
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+}
+
 element-icon {
     /*size: 64px;*/
     size: 24px;

@@ -62,7 +62,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # candy-icons need to be installed: https://github.com/EliverLara/candy-icons.git
-set $rofi_theme "~/.config/i3/clean.rasi"
+# set $rofi_theme "~/.config/i3/clean.rasi"
+set $rofi_theme "~/.config/i3/onedark.rasi"
 
 bindsym $mod+space exec rofi -show drun -theme $rofi_theme -icon-theme candy-icons
 
@@ -305,6 +306,9 @@ exec_always --no-startup-id pkill hyperx-service; unlink /tmp/hyperx-service; /h
 
 ## Greenclip daemon
 exec_always --no-startup-id greenclip daemon
+
+## Configure suspend times
+# exec --no-startup-id xset dpms 0 20 0
 
 # Deprectaed or copied
 
