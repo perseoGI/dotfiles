@@ -66,6 +66,12 @@ alias ll='exa -lh'
 ## Add pip installed packages
 PATH="${PATH}:$(python3 -c 'import site; print(site.USER_BASE)')/bin"
 
+# LLVM
+LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
 if [ ! $VIM ]; then
   # Execute when opening a terminal (outside vim/nvim)
   neofetch

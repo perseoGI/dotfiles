@@ -661,10 +661,11 @@ lua << EOF
    require'lspconfig'.tsserver.setup{ on_attach=custom_attach }
 
    --[ This is the perfect sustitute to coc-clangd
-   require'lspconfig'.clangd.setup {
-   on_attach = custom_attach,
-   root_dir = function() return vim.loop.cwd() end
-   }
+   -- require'lspconfig'.clangd.setup {
+   -- on_attach = custom_attach,
+   -- root_dir = function() return vim.loop.cwd() end
+   -- }
+   require'lspconfig'.clangd.setup(coq.lsp_ensure_capabilities({ on_attach=custom_attach, root_dir = function() return vim.loop.cwd() end, capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())}))
 
    -- Ada built in Lsp
    require'lspconfig'.als.setup{ on_attach=custom_attach, cmd = {"/home/perseo/sources/linux/ada_language_server" } }
