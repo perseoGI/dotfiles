@@ -18,6 +18,13 @@ dotfiles:
       - clean.rasi
       root: ~/.config/i3
   neovim:
+    default:
+      paths:
+      - init.vim
+      - after
+      - plugin
+      - lua
+      root: ~/.config/nvim
     macos:
       paths:
       - init.vim

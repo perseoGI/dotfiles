@@ -140,6 +140,9 @@ if has('python3')
  Plug 'nvim-telescope/telescope.nvim'
  Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+ " Treesitter
+ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
  " LSP config
  Plug 'neovim/nvim-lspconfig'
  " Improves LSP completion

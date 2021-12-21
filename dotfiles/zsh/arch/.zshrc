@@ -67,7 +67,7 @@ alias ll='exa -lh'
 #PATH=$PATH:/home/perseo/scripts:/usr/local/arm/gcc-arm-none-eabi-4_9-2015q3/bin
 #
 ## Add pip installed packages
-PATH="${PATH}:$(python3 -c 'import site; print(site.USER_BASE)')/bin"
+PATH="${PATH}:$(python3 -c 'import site; print(site.USER_BASE)')/bin:/home/perseo/.local/share/gem/ruby/3.0.0/bin"
 #
 #PATH="/home/perseo/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL5LIB="/home/perseo/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
