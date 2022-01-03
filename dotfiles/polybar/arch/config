@@ -314,7 +314,7 @@ type = custom/ipc
 hook-0 = echo ""
 hook-1 = echo ""
 initial = 2
-click-left = if [ `xsct | cut -d'~' -f2-` -eq 4500 ]; then xsct 0;  polybar-msg hook sct 1 1>/dev/null 2>&1; else xsct 4500; polybar-msg hook sct 2 1>/dev/null 2>&1; fi
+click-left = if [ `xsct | cut -d'~' -f2-` -eq 3500 ]; then xsct 0;  polybar-msg hook sct 1 1>/dev/null 2>&1; else xsct 3500; polybar-msg hook sct 2 1>/dev/null 2>&1; fi
 
 [module/powermenu]
 type = custom/menu
