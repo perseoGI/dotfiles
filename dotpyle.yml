@@ -48,6 +48,10 @@ dotfiles:
       paths:
       - skhdrc
       root: ~/.config/skhd
+  tmux:
+    arch:
+      paths:
+      - .tmux.conf.local
   vim:
     default:
       paths:
