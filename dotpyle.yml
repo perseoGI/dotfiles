@@ -4,6 +4,11 @@ dotfiles:
       paths:
       - alacritty.yml
       root: ~/.config/alacritty
+  dunst:
+    arch:
+      paths:
+      - dunstrc
+      root: /home/perseo/.config/dunst
   git:
     default:
       paths:
