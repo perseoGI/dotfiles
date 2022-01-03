@@ -33,6 +33,11 @@ dotfiles:
       paths:
       - init.vim
       root: ~/.config/nvim
+  polybar:
+    arch:
+      paths:
+      - config
+      root: /home/perseo/.config/polybar
   skhd:
     macos:
       paths:
