@@ -8,7 +8,7 @@ dotfiles:
     arch:
       paths:
       - dunstrc
-      root: /home/perseo/.config/dunst
+      root: ~/.config/dunst
   git:
     default:
       paths:
@@ -42,18 +42,12 @@ dotfiles:
     arch:
       paths:
       - config
-      root: /home/perseo/.config/polybar
+      root: ~/.config/polybar
   skhd:
     macos:
       paths:
       - skhdrc
       root: ~/.config/skhd
-  test:
-    default:
-      paths:
-      - b.txt
-      - c.txt
-      root: /Users/perseo/sources/test/
   vim:
     default:
       paths:
