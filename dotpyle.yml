@@ -29,6 +29,7 @@ dotfiles:
       - after
       - plugin
       - lua
+      - spell
       root: ~/.config/nvim
     macos:
       paths:

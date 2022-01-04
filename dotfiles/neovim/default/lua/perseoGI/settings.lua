@@ -58,4 +58,8 @@ set.shortmess:append{c = true}
 set.colorcolumn = '80'
 -- + }}}
 
+-- Spelling
+set.spelllang = 'en,es'
+set.spell = true
+
 -- }}}

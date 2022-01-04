@@ -62,7 +62,7 @@ endif
 " Coc meta plugin needs nodejs
 " To avoid file not found errors on C/C++, compile_commands.json must be
 " created on the path. Use $ bear make ... to generate automatically
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'           " Icons for coc-explorer
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
@@ -92,6 +92,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " LSP config
 Plug 'neovim/nvim-lspconfig'
+" Show lsp errors on Telescope
+Plug 'folke/trouble.nvim'
 " Improves LSP completion
 " Plug 'nvim-lua/completion-nvim'
 
@@ -114,7 +116,6 @@ Plug 'sbdchd/neoformat'
 
 call plug#end()
 
-lua require("perseoGI")
 
 " + Vim pluggins settings ---------------------------------------------------{{{
 
@@ -384,6 +385,7 @@ nnoremap <leader>pv :NvimTreeToggle<CR>
 
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_confirm_key = "\<C-c>"
 
 " FIXME completion with <c-n>
 "inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -405,5 +407,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx,*.tsx'
 
 
 " }}}
+
+lua require("perseoGI")
 
 " vim:foldmethod=marker:foldlevel=4
