@@ -22,7 +22,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdcommenter'          " Comments
 Plug 'kshenoy/vim-signature'            " Show marks
 Plug 'vuciv/vim-bujo'                   " Minimalist TODO list management
 
