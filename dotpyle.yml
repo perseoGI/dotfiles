@@ -84,7 +84,7 @@ dotfiles:
       paths:
       - .zshrc
 scripts:
-  test: test.sh
+  tmux-cht.sh: tmux-cht.sh
   tmux-session-finder: tmux-session-finder.sh
 settings:
   profiles:
