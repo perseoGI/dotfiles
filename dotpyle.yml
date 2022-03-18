@@ -86,6 +86,9 @@ dotfiles:
 scripts:
   tmux-session-finder: tmux-session-finder.sh
   tmux-sessionizer: tmux-sessionizer.sh
+  tmux-cht: tmux-cht.sh
+  tmux-cht-command: tmux-cht-command.sh
+  tmux-cht-languages: tmux-cht-languages.sh
 settings:
   profiles:
   - default
