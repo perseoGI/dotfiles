@@ -47,6 +47,7 @@ Plug 'kana/vim-textobj-entire'          " ae, ie
 Plug 'kana/vim-textobj-indent'          " ai, aI, ii, iI
 Plug 'kana/vim-textobj-line'            " al, il
 Plug 'kana/vim-textobj-function'        " af, if
+Plug 'Matt-A-Bennett/vim-surround-funk'
 
 " Plug 'svermeulen/vim-yoink'
 
