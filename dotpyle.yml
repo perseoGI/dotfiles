@@ -84,8 +84,8 @@ dotfiles:
       paths:
       - .zshrc
 scripts:
-  tmux-cht-languages: tmux-cht-languages
   tmux-session-finder: tmux-session-finder.sh
+  tmux-sessionizer: tmux-sessionizer.sh
 settings:
   profiles:
   - default
