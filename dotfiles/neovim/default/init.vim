@@ -409,5 +409,8 @@ let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx,*.tsx'
 " }}}
 
 lua require("perseoGI")
+vmap <leader>foo <Cmd>lua print(vim.inspect(forceIncreasingOrder()))<Cr>
+vmap <leader>fee <Cmd>lua print(vim.inspect(getVisualSelection()))<Cr>
+
 
 " vim:foldmethod=marker:foldlevel=4
