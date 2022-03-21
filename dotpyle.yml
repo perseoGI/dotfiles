@@ -53,6 +53,9 @@ dotfiles:
     arch:
       paths:
       - .tmux.conf.local
+    macos:
+      paths:
+      - .tmux.conf.local
   vim:
     default:
       paths:
@@ -84,11 +87,11 @@ dotfiles:
       paths:
       - .zshrc
 scripts:
-  tmux-session-finder: tmux-session-finder.sh
-  tmux-sessionizer: tmux-sessionizer.sh
   tmux-cht: tmux-cht.sh
   tmux-cht-command: tmux-cht-command.sh
   tmux-cht-languages: tmux-cht-languages.sh
+  tmux-session-finder: tmux-session-finder.sh
+  tmux-sessionizer: tmux-sessionizer.sh
 settings:
   profiles:
   - default
