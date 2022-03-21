@@ -56,10 +56,17 @@ alias \
 	bc="bc -ql" \
 	mkd="mkdir -pv" \
 	ffmpeg="ffmpeg -hide_banner" \
+        # Use exa, ls made in Rust, with color highlighting
+        l='exa -lagh'\
+        ll='exa -lh' \
+        du='dust' \
+        df='duf' \
+        ping='gping' \
+        ps='process' \
+        dig='dog'
 
-# Use exa, ls made in Rust, with color highlighting
-alias l='exa -lagh'
-alias ll='exa -lh'
+
+
 # Also, bat is a very nice cat implementation which integrates a paginator and a syntax highlighter
 
 
@@ -86,3 +93,5 @@ if [ ! $VIM ]; then
   # Execute when opening a terminal (outside vim/nvim)
   neofetch
 fi
+
+source /home/perseo/.config/broot/launcher/bash/br

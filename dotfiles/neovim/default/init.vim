@@ -22,7 +22,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdcommenter'          " Comments
 Plug 'kshenoy/vim-signature'            " Show marks
 Plug 'vuciv/vim-bujo'                   " Minimalist TODO list management
 
@@ -48,6 +47,7 @@ Plug 'kana/vim-textobj-entire'          " ae, ie
 Plug 'kana/vim-textobj-indent'          " ai, aI, ii, iI
 Plug 'kana/vim-textobj-line'            " al, il
 Plug 'kana/vim-textobj-function'        " af, if
+Plug 'Matt-A-Bennett/vim-surround-funk'
 
 " Plug 'svermeulen/vim-yoink'
 
