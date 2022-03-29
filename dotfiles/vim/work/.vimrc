@@ -79,7 +79,7 @@ Plug 'preservim/nerdcommenter'          " Comments
 Plug 'kshenoy/vim-signature'            " Show marks
 Plug 'vuciv/vim-bujo'                   " Minimalist TODO list management
 
-Plug 'jiangmiao/auto-pairs'             " Auto open close pairs, best plug of Augost-2020
+" Plug 'jiangmiao/auto-pairs'             " Auto open close pairs, best plug of Augost-2020
 " After having tested coc-html, coc-emmet, coc-snippets, this is the best option for auto-closing html tags on jsx
 Plug 'alvan/vim-closetag'
 Plug 'szw/vim-maximizer'                " Cool maximizer/minimizer pluggin
@@ -197,10 +197,6 @@ else
                 \   fzf#vim#with_preview(), <bang>0)
 endif
 
-
-if has('mac')
-    set rtp+=/usr/local/opt/fzf
-endif
 " ++ }}}
 
 " ++ RipGrep settings -------------------------------------------------------{{{
@@ -326,6 +322,8 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
+nnoremap <leader>s :w<CR>
+
 " Move among buffers with CTRL (enable g:airline#extensions#tabline#enabled to
 " see open buffers)
 nnoremap <C-L> :bnext<CR>
@@ -386,60 +384,6 @@ vnoremap > >gv
 
 " Paste from 0 registre easily
 noremap ,p "0p
-
-" Surround with quotation marks and {, [ a single word under the cursor
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
-nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lel
-nnoremap <leader>{ viw<esc>a}<esc>bi{<esc>lel
-nnoremap <leader>[ viw<esc>a]<esc>bi[<esc>lel
-nnoremap <leader>( viw<esc>a)<esc>bi(<esc>lel
-
-" Surround with { } visual selections, V-line selections and V-block
-" selections
-" \e == <esc>
-" `< == gvo<esc> (go to the begining of the previous selection) more precise
-" `> == gvo<esc> (go to the end of the previous selection)
-xnoremap <expr> <leader>{ {
-            \  'v': "\e`>a}\e`<i{\e",
-            \  'V': "\e`>o}\e`<O{\eva{=",
-            \  '<c-v>': "A}\egvI{\e",
-            \ }[mode()]
-
-" Idem for []
-xnoremap <expr> <leader>[ {
-            \  'v': "\e`>a]\e`<i[\e",
-            \  'V': "\e`>a]\e`<i[\e",
-            \  '<c-v>': "A]\egvI[\e",
-            \ }[mode()]
-
-" Idem for []
-xnoremap <expr> <leader>( {
-            \  'v': "\e`>a)\e`<i(\e",
-            \  'V': "\e`>a)\e`<i(\e",
-            \  '<c-v>': "A)\egvI(\e",
-            \ }[mode()]
-
-" Idem for ""
-xnoremap <expr> <leader>" {
-            \  'v': "\e`>a\"\e`<i\"\e",
-            \  'V': "\e`>a\"\e`<i\"\e",
-            \  '<c-v>': "A\"\egvI\"\e",
-            \ }[mode()]
-
-" Idem for ''
-xnoremap <expr> <leader>' {
-            \  'v': "\e`>a\'\e`<i\'\e",
-            \  'V': "\e`>a\'\e`<i\'\e",
-            \  '<c-v>': "A\'\egvI\'\e",
-            \ }[mode()]
-
-" Idem for ``
-xnoremap <expr> <leader>` {
-            \  'v': "\e`>a\`\e`<i\`\e",
-            \  'V': "\e`>a\`\e`<i\`\e",
-            \  '<c-v>': "A\`\egvI\`\e",
-            \ }[mode()]
 
 " Auto indent all file
 nnoremap <Leader>i gg=G<C-o>
@@ -508,8 +452,8 @@ endif
 " Automatically save movements larger than 5 lines to the jumplist (useful for
 " relativenumber)
 " TODO va muy mal con ssh
-"nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
-"nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " + }}}
 
@@ -530,12 +474,6 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" Only needed on macOS
-" This allows to use unnamedplus clipboard in combination of ^V block pasting
-if has('mac') || has('maxunix')
-    map p <Plug>(miniyank-autoput)
-    map P <Plug>(miniyank-autoPut)
-endif
 " + }}}
 
 " + }}}
@@ -684,7 +622,7 @@ augroup highlight_yank
 augroup END
 
 " Trim whitespaces on buffer write
-autocmd BufWritePre * :call TrimWhitespace()
+" autocmd BufWritePre * :call TrimWhitespace()
 
 " Automatically aqualize splits when terminal is resized
 autocmd VimResized * wincmd =
