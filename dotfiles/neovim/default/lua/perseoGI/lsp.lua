@@ -79,6 +79,7 @@ require'lspconfig'.als.setup{ on_attach=custom_attach, cmd = {"/home/perseo/sour
 -- require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities({ on_attach=custom_attach }))
 require'lspconfig'.pyright.setup( coq.lsp_ensure_capabilities({ on_attach=custom_attach , capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())}))
 
+require'lspconfig'.dartls.setup{on_attach=custom_attach}
 --[ require'lspconfig'.rust_analyzer.setup{ on_attach=custom_attach }
 
 

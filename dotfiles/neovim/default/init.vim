@@ -26,7 +26,7 @@ Plug 'kshenoy/vim-signature'            " Show marks
 Plug 'vuciv/vim-bujo'                   " Minimalist TODO list management
 
 
-Plug 'jiangmiao/auto-pairs'             " Auto open close pairs, best plug of Augost-2020
+" Plug 'jiangmiao/auto-pairs'             " Auto open close pairs, best plug of Augost-2020
 " After having tested coc-html, coc-emmet, coc-snippets, this is the best option for auto-closing html tags on jsx
 Plug 'alvan/vim-closetag'
 Plug 'szw/vim-maximizer'                " Cool maximizer/minimizer pluggin
@@ -152,6 +152,8 @@ let mapleader = " "
 
 " Reload vim.init file
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+
+nnoremap <Leader>s :w<CR>
 
 " + Buffer maps -------------------------------------------------------------{{{
 " Remap convenient change between windows commands
