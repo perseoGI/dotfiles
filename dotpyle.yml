@@ -1,5 +1,9 @@
 dotfiles:
   alacritty:
+    arch:
+      paths:
+      - alacritty.yml
+      root: ~/.config/alacritty
     macos:
       paths:
       - alacritty.yml
@@ -27,7 +31,6 @@ dotfiles:
       paths:
       - init.vim
       - after
-      - plugin
       - lua
       - spell
       root: ~/.config/nvim

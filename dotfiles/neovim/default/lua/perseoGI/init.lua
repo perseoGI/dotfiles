@@ -1,6 +1,6 @@
-require("perseoGI.lsp")
-require("perseoGI.settings")
-require("perseoGI.harpoon")
-require("perseoGI.trouble")
 require("perseoGI.functions")
-
+require("perseoGI.settings")
+require("perseoGI.plugins")
+require("perseoGI.colorscheme")
+require("perseoGI.keymaps")
+require("perseoGI.lsp")

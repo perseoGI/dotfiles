@@ -1,7 +1,7 @@
 local set = vim.opt
 
--- VIM general settings ------------------------------------------------------{{{
--- + Interface ---------------------------------------------------------------{{{
+-- VIM general settings
+--  Interface
 vim.cmd[[
    syntax on
    highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -16,31 +16,27 @@ set.wrap = false                      -- If a line goes our of screen it will no
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
 set.updatetime=50
--- + }}}
 
--- + Text editor -------------------------------------------------------------{{{
+-- Text editor
 set.tabstop = 8
 set.softtabstop = 4
 set.shiftwidth = 3
 set.expandtab = true                   -- Convert tab character to spaces
 set.smartindent = true                 -- Best job to indent for you
--- + }}}
 
--- + Search ------------------------------------------------------------------{{{
+-- Search
 set.smartcase = true                   -- Case sensitive searching
 set.hlsearch = false
 set.incsearch = true                   -- By the time start searching it highlight results before press enter
--- + }}}
 
--- + File manipulation and versioning ----------------------------------------{{{
+-- File manipulation and versioning
 set.swapfile = false                  -- Dont create vim.swp files
 set.backup = false                    -- Dont make a backup
 set.undodir= vim.fn.expand('~/.vim/undodir')      -- Store a backup in undo directory
 set.undofile = true                    -- Store modified file per file in undo directory
 --set.autoread
--- + }}}
 
--- + GUI settings ------------------------------------------------------------{{{
+-- GUI settings
 set.mouse = 'a'                     -- Yes... but only for some special cases
 set.scrolloff = 8
 --set.guicursor=''
@@ -56,10 +52,13 @@ set.shortmess:append{c = true}
 
 -- Column mark
 set.colorcolumn = '80'
--- + }}}
 
 -- Spelling
 set.spelllang = 'en,es'
 set.spell = true
 
--- }}}
+-- Clipboard config
+set.clipboard = "unnamedplus"
+
+set.completeopt = "menu,menuone,noselect"
+

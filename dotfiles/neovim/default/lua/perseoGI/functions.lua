@@ -1,4 +1,29 @@
+-- The function is called `t` for `termcodes`.
+-- You don't have to call it that, but I find the terseness convenient
+local function t(str)
+    -- Adjust boolean arguments as needed
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
+function _G.cancelPum()
+   return vim.fn.pumvisible() == 1 and t'<C-e><C-c>' or t'<C-c>'
+end
+
+function _G.enterPum()
+   return vim.fn.pumvisible() == 1 and t'<C-e><BS>' or t'<BS>'
+end
+
+function _G.completeInfo()
+   if vim.fn.pumvisible() then
+      if vim.fn.complete_info().selected == -1 then
+         return t'<C-e><CR>'
+      else
+         return t'<C-y>'
+      end
+   else
+      return t'<CR>'
+   end
+end
 
 function forceIncreasingOrder()
    -- local sline, scol, eline, ecol = unpack(visual_selection_range())
