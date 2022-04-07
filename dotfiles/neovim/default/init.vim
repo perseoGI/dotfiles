@@ -37,20 +37,6 @@ let mapleader = " "
 
 " + Vim Pluggings mappings --------------------------------------------------{{{
 
-" ++ NERDCommenter mappings -------------------------------------------------{{{
-" Comments map to <C-/> (vim register for '/' is  '_')
-nmap <C-_>   <Plug>NERDCommenterToggle
-" gv leave selected lines
-vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
-" ++ }}}
-
-" ++ Undotree mappings ------------------------------------------------------{{{
-" Open Undotree
-nnoremap <leader>u :UndotreeShow<CR>
-" ++ }}}
-
-" ++ File explorer mappings -------------------------------------------------{{{
-nnoremap <leader>pv :NvimTreeToggle<CR>
 " ++ }}}
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']

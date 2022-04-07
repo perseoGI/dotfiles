@@ -55,6 +55,11 @@ function M.setup()
             find_files = {
                -- add -L to follow symlinks
                find_command = { "rg", "--ignore", "-L", "--hidden", "--files" },
+               -- find_command = {'fd', '--type', 'f', '--no-ignore-vcs', '--color=never', '--hidden', '--follow'},
+               prompt_prefix = '📄 '
+            },
+            git_files = {
+               prompt_prefix = ' '
             },
          },
          extensions = {
@@ -66,6 +71,26 @@ function M.setup()
             },
          },
       })
+end
+
+
+function M.reload_modules()
+   local lua_dirs = vim.fn.glob("./lua/*", 0, 1)
+   for _, dir in ipairs(lua_dirs) do
+      dir = string.gsub(dir, "./lua/", "")
+      print (dir)
+      require("plenary.reload").reload_module(dir)
+   end
+end
+
+
+function M.git_or_find_files()
+    local results = require('telescope.utils').get_os_command_output({'git', 'rev-parse', '--git-dir'})
+    if results[1] then
+        require('telescope.builtin').git_files()
+    else
+        require('telescope.builtin').find_files()
+    end
 end
 
 return M

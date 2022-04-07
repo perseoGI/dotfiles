@@ -25,6 +25,7 @@ function _G.completeInfo()
    end
 end
 
+
 function forceIncreasingOrder()
    -- local sline, scol, eline, ecol = unpack(visual_selection_range())
    -- print(sline, scol, eline, ecol)
@@ -138,3 +139,4 @@ function visual_selection_range()
     return cerow - 1, cecol - 1, csrow - 1, cscol
   end
 end
+

@@ -54,7 +54,6 @@ keymap("i", ",", ",<c-g>u", opts)
 keymap("i", "?", "?<c-g>u", opts)
 keymap("i", "!", "!<c-g>u", opts)
 
-
 -- Automatically save movements larger than 5 lines to the jumplist (useful for
 -- relativenumber)
 keymap("n", "<expr>j", "v:count ? (v:count > 5 ? \"m'\" . v:count : '') . 'j' : 'gj'", opts)
@@ -63,6 +62,7 @@ keymap("n", "<expr>k", "v:count ? (v:count > 5 ? \"m'\" . v:count : '') . 'k' : 
 -- nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 keymap("i", "<C-c>", "<esc>", opts)
+keymap("n", "<C-c>", "<silent> <C-c>", opts) -- remove help message "Type :qa ..."
 
 -- Visual-Line move lines up or down
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
@@ -89,6 +89,7 @@ keymap("n", ",p", '"0p', opts)
 
 -- Auto indent all file
 keymap("n", "<Leader>i", "gg=G<C-o>", opts)
+keymap("n", "<Leader>fo", ":Neoformat<CR>", opts)
 
 -- Capitalize or lower case current word
 --inoremap <C-u> <esc>viw~ea
@@ -160,17 +161,34 @@ keymap("n", "<c-k>", ":call QFList(0)<CR>", opts)
 -- endif
 -- + }}}
 
+-- Undo tree
+keymap("n", "<leader>u", ":UndotreeShow<CR>", opts)
+
+-- File explorer: nvim-tree
+keymap("n", "<leader>pv", ":NvimTreeToggle<CR>", opts)
+
 -- Telescope
-keymap("n", "<C-p>", "<cmd>lua require('telescope.builtin').git_files()<CR>", opts)
+-- Find files if not in a git directory
+keymap("n", "<C-p>", "<cmd>lua require('perseoGI.telescope').git_or_find_files()<CR>", opts)
+
 keymap("n", "<leader>pf", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>pb", ":Telescope buffers<CR>", opts)
 
-keymap("n", "<leader>ps", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", opts)
-keymap("n", "<leader>pw", "<cmd>lua require('telescope.builtin').grep_string { search = vim.fn.expand(\"<cword>\") }<CR>", opts)
+keymap(
+	"n",
+	"<leader>ps",
+	"<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>",
+	opts
+)
+keymap(
+	"n",
+	"<leader>pw",
+	"<cmd>lua require('telescope.builtin').grep_string { search = vim.fn.expand(\"<cword>\") }<CR>",
+	opts
+)
 keymap("n", "<leader>pm", ":Telescope media_files<CR>", opts)
 keymap("n", "<leader>pg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>vh", ":Telescope help_tags<CR>", opts)
-
 
 -- Harpoon
 keymap("n", "<leader>a", ":lua require('harpoon.mark').add_file()<CR>", opts)
@@ -179,12 +197,16 @@ keymap("n", "<leader>e", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", o
 -- Maximizer
 keymap("n", "<leader>m", ":MaximizerToggle!<CR>", opts)
 
-
 -- Coq
 keymap("i", "<Esc>", "v:lua.cancelPum()", {expr = true, silent = true})
 keymap("i", "<C-c>", "v:lua.cancelPum()", {expr = true, silent = true})
 keymap("i", "<BS>", "v:lua.enterPum()", {expr = true, silent = true})
 keymap("i", "<CR>", "v:lua.completeInfo()", {expr = true, noremap = true, silent = true})
+-- keymap("i", "<Tab>", "<Tab>", {noremap = true, silent = true})
+keymap('n', '<C-h>', '', {noremap = true, silent = true})
+
+keymap('n', '<C-h>', ':bprev<CR>', {noremap = true, silent = true})
+keymap("n", "<C-H>", ":bprev<CR>", opts)
 
 
 -- Trouble
