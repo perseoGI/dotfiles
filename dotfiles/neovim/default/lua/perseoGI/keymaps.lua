@@ -222,19 +222,47 @@ keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", sopts)
 
 -- Vimspector
 
-keymap("n", "<localleader>dg", ":call vimspector#Launch()<cr>", opts)
-keymap("n", "<localleader>dn", ":call vimspector#Continue()<cr>", opts)
---nnoremap <localleader>gs :call vimspector#Stop()<cr>
-keymap("n", "<localleader>dr", ":call vimspector#Reset()<cr>", opts)
+--keymap("n", "<localleader>dg", ":call vimspector#Launch()<cr>", opts)
+--keymap("n", "<localleader>dn", ":call vimspector#Continue()<cr>", opts)
+----nnoremap <localleader>gs :call vimspector#Stop()<cr>
+--keymap("n", "<localleader>dr", ":call vimspector#Reset()<cr>", opts)
 
-keymap("n", "<localleader>dR", ":call vimspector#Restart()<cr>", opts)
-keymap("n", "<localleader>dp", ":call vimspector#Pause()<cr>", opts)
-keymap("n", "<localleader>db", ":call vimspector#ToggleBreakpoint()<cr>", opts)
--- nnoremap <localleader>dB :call vimspector#ToggleConditionalBreakpoint()<cr>
--- nnoremap <localleader>dB <Plug>VimspectorToggleConditionalBreakpoint
-keymap("n", "<leader>dB", "<Plug>VimspectorToggleConditionalBreakpoint", opts)
+--keymap("n", "<localleader>dR", ":call vimspector#Restart()<cr>", opts)
+--keymap("n", "<localleader>dp", ":call vimspector#Pause()<cr>", opts)
+--keymap("n", "<localleader>db", ":call vimspector#ToggleBreakpoint()<cr>", opts)
+---- nnoremap <localleader>dB :call vimspector#ToggleConditionalBreakpoint()<cr>
+---- nnoremap <localleader>dB <Plug>VimspectorToggleConditionalBreakpoint
+--keymap("n", "<leader>dB", "<Plug>VimspectorToggleConditionalBreakpoint", opts)
 
-keymap("n", "<localleader>dj", ":call vimspector#StepOver()<cr>", opts)
-keymap("n", "<localleader>dl", ":call vimspector#StepInto()<cr>", opts)
-keymap("n", "<localleader>dk", ":call vimspector#StepOut()<cr>", opts)
-keymap("n", "<localleader>dh", ":call vimspector#RunToCursor()<cr>", opts)
+--keymap("n", "<localleader>dj", ":call vimspector#StepOver()<cr>", opts)
+--keymap("n", "<localleader>dl", ":call vimspector#StepInto()<cr>", opts)
+--keymap("n", "<localleader>dk", ":call vimspector#StepOut()<cr>", opts)
+--keymap("n", "<localleader>dh", ":call vimspector#RunToCursor()<cr>", opts)
+
+
+-- Dap debugger
+
+-- dap.defaults.fallback.terminal_win_cmd = '20split new'
+-- vim.fn.sign_define('DapBreakpoint', {text='🟥', texthl='', linehl='', numhl=''})
+-- vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
+-- vim.fn.sign_define('DapStopped', {text='⭐️', texthl='', linehl='', numhl=''})
+
+keymap = vim.keymap.set
+
+keymap('n', '<leader>db', function() require"dap".toggle_breakpoint() end, opts)
+keymap('n', '<leader>dB', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+keymap('n', '<leader>dk', function() require"dap".step_out() end, opts)
+keymap('n', "<leader>dl", function() require"dap".step_into() end, opts)
+keymap('n', '<leader>dj', function() require"dap".step_over() end, opts)
+keymap('n', '<leader>dn', function() require"dap".continue() end, opts)
+keymap('n', '<leader>dc', function() require"dap".run_to_cursor() end, opts)
+keymap('n', '<leader>ds', function() require"dap".terminate() end, opts)
+keymap('n', '<leader>dR', function() require"dap".clear_breakpoints() end, opts)
+keymap('n', '<leader>de', function() require"dap".set_exception_breakpoints({"all"}) end, opts)
+keymap('n', '<leader>da', function() require"debugHelper".attach() end, opts)
+keymap('n', '<leader>dA', function() require"debugHelper".attachToRemote() end, opts)
+keymap('n', '<leader>di', function() require"dap.ui.widgets".hover() end, opts)
+keymap('n', '<leader>d?', function() local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes) end, opts)
+-- keymap('n', '<leader>dk', ':lua require"dap".up()<CR>zz', opts)
+-- keymap('n', '<leader>dj', ':lua require"dap".down()<CR>zz', opts)
+-- keymap('n', '<leader>dr', ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l', opts)

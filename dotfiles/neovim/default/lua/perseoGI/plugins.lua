@@ -108,7 +108,21 @@ require("packer").startup(function(use)
 	use("Matt-A-Bennett/vim-surround-funk")
 
 	-- Debugger
-	use({ "puremourning/vimspector", run = "python3 install_gadget.py --enable-vscode-cpptools" })
+	-- use({ "puremourning/vimspector", run = "python3 install_gadget.py --enable-vscode-cpptools" })
+	-- use({
+	-- 	"mfussenegger/nvim-dap",
+	-- 	config = function()
+	-- 		require("perseoGI.nvim-dap").setup()
+	-- 	end,
+	-- })
+
+	use({
+		"rcarriga/nvim-dap-ui",
+		requires = { "mfussenegger/nvim-dap" },
+		config = function()
+			require("perseoGI.nvim-dap").setup()
+		end,
+	})
 
 	-- Markdown
 	use({
@@ -146,7 +160,7 @@ require("packer").startup(function(use)
 		end,
 	})
 
-        -- Nvim-tree
+	-- Nvim-tree
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = {
@@ -157,7 +171,7 @@ require("packer").startup(function(use)
 		end,
 	})
 
-        -- Formater
+	-- Formater
 	use("sbdchd/neoformat")
 
 	-- Telescope
@@ -173,7 +187,7 @@ require("packer").startup(function(use)
 	use("nvim-telescope/telescope-media-files.nvim")
 	use("nvim-telescope/telescope-symbols.nvim")
 
-        -- Harpoon
+	-- Harpoon
 	use("ThePrimeagen/harpoon")
 
 	-- Treesitter
