@@ -7,8 +7,16 @@ vim.g.coq_settings = {
       pre_select = true,
    },
    auto_start = true,
+   clients = {
+      lsp = {
+         enabled = true,
+      },
+      tree_sitter = {
+         enabled = true,
+         weight_adjust = 1.0
+      },
+   }
 }
-
 
 function M.setup()
    local coq = require('coq')

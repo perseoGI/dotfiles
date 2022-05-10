@@ -169,7 +169,7 @@ keymap("n", "<leader>pv", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 -- Find files if not in a git directory
-keymap("n", "<C-p>", "<cmd>lua require('perseoGI.telescope').git_or_find_files()<CR>", opts)
+keymap("n", "<C-p>", "<cmd>lua require('config.telescope').git_or_find_files()<CR>", opts)
 
 keymap("n", "<leader>pf", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>pb", ":Telescope buffers<CR>", opts)
@@ -198,12 +198,12 @@ keymap("n", "<leader>e", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", o
 keymap("n", "<leader>m", ":MaximizerToggle!<CR>", opts)
 
 -- Coq
-keymap("i", "<Esc>", "v:lua.cancelPum()", {expr = true, silent = true})
-keymap("i", "<C-c>", "v:lua.cancelPum()", {expr = true, silent = true})
-keymap("i", "<BS>", "v:lua.enterPum()", {expr = true, silent = true})
-keymap("i", "<CR>", "v:lua.completeInfo()", {expr = true, noremap = true, silent = true})
+-- keymap("i", "<Esc>", "v:lua.cancelPum()", {expr = true, silent = true})
+-- keymap("i", "<C-c>", "v:lua.cancelPum()", {expr = true, silent = true})
+-- keymap("i", "<BS>", "v:lua.enterPum()", {expr = true, silent = true})
+-- keymap("i", "<CR>", "v:lua.completeInfo()", {expr = true, noremap = true, silent = true})
 -- keymap("i", "<Tab>", "<Tab>", {noremap = true, silent = true})
-keymap('n', '<C-h>', '', {noremap = true, silent = true})
+-- keymap('n', '<C-h>', '', {noremap = true, silent = true})
 
 keymap('n', '<C-h>', ':bprev<CR>', {noremap = true, silent = true})
 keymap("n", "<C-H>", ":bprev<CR>", opts)
@@ -218,7 +218,6 @@ keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", sopts)
 keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", sopts)
 keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", sopts)
 
-keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", sopts)
 
 -- Vimspector
 

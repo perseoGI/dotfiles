@@ -62,6 +62,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx,*.tsx'
 
 " }}}
 
-lua require("perseoGI")
+language en_US
+lua require("config")
 
 " vim:foldmethod=marker:foldlevel=4

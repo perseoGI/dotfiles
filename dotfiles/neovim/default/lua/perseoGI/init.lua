@@ -1,6 +1,0 @@
-require("perseoGI.functions")
-require("perseoGI.settings")
-require("perseoGI.plugins")
-require("perseoGI.colorscheme")
-require("perseoGI.keymaps")
-require("perseoGI.lsp")
