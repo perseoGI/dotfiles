@@ -38,6 +38,11 @@ dotfiles:
       paths:
       - init.vim
       root: ~/.config/nvim
+    nvchad:
+      paths:
+      - lua/custom
+      - spell
+      root: ~/.config/nvim
     work:
       paths:
       - init.vim
