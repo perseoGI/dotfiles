@@ -42,6 +42,8 @@ dotfiles:
       paths:
       - lua/custom
       - spell
+      pre:
+      - git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
       root: ~/.config/nvim
     work:
       paths:

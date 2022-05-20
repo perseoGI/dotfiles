@@ -333,7 +333,7 @@ M.nvterm = {
 
 M.telescope = {
    n = {
-      ["<C-p>"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
+      ["<C-p>"] = { "<cmd> Telescope find_files follow=true no_ignore=true <CR>", "  find all" },
       ["<leader>pf"] = {":Telescope find_files<CR>", ""},
       ["<leader>ps"] = { "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", ""},
       ["<leader>pw"] = { "<cmd>lua require('telescope.builtin').grep_string { search = vim.fn.expand(\"<cword>\") }<CR>", " Grep"},
