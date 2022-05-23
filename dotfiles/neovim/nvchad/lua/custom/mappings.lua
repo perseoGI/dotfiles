@@ -132,7 +132,8 @@ M.bufferline = {
 
    n = {
       -- new buffer
-      ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
+      ["<S-b>"] = {},
+      ["<leader>b"] = { "<cmd> enew <CR>", "烙 new buffer" },
 
       -- cycle through buffers
       ["<TAB>"] = {},
