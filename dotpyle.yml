@@ -49,6 +49,10 @@ dotfiles:
       paths:
       - init.vim
       root: ~/.config/nvim
+  nvm:
+    default:
+      paths:
+      - .nvmrc
   polybar:
     arch:
       paths:
