@@ -10,6 +10,9 @@ M.nvterm = {
 }
 
 M.telescope = {
+   defaults = {
+      file_ignore_patterns = {"node_modules", ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip"},
+   },
    -- defaults = {
    --    vimgrep_arguments = {
    --       "rg",
@@ -56,7 +59,7 @@ M.telescope = {
    pickers = {
       find_files = {
          -- add -L to follow symlinks
-         find_command = { "rg", "--ignore", "-L", "--hidden", "--files" },
+         find_command = { "rg", "--ignore", "-L", "--hidden", "--files", "--follow" },
          -- find_command = {'fd', '--type', 'f', '--no-ignore-vcs', '--color=never', '--hidden', '--follow'},
          prompt_prefix = '📄 '
       },

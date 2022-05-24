@@ -69,12 +69,24 @@ return {
     -- Show lsp errors on Telescope
     ["folke/trouble.nvim"] = {},
 
+    -- Formater
+    ["sbdchd/neoformat"] = {},
+
     -- Debugger
+    -- ["mfussenegger/nvim-dap"] = {
+    --   config = function()
+    --     require("custom.plugins.nvim-dap").setup()
+    --   end,
+    -- },
     ["rcarriga/nvim-dap-ui"] = {
+      -- opt = true,
       requires = { "mfussenegger/nvim-dap" },
+      config = function()
+        require("custom.plugins.nvim-dap").setup()
       -- config = function()
       --   require("config.nvim-dap").setup()
       -- end,
+      end,
     },
 
     -- Flutter development
