@@ -207,7 +207,7 @@ M.lspconfig = {
     },
 
     ["<leader>ra"] = {},
-    ["gr"] = {
+    ["rr"] = {
       function()
         vim.lsp.buf.rename()
       end,
