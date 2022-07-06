@@ -480,6 +480,13 @@ M.neoformat = {
   },
 }
 
+M.refactoring = {
+   v = {
+    -- ["<leader>rf"] = { "<cmd>lua require('refactoring').select_refactor()<CR>", "   Treesitter refactoring" },
+    ["<leader>rf"] = { "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", "   Treesitter refactoring" },
+   }
+}
+
 return M
 
 -- OLD TODO STUFF

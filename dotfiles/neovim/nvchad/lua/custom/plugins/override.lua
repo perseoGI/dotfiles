@@ -13,6 +13,7 @@ M.telescope = {
    defaults = {
       file_ignore_patterns = {"node_modules", ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip"},
    },
+   extensions_list = { "themes", "terms", "refactoring", "git_worktree" },
    -- defaults = {
    --    vimgrep_arguments = {
    --       "rg",
@@ -82,7 +83,8 @@ M.treesitter = {
       enable = true,
       extended_mode = true,
       max_file_lines = nil
-   }
+   },
+   ensure_installed = {"lua", "vim", "norg"},
 }
 
 function M.git_or_find_files()
