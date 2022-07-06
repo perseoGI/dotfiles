@@ -131,9 +131,10 @@ M.bufferline = {
     -- cycle through buffers
     ["<TAB>"] = {},
     ["<S-Tab>"] = {},
-
-    ["<C-l>"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
-    ["<C-h>"] = { "<cmd> BufferLineCyclePrev <CR>", "  cycle prev buffer" },
+    ["<C-l>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
+    ["<C-h>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
+    -- ["<C-l>"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
+    -- ["<C-h>"] = { "<cmd> BufferLineCyclePrev <CR>", "  cycle prev buffer" },
 
     -- close buffer + hide terminal buffer
     ["<leader>x"] = {
@@ -192,12 +193,7 @@ M.lspconfig = {
     },
 
     ["<C-k>"] = {},
-
-    --    function()
-    --       vim.lsp.buf.signature_help()
-    --    end,
-    --    "   lsp signature_help",
-    -- },
+    ["<leader>ls"] = {},
 
     ["<leader>D"] = {
       function()

@@ -18,6 +18,7 @@ return {
 
     -- Harpoon
     ["ThePrimeagen/harpoon"] = {},
+    ["ThePrimeagen/vim-be-good"] = {},
 
     -- Undo tree
     ["mbbill/undotree"] = {},
