@@ -13,6 +13,7 @@ M.plugins = {
    override = {
       ["NvChad/nvterm"] = override.nvterm,
       ["nvim-telescope/telescope.nvim"] = override.telescope,
+      ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
    },
    remove = {
       "windwp/nvim-autopairs"

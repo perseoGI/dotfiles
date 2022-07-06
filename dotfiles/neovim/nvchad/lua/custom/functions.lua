@@ -1,4 +1,4 @@
-" Functions -----------------------------------------------------------------{{{
+vim.api.nvim_exec([[
 
 function! TrimWhitespace()
    let l:save = winsaveview()
@@ -20,8 +20,8 @@ function! CloseAllBuffersButCurrent()
 endfunction
 
 
-" Custom function to between header and source files of C/C++ (similar to
-" coc-clangd.switchSourceHeader)
+-- Custom function to between header and source files of C/C++ (similar to
+-- coc-clangd.switchSourceHeader)
 function! SwitchSourceHeader()
    let l:curr = expand('%:r')
    let l:extension = expand('%:e')
@@ -50,7 +50,7 @@ function! SwitchSourceHeader()
    endif
 endfunction
 
-" Use python power to format json
+-- Use python power to format json
 function! JsonFormatFunction() range
    execute a:firstline . "," . a:lastline . "! python -m json.tool"
 endfunction
@@ -64,8 +64,8 @@ function SplitToLinesFunction() range
 endfunction
 
 
-" TODO This is to be improved to detect character and column under the cursor on a
-" visual selection
+-- TODO This is to be improved to detect character and column under the cursor on a
+-- visual selection
 function! Indent(char, column) range
    let column_1 = a:column - 1
    let current_pos = getpos(".")
@@ -73,7 +73,7 @@ function! Indent(char, column) range
    call setpos(".", current_pos)
 endfunction
 
-" Quick Fix List custom mapping to first move in current buffer
+-- Quick Fix List custom mapping to first move in current buffer
 function! QFList(forwards)
    try
       if a:forwards
@@ -101,6 +101,6 @@ function! g:Open_browser(url)
       silent exec "!brave " . a:url . " &"
    endif
 endfunction
-" }}}
 
+]], false)
 

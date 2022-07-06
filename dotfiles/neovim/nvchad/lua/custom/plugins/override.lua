@@ -77,6 +77,14 @@ M.telescope = {
    },
 }
 
+M.treesitter = {
+   rainbow = {
+      enable = true,
+      extended_mode = true,
+      max_file_lines = nil
+   }
+}
+
 function M.git_or_find_files()
    local results = require('telescope.utils').get_os_command_output({'git', 'rev-parse', '--git-dir'})
    if results[1] then

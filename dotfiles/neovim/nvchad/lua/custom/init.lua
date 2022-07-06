@@ -3,5 +3,6 @@
 -- MAPPINGS
 require "custom.mappings"
 require "custom.autocommands"
+require "custom.functions"
 
 -- require("my autocmds file") or just declare them here

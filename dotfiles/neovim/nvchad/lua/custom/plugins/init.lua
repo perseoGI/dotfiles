@@ -96,6 +96,8 @@ return {
       -- config = function()
       --   require("config.flutter-tools").setup {}
       -- end,
-    }
+    },
+
+    ["p00f/nvim-ts-rainbow"] = {}
 }
 
