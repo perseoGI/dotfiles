@@ -47,9 +47,9 @@ M.general = {
     ["<C-c>"] = { "<silent> <C-c>" },
 
     -- Buffer resizing
-    ["<Leader>+"] = { ":vertical resize +5<CR>", "" },
-    ["<Leader>-"] = { ":vertical resize -5<CR>", "" },
-    ["<Leader>rp"] = { ":resize 100<CR>", "" },
+    ["<Leader>+"] = { "<cmd> vertical resize +5<CR>", "" },
+    ["<Leader>-"] = { "<cmd> vertical resize -5<CR>", "" },
+    ["<Leader>rp"] = { "<cmd> resize 100<CR>", "" },
 
     -- Keep movements centered
     ["n"] = { "nzzzv", " next match centered" },
@@ -77,28 +77,28 @@ M.general = {
     -- :cfdo <command>
     -- Example: :cfdo s/pattern/replacePattern/gc | update
 
-    ["<c-j>"] = { ":call QFList(1)<CR>", "" },
-    ["<c-k>"] = { ":call QFList(0)<CR>", "" },
+    ["<c-j>"] = { "<cmd> call QFList(1)<CR>", "" },
+    ["<c-k>"] = { "<cmd> call QFList(0)<CR>", "" },
   },
   v = {
     -- X as a i<backspace>
     ["X"] = { '"_d', " i<backspace>" },
 
     -- Visual-Line move lines up or down
-    ["J"] = { ":m '>+1<CR>gv=gv", " visual movement line up" },
-    ["K"] = { ":m '<-2<CR>gv=gv", " visual movement line down" },
+    ["J"] = { "<cmd> m '>+1<CR>gv=gv", " visual movement line up" },
+    ["K"] = { "<cmd> m '<-2<CR>gv=gv", " visual movement line down" },
 
     ["<"] = { "<gv", "  visual selection after shifting" },
     [">"] = { ">gv", "  visual selection after shifting" },
   },
   x = {
-    ["."] = { ":normal .<CR>", "  repeat last command for each line of a visual selection" },
+    ["."] = { "<cmd> normal .<CR>", "  repeat last command for each line of a visual selection" },
 
     -- Visual Line macros: apply a macro to multiple lines by:
     --   1. Recording a macro
     --   2. Selecting multiple lines with V-Line mode
     --   3. Applying macro to those lines
-    ["@"] = { ":<C-u>call ExecuteMacroOverVisualRange()<CR>", "" },
+    ["@"] = { "<cmd> <C-u>call ExecuteMacroOverVisualRange()<CR>", "" },
   },
   o = {
     -- Operator pending mappings
@@ -106,10 +106,10 @@ M.general = {
     ["p"] = { "i(", "" },
     ["l"] = { "i{", "" },
     ["r"] = { "/return<cr>", "" },
-    ["in("] = { ":<c-u>normal! f(vi(<cr>", "" },
-    ["il("] = { ":<c-u>normal! F)vi(<cr>", "" },
-    ["in{"] = { ":<c-u>normal! f{vi{<cr>", "" },
-    ["il{"] = { ":<c-u>normal! F}vi{<cr>", "" },
+    ["in("] = { "<cmd> <c-u>normal! f(vi(<cr>", "" },
+    ["il("] = { "<cmd> <c-u>normal! F)vi(<cr>", "" },
+    ["in{"] = { "<cmd> <c-u>normal! f{vi{<cr>", "" },
+    ["il{"] = { "<cmd> <c-u>normal! F}vi{<cr>", "" },
   },
   t = {
     -- Terminal
@@ -126,7 +126,7 @@ M.bufferline = {
   n = {
     -- new buffer
     ["<S-b>"] = {},
-    ["<leader>b"] = { "<cmd> enew <CR>", "烙 new buffer" },
+    -- ["<leader>b"] = { "<cmd> enew <CR>", "烙 new buffer" },
 
     -- cycle through buffers
     ["<TAB>"] = {},
@@ -139,10 +139,16 @@ M.bufferline = {
     -- close buffer + hide terminal buffer
     ["<leader>x"] = {
       function()
-        nvchad.close_buffer()
+         require("core.utils").close_buffer()
       end,
       "   close buffer",
     },
+    ["<leader>X"] = {
+      function()
+         require('core.utils').closeAllBufs()
+      end,
+      "   close all buffers",
+    }
   },
 }
 
@@ -323,8 +329,8 @@ M.nvterm = {
 
 M.telescope = {
   n = {
-    ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "  find all" },
-    ["<leader>pf"] = { ":Telescope find_files<CR>", "" },
+    ["<C-p>"] = { "<cmd> Telescope git_files <CR>", " git files" },
+    ["<leader>pf"] = { "<cmd> Telescope find_files<CR>", "  find all" },
     ["<leader>ps"] = {
       "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>",
       "",
@@ -357,20 +363,20 @@ M.telescope = {
 
 M.harpoon = {
   n = {
-    ["<leader>a"] = { ":lua require('harpoon.mark').add_file()<CR>", "  add harpoon file" },
-    ["<leader>e"] = { ":lua require('harpoon.ui').toggle_quick_menu()<CR>", "  open harpoon menu" },
+    ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file()<CR>", "  add harpoon file" },
+    ["<leader>e"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu()<CR>", "  open harpoon menu" },
   },
 }
 
 M.maximizer = {
   n = {
-    ["<leader>m"] = { ":MaximizerToggle!<CR>", "  toggle buffer maximizer" },
+    ["<leader>m"] = { "<cmd> MaximizerToggle!<CR>", "  toggle buffer maximizer" },
   },
 }
 
 M.undotreeshow = {
   n = {
-    ["<leader>u"] = { ":UndotreeShow<CR>", "  open UndotreeShow" },
+    ["<leader>u"] = { "<cmd> UndotreeShow<CR>", "  open UndotreeShow" },
   },
 }
 
@@ -382,7 +388,7 @@ M.dap = {
       end,
       "",
     },
-    ["<leader>dB"] = { ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "" },
+    ["<leader>dB"] = { "<cmd> lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "" },
     ["<leader>dk"] = {
       function()
         require("dap").step_out()
@@ -490,15 +496,6 @@ M.refactoring = {
 return M
 
 -- OLD TODO STUFF
--- Reload vim.init file
--- map("n", "<Leader><CR>", ":so ~/.config/nvim/init.vim<CR>")
-
--- Close all buffers but current
--- map("n", "<Leader><C-w>c", ":call CloseAllBuffersButCurrent()<CR>")
-
--- Auto indent all file
--- ["<Leader>fo"] = {":Neoformat<CR>", ""},
-
 -- + Clipboard config --------------------------------------------------------{{{
 -- set clipboard+=unnamedplus
 -- Copy to clipboard
