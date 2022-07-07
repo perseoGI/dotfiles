@@ -1,6 +1,6 @@
 return {
   ["goolord/alpha-nvim"] = {
-    disable = false,
+    disable = true,
   },
 
   ["nvim-telescope/telescope-media-files.nvim"] = {
