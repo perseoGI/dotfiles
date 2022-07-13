@@ -162,4 +162,11 @@ return {
   --     require("navigator").setup()
   --   end,
   -- },
+  ["jinh0/eyeliner.nvim"] = {
+     config = function()
+        require('eyeliner').setup {
+           bold = true
+        }
+     end
+  },
 }
