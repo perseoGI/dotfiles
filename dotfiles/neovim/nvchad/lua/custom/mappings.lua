@@ -1,7 +1,55 @@
 local M = {}
 
-M.general = {
+M.disabled = {
+  n = {
+    -- General
+    ["<C-h>"] = "",
+    ["<C-l>"] = "",
+    ["<C-j>"] = "",
+    ["<C-k>"] = "",
+    ["<C-s>"] = "",
+    ["<leader>n"] = "",
+    ["<leader>rn"] = "",
 
+    -- Comment
+    ["<leader>/"] = "",
+    -- new buffer
+    ["<S-b>"] = "",
+    -- cycle through buffers
+    ["<TAB>"] = "",
+    ["<S-Tab>"] = "",
+
+    -- Lsp
+    ["gi"] = "",
+    ["<leader>ls"] = "",
+    ["<leader>ra"] = "",
+    ["[d"] = "",
+    ["d]"] = "",
+    ["<leader>fm"] = "",
+
+    -- nvterm
+    ["<A-i>"] = "",
+    ["<A-h>"] = "",
+    ["<A-v>"] = "",
+    ["<leader>h"] = "",
+    ["<leader>v"] = "",
+
+    -- Telescope
+    ["<leader>fo"] = "",
+    ["<leader>tk"] = "",
+
+    -- NvTree
+    ["<C-n>"] = "",
+    ["<leader>e"] = "",
+  },
+
+  v = {
+    -- Comment
+    ["<leader>/"] = "",
+  },
+}
+
+M.general = {
   i = {
 
     -- go to  beginning and end
@@ -23,16 +71,6 @@ M.general = {
   },
 
   n = {
-
-    -- Unmap nvchad
-    ["<C-h>"] = {},
-    ["<C-l>"] = {},
-    ["<C-j>"] = {},
-    ["<C-k>"] = {},
-    ["<C-s>"] = {},
-    ["<leader>n"] = {},
-    ["<leader>rn"] = {},
-
     -- Make Y as it should be!
     ["Y"] = { "y$", " yank to end of line" },
     -- Remap convenient change between windows commands
@@ -58,8 +96,14 @@ M.general = {
 
     -- Automatically save movements larger than 5 lines to the jumplist (useful for
     -- relativenumber)
-    ["<expr>j"] = { "v:count ? (v:count > 5 ? \"m'\" . v:count : '') . 'j' : 'gj'", " relative jump save to jumplist" },
-    ["<expr>k"] = { "v:count ? (v:count > 5 ? \"m'\" . v:count : '') . 'k' : 'gk'", " relative jump save to jumplist" },
+    ["<expr>j"] = {
+      "v:count ? (v:count > 5 ? \"m'\" . v:count : '') . 'j' : 'gj'",
+      " relative jump save to jumplist",
+    },
+    ["<expr>k"] = {
+      "v:count ? (v:count > 5 ? \"m'\" . v:count : '') . 'k' : 'gk'",
+      " relative jump save to jumplist",
+    },
 
     -- From justinmk
     ["gj"] = { "i<c-j><esc>k$", "  un-join (split) the current line at the cursor position " },
@@ -124,13 +168,7 @@ M.general = {
 M.bufferline = {
 
   n = {
-    -- new buffer
-    ["<S-b>"] = {},
-    -- ["<leader>b"] = { "<cmd> enew <CR>", "烙 new buffer" },
-
     -- cycle through buffers
-    ["<TAB>"] = {},
-    ["<S-Tab>"] = {},
     ["<C-l>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
     ["<C-h>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
     -- ["<C-l>"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
@@ -139,28 +177,16 @@ M.bufferline = {
     -- close buffer + hide terminal buffer
     ["<leader>x"] = {
       function()
-         require("core.utils").close_buffer()
+        require("core.utils").close_buffer()
       end,
       "   close buffer",
     },
     ["<leader>X"] = {
       function()
-         require('core.utils').closeAllBufs()
+        require("core.utils").closeAllBufs()
       end,
       "   close all buffers",
-    }
-  },
-}
-
-M.comment = {
-
-  -- toggle comment in both modes
-  n = {
-    ["<leader>/"] = {},
-  },
-
-  v = {
-    ["<leader>/"] = {},
+    },
   },
 }
 
@@ -189,17 +215,12 @@ M.lspconfig = {
       "   lsp hover",
     },
 
-    ["gi"] = {},
-
     ["<leader>gi"] = {
       function()
         vim.lsp.buf.implementation()
       end,
       "   lsp implementation",
     },
-
-    ["<C-k>"] = {},
-    ["<leader>ls"] = {},
 
     ["<leader>D"] = {
       function()
@@ -208,7 +229,6 @@ M.lspconfig = {
       "   lsp definition type",
     },
 
-    ["<leader>ra"] = {},
     ["rr"] = {
       function()
         vim.lsp.buf.rename()
@@ -237,8 +257,6 @@ M.lspconfig = {
       "   floating diagnostic",
     },
 
-    ["[d"] = {},
-
     ["<leader>["] = {
       function()
         vim.diagnostic.goto_prev()
@@ -246,7 +264,6 @@ M.lspconfig = {
       "   goto prev",
     },
 
-    ["d]"] = {},
     ["<leader>]"] = {
       function()
         vim.diagnostic.goto_next()
@@ -261,13 +278,12 @@ M.lspconfig = {
       "   diagnostic setloclist",
     },
 
-    ["<leader>fm"] = {},
-    -- ["<leader>fo"] = {
-    --    function()
-    --       vim.lsp.buf.formatting()
-    --    end,
-    --    "   lsp formatting",
-    -- },
+    ["<leader>fo"] = {
+      function()
+        vim.lsp.buf.formatting()
+      end,
+      "   lsp formatting",
+    },
 
     ["<leader>wa"] = {
       function()
@@ -291,12 +307,10 @@ M.lspconfig = {
     },
   },
 }
-
+--
 M.nvimtree = {
 
   n = {
-    ["<C-n>"] = {},
-    ["<leader>e"] = {},
     -- toggle
     ["<leader>pv"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
   },
@@ -305,12 +319,6 @@ M.nvimtree = {
 M.nvterm = {
   n = {
     -- Disable core mappings
-    -- ["<A-i>"] = {},
-    ["<A-h>"] = {},
-    ["<A-v>"] = {},
-    ["<leader>h"] = {},
-    ["<leader>v"] = {},
-
     ["<leader>t"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
@@ -343,8 +351,6 @@ M.telescope = {
     ["<leader>pb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
     ["<leader>pt"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
     ["<leader>pm"] = { "<cmd> Telescope media_files <CR>", "  find media" },
-    ["<leader>fo"] = {},
-    ["<leader>tk"] = {},
     ["<leader>pk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
 
     -- git
@@ -487,10 +493,13 @@ M.neoformat = {
 }
 
 M.refactoring = {
-   v = {
+  v = {
     -- ["<leader>rf"] = { "<cmd>lua require('refactoring').select_refactor()<CR>", "   Treesitter refactoring" },
-    ["<leader>rf"] = { "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", "   Treesitter refactoring" },
-   }
+    ["<leader>rf"] = {
+      "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+      "   Treesitter refactoring",
+    },
+  },
 }
 
 return M

@@ -16,7 +16,8 @@ M.plugins = {
       ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
    },
    remove = {
-      "windwp/nvim-autopairs"
+      "windwp/nvim-autopairs",
+      "folke/which-key.nvim"
    },
    options = {
       lspconfig = {
