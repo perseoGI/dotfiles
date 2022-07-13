@@ -20,9 +20,9 @@ function! CloseAllBuffersButCurrent()
 endfunction
 
 
--- Custom function to between header and source files of C/C++ (similar to
--- coc-clangd.switchSourceHeader)
 function! SwitchSourceHeader()
+# Custom function to between header and source files of C/C++ (similar to
+# coc-clangd.switchSourceHeader)
    let l:curr = expand('%:r')
    let l:extension = expand('%:e')
 
@@ -50,8 +50,8 @@ function! SwitchSourceHeader()
    endif
 endfunction
 
--- Use python power to format json
 function! JsonFormatFunction() range
+# Use python power to format json
    execute a:firstline . "," . a:lastline . "! python -m json.tool"
 endfunction
 
@@ -64,17 +64,17 @@ function SplitToLinesFunction() range
 endfunction
 
 
--- TODO This is to be improved to detect character and column under the cursor on a
--- visual selection
 function! Indent(char, column) range
+# TODO This is to be improved to detect character and column under the cursor on a
+# visual selection
    let column_1 = a:column - 1
    let current_pos = getpos(".")
    execute a:firstline . "," . a:lastline . "normal! 0f". a:char . a:column . "i \ed" . column_1 . "|"."2wdT".a:char."i "
    call setpos(".", current_pos)
 endfunction
 
--- Quick Fix List custom mapping to first move in current buffer
 function! QFList(forwards)
+# Quick Fix List custom mapping to first move in current buffer
    try
       if a:forwards
          execute ':cafter'

@@ -54,13 +54,14 @@ return {
 
   -- Markdown
   ["iamcco/markdown-preview.nvim"] = {
-    run = function()
-      vim.fn["mkdp#util#install"]()
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
     end,
     ft = { "markdown" },
-    -- config = function()
-    -- require("config.markdown-preview").setup ()
-    -- end,
+    config = function()
+      require("custom.plugins.markdown-preview").setup()
+    end,
   },
 
   -- Discord vimscene
