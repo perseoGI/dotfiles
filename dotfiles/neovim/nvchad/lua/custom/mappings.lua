@@ -278,12 +278,12 @@ M.lspconfig = {
       "   diagnostic setloclist",
     },
 
-    ["<leader>fo"] = {
-      function()
-        vim.lsp.buf.formatting()
-      end,
-      "   lsp formatting",
-    },
+    -- ["<leader>fo"] = {
+    --   function()
+    --     vim.lsp.buf.formatting()
+    --   end,
+    --   "   lsp formatting",
+    -- },
 
     ["<leader>wa"] = {
       function()

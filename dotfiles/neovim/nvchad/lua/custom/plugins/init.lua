@@ -37,6 +37,11 @@ return {
   -- Git blames, logs...
   ["tpope/vim-fugitive"] = {},
   ["tpope/vim-surround"] = {},
+  ["kylechui/nvim-surround"] = {
+    config = function()
+      require("custom.plugins.nvim-surround").setup()
+    end,
+  },
   ["tpope/vim-commentary"] = {},
   ["tpope/vim-repeat"] = {},
   -- Vim text objects
@@ -163,10 +168,10 @@ return {
   --   end,
   -- },
   ["jinh0/eyeliner.nvim"] = {
-     config = function()
-        require('eyeliner').setup {
-           bold = true
-        }
-     end
+    config = function()
+      require("eyeliner").setup {
+        bold = true,
+      }
+    end,
   },
 }
