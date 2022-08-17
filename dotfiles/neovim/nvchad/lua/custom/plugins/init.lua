@@ -174,4 +174,18 @@ return {
       }
     end,
   },
+
+  -- ["Hrle97/nvim.diagnostic_virtual_text_config"] = {
+  --    config = function()
+  --       require("nvim.diagnostic_virtual_text_config").setup { }
+  --    end,
+  -- },
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.lspconfig"
+    end,
+},
 }
+
+

@@ -14,6 +14,7 @@ M.plugins = {
       ["NvChad/nvterm"] = override.nvterm,
       ["nvim-telescope/telescope.nvim"] = override.telescope,
       ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
+      ["williamboman/mason.nvim"] = override.mason,
    },
    remove = {
       "windwp/nvim-autopairs",
@@ -33,6 +34,7 @@ M.ui = {
    theme = "gruvchad",
    -- theme = "tokyodark",
    -- theme = "gruvbox",
+   theme_toggle = { "gruvchad", "gruvbox_light" },
 }
 
 return M

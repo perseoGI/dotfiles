@@ -5,13 +5,13 @@ function M.setup()
     -- keymaps = {
     --     -- Overwrite keymaps here
     -- },
-    highlight_motion = {
+    highlight = {
       duration = 3,
     },
   }
 
   require("nvim-surround").buffer_setup {
-    delimiters = {
+    surround = {
       pairs = {
         ["l"] = function()
           return {

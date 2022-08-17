@@ -56,6 +56,33 @@ M.treesitter = {
    ensure_installed = {"lua", "vim", "norg"},
 }
 
+M.mason = {
+  ensure_installed = {
+    -- lua stuff
+    "lua-language-server",
+    "stylua",
+
+    -- web dev
+    "css-lsp",
+    "html-lsp",
+    "typescript-language-server",
+    "json-lsp",
+
+    -- shell
+    "shfmt",
+    "shellcheck",
+
+    -- custom
+    "clangd",
+    "rust-analyzer",
+    "pyright",
+
+    "clang-format",
+    "prettier"
+  },
+}
+
+
 function M.git_or_find_files()
    local results = require('telescope.utils').get_os_command_output({'git', 'rev-parse', '--git-dir'})
    if results[1] then
