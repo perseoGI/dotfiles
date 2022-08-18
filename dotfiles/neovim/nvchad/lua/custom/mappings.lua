@@ -169,10 +169,19 @@ M.bufferline = {
 
   n = {
     -- cycle through buffers
-    ["<C-l>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
-    ["<C-h>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
-    -- ["<C-l>"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
-    -- ["<C-h>"] = { "<cmd> BufferLineCyclePrev <CR>", "  cycle prev buffer" },
+    ["<C-l>"] = {
+      function()
+        require("core.utils").tabuflineNext()
+      end,
+      "goto next buffer",
+    },
+
+    ["<C-h>"] = {
+      function()
+        require("core.utils").tabuflinePrev()
+      end,
+      "goto prev buffer",
+    },
 
     -- close buffer + hide terminal buffer
     ["<leader>x"] = {
