@@ -3,12 +3,6 @@ local M = {}
 local override = require "custom.plugins.override"
 local userPlugins = require "custom.plugins"
 
-M.options = {
-   user = function()
-       require("custom.options")
-   end,
-}
-
 M.plugins = {
    override = {
       ["NvChad/nvterm"] = override.nvterm,
