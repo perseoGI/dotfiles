@@ -42,7 +42,7 @@ return {
       require("custom.plugins.nvim-surround").setup()
     end,
   },
-  ["tpope/vim-commentary"] = {},
+  -- ["tpope/vim-commentary"] = {},
   ["tpope/vim-repeat"] = {},
   -- Vim text objects
   -- -- Base for following plugins
@@ -185,7 +185,11 @@ return {
       require "plugins.configs.lspconfig"
       require "custom.plugins.lspconfig"
     end,
-},
+  },
+
+  ["JoosepAlviste/nvim-ts-context-commentstring"] = {
+    -- requires = "nvim-treesitter/nvim-treesitter",
+  },
+
+  ["nvim-treesitter/playground"] = {},
 }
-
-

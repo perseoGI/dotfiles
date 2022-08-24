@@ -9,6 +9,7 @@ M.plugins = {
       ["nvim-telescope/telescope.nvim"] = override.telescope,
       ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
       ["williamboman/mason.nvim"] = override.mason,
+      ["numToStr/Comment.nvim"] = override.comment,
    },
    remove = {
       "windwp/nvim-autopairs",

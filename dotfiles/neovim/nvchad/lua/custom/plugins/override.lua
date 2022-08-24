@@ -53,7 +53,16 @@ M.treesitter = {
       extended_mode = true,
       max_file_lines = nil
    },
-   ensure_installed = {"lua", "vim", "norg"},
+   ensure_installed = {"lua", "vim", "norg", "query", "c", "rust", "cpp", "typescript", "javascript", "tsx"},
+   context_commentstring = {
+      enable = true,
+      enable_autocmd = false, -- integration with Comment.nvim
+   },
+
+}
+
+M.comment = {
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 }
 
 M.mason = {

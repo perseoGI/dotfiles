@@ -84,3 +84,4 @@ export LC_ALL=es_ES.UTF-8
 # Dotpyle autocompletion
 source ~/.dotpyle-complete.zsh
 source $HOME/.cargo/env
+source ~/.dotpyle-complete.zsh
