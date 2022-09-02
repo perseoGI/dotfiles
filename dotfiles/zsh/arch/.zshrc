@@ -91,7 +91,7 @@ PATH="${PATH}:$(python3 -c 'import site; print(site.USER_BASE)')/bin:/home/perse
 
 if [ ! $VIM ]; then
   # Execute when opening a terminal (outside vim/nvim)
-  neofetch
+  # neofetch
 fi
 
 source /home/perseo/.config/broot/launcher/bash/br

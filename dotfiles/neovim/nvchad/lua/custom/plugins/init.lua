@@ -113,7 +113,17 @@ return {
     -- Enable telescope lazy loading at Cmds and now at modules!
     -- Refactoring, etc extensions to telescope will also load telescope
     -- plugin at start
-    module = { "telescope", "git-worktree" },
+    module = { "telescope"  },
+
+    requires = {
+       -- TODO: check!
+       {"ThePrimeagen/git-worktree.nvim",
+          config = function()
+             require("git-worktree").setup {}
+          end,
+       },
+    }
+
     -- module = "telescope",
   },
 
@@ -137,13 +147,6 @@ return {
       require("refactoring").setup {}
     end,
   },
-
-  -- TODO: check!
-  -- ["ThePrimeagen/git-worktree.nvim"] = {
-  --   config = function()
-  --     require("git-worktree").setup {}
-  --   end,
-  -- }
 
   ["nvim-neorg/neorg"] = {
     ft = "norg",
