@@ -102,6 +102,7 @@ dotfiles:
       paths:
       - .zshrc
 scripts:
+  set-keyboard-layout: set-keyboard-layout
   tmux-cht: tmux-cht.sh
   tmux-cht-command: tmux-cht-command.sh
   tmux-cht-languages: tmux-cht-languages.sh

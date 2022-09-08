@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "[USAGE] $0 <keyaboard-layout> (us/dvorak)"
+fi
+
+if [ "$1" == "us" ]; then
+    echo "Changed to us(altgr-intl)"
+    setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+
+elif [ "$1" == "dvorak" ]; then
+    echo "Changed to dvorak_intl"
+    #setxkbmap -verbose dvorak_intl  1>/dev/null 2>&1
+    setxkbmap -verbose real-prog-dvorak-intl -option lv3:ralt_switch 1>/dev/null 2>&1
+    #setxkbmap -layout us -variant dvp -option lv3:ralt_switch
+fi
