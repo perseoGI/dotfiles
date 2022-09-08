@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Export aditional scripts
+SCRIPTS_DIR="/home/perseo/scripts/keyboard-layout"
+export PATH=$PATH:$SCRIPTS_DIR
+
+current_layout=`setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}'`
+if [ ${current_layout} == "us(altgr-intl)" ]; then
+    set-keyboard-layout dvorak
+else
+    set-keyboard-layout us
+fi
