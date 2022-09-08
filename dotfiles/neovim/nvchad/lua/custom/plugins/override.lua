@@ -53,7 +53,7 @@ M.treesitter = {
       extended_mode = true,
       max_file_lines = nil
    },
-   ensure_installed = {"lua", "vim", "norg", "query", "c", "rust", "cpp", "typescript", "javascript", "tsx"},
+   ensure_installed = {"lua", "vim", "norg", "query", "c", "rust", "cpp", "typescript", "javascript", "tsx", "jsonc"},
    context_commentstring = {
       enable = true,
       enable_autocmd = false, -- integration with Comment.nvim

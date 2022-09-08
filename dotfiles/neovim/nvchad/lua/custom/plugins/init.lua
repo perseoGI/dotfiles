@@ -44,6 +44,9 @@ return {
   },
   -- ["tpope/vim-commentary"] = {},
   ["tpope/vim-repeat"] = {},
+  -- :%S smart case find/replace
+  ["tpope/vim-abolish"] = {},
+
   -- Vim text objects
   -- -- Base for following plugins
   ["kana/vim-textobj-user"] = {},
@@ -113,16 +116,17 @@ return {
     -- Enable telescope lazy loading at Cmds and now at modules!
     -- Refactoring, etc extensions to telescope will also load telescope
     -- plugin at start
-    module = { "telescope"  },
+    module = { "telescope" },
 
     requires = {
-       -- TODO: check!
-       {"ThePrimeagen/git-worktree.nvim",
-          config = function()
-             require("git-worktree").setup {}
-          end,
-       },
-    }
+      -- TODO: check!
+      {
+        "ThePrimeagen/git-worktree.nvim",
+        config = function()
+          require("git-worktree").setup {}
+        end,
+      },
+    },
 
     -- module = "telescope",
   },
@@ -195,4 +199,11 @@ return {
   },
 
   ["nvim-treesitter/playground"] = {},
+
+  ["https://codeberg.org/esensar/nvim-dev-container"] = {
+    requires = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("devcontainer").setup {}
+    end,
+  },
 }

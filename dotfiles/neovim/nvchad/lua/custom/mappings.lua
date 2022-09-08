@@ -38,6 +38,9 @@ M.disabled = {
     ["<leader>fo"] = "",
     ["<leader>tk"] = "",
 
+    ["<leader>cm"] = "",
+    ["<leader>gt"] = "",
+
     -- NvTree
     ["<C-n>"] = "",
     ["<leader>e"] = "",
@@ -123,6 +126,14 @@ M.general = {
 
     ["<c-j>"] = { "<cmd> call QFList(1)<CR>", "" },
     ["<c-k>"] = { "<cmd> call QFList(0)<CR>", "" },
+
+    ["<leader>gth"] = { "<cmd> ClangdSwitchSourceHeader<CR>", "" },
+
+    -- Harpoon nav files
+    ["<A-a>"] = { function() require("harpoon.ui").nav_file(1) end, "" },
+    ["<A-o>"] = { function() require("harpoon.ui").nav_file(2) end, "" },
+    ["<A-e>"] = { function() require("harpoon.ui").nav_file(3) end, "" },
+    ["<A-u>"] = { function() require("harpoon.ui").nav_file(4) end, "" },
   },
   v = {
     -- X as a i<backspace>
@@ -363,8 +374,8 @@ M.telescope = {
     ["<leader>pk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
 
     -- git
-    ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
-    ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "  git status" },
+    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "  git status" },
 
     -- pick a hidden term
     ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "   pick hidden term" },
