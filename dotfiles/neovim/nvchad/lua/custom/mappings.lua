@@ -11,6 +11,10 @@ M.disabled = {
     ["<leader>n"] = "",
     ["<leader>rn"] = "",
 
+    -- Remove wrapping jumping functionality
+    ["j"] = "",
+    ["k"] = "",
+
     -- Comment
     ["<leader>/"] = "",
     -- new buffer
@@ -130,10 +134,30 @@ M.general = {
     ["<leader>gth"] = { "<cmd> ClangdSwitchSourceHeader<CR>", "" },
 
     -- Harpoon nav files
-    ["<A-a>"] = { function() require("harpoon.ui").nav_file(1) end, "" },
-    ["<A-o>"] = { function() require("harpoon.ui").nav_file(2) end, "" },
-    ["<A-e>"] = { function() require("harpoon.ui").nav_file(3) end, "" },
-    ["<A-u>"] = { function() require("harpoon.ui").nav_file(4) end, "" },
+    ["<A-a>"] = {
+      function()
+        require("harpoon.ui").nav_file(1)
+      end,
+      "",
+    },
+    ["<A-o>"] = {
+      function()
+        require("harpoon.ui").nav_file(2)
+      end,
+      "",
+    },
+    ["<A-e>"] = {
+      function()
+        require("harpoon.ui").nav_file(3)
+      end,
+      "",
+    },
+    ["<A-u>"] = {
+      function()
+        require("harpoon.ui").nav_file(4)
+      end,
+      "",
+    },
   },
   v = {
     -- X as a i<backspace>
@@ -520,6 +544,42 @@ M.refactoring = {
       "   Treesitter refactoring",
     },
   },
+}
+
+M.gitsigns = {
+  n = {
+    ["]h"] = {
+      function()
+        if vim.wo.diff then
+          return "]c"
+        end
+        vim.schedule(function()
+          require("gitsigns").next_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      "",
+    },
+    ["[h"] = {
+      function()
+        if vim.wo.diff then
+          return "[c"
+        end
+        vim.schedule(function()
+          require("gitsigns").prev_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      "",
+    },
+  },
+
+  o = {
+   ['ih'] = {"<cmd>Gitsigns select_hunk<CR>", ""}
+  },
+  x = {
+   ['ih'] = {"<cmd>Gitsigns select_hunk<CR>", ""}
+  }
 }
 
 return M

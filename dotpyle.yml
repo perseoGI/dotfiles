@@ -25,6 +25,7 @@ dotfiles:
       paths:
       - config
       - clean.rasi
+      - onedark.rasi
       root: ~/.config/i3
   neovim:
     default:
