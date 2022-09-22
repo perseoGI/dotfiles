@@ -200,10 +200,5 @@ return {
 
   ["nvim-treesitter/playground"] = {},
 
-  ["https://codeberg.org/esensar/nvim-dev-container"] = {
-    requires = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("devcontainer").setup {}
-    end,
-  },
+  ["segeljakt/vim-silicon"] = {},
 }

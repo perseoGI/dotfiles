@@ -61,6 +61,22 @@ function M.setup()
         return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
       end,
     },
+    {
+      name = "Launch hpc",
+      type = "cppdbg",
+      request = "launch",
+      cwd = "${workspaceFolder}/build/bin",
+      program = "${workspaceFolder}/build/bin/hpc-services",
+      stopAtEntry = true,
+      args = { "${workspaceFolder}/docker/hpc/Batch.json" },
+      setupCommands = {
+        {
+          text = "-enable-pretty-printing",
+          description = "enable pretty printing",
+          ignoreFailures = false,
+        },
+      },
+    },
   }
 
   dap.configurations.python = {
@@ -77,7 +93,7 @@ function M.setup()
       end,
       -- program = "${file}", -- This configuration will launch the current file if used.
       pythonPath = python_path,
-      args = {"edit", "config"},
+      args = { "edit", "config" },
       -- pythonPath = function()
       --   -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
       --   -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.

@@ -52,7 +52,7 @@ opt.cmdheight = 2
 opt.shortmess:append{c = true}
 
 -- Column mark
-opt.colorcolumn = '80'
+opt.colorcolumn = '120'
 
 -- Spelling
 opt.spelllang = 'en,es'
