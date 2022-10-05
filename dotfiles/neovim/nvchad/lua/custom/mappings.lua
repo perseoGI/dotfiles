@@ -218,16 +218,9 @@ M.bufferline = {
       "goto prev buffer",
     },
 
-    -- close buffer + hide terminal buffer
-    ["<leader>x"] = {
-      function()
-        require("core.utils").close_buffer()
-      end,
-      "   close buffer",
-    },
     ["<leader>X"] = {
       function()
-        require("core.utils").closeAllBufs()
+        require("nvchad_ui.tabufline").closeAllBufs()
       end,
       "   close all buffers",
     },

@@ -1,6 +1,7 @@
 require "custom.options"
 require "custom.autocommands"
 require "custom.functions"
+require "custom.commands"
 
 
 -- Dont know why but this has to be at the end

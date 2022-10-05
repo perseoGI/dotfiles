@@ -1,8 +1,56 @@
+local overrides = require "custom.plugins.override"
+
 return {
-  ["goolord/alpha-nvim"] = {
-    disable = true,
+
+  -- Remove default plugins
+  ["goolord/alpha-nvim"] = false,
+  ["windwp/nvim-autopairs"] = false,
+  ["folke/which-key.nvim"] = false,
+
+  -- Override default plugins
+  ["NvChad/nvterm"] = {
+    override_options = overrides.nvterm,
   },
 
+  ["nvim-telescope/telescope.nvim"] = {
+    override_options = overrides.telescope,
+    -- Enable telescope lazy loading at Cmds and now at modules!
+    -- Refactoring, etc extensions to telescope will also load telescope
+    -- plugin at start
+    module = { "telescope" },
+
+    requires = {
+      -- TODO: check!
+      {
+        "ThePrimeagen/git-worktree.nvim",
+        config = function()
+          require("git-worktree").setup {}
+        end,
+      },
+    },
+  },
+
+  ["nvim-treesitter/nvim-treesitter"] = {
+    override_options = overrides.treesitter,
+  },
+
+  ["williamboman/mason.nvim"] = {
+    override_options = overrides.mason,
+  },
+
+  ["numToStr/Comment.nvim"] = {
+    override_options = overrides.comment,
+  },
+
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.lspconfig"
+    end,
+  },
+
+
+  -- Custom plugins
   ["nvim-telescope/telescope-media-files.nvim"] = {
     after = "telescope.nvim",
     config = function()
@@ -112,24 +160,6 @@ return {
   -----------------------------------------
   -- Tree-sitter & Telescope dependencies -
   -----------------------------------------
-  ["nvim-telescope/telescope.nvim"] = {
-    -- Enable telescope lazy loading at Cmds and now at modules!
-    -- Refactoring, etc extensions to telescope will also load telescope
-    -- plugin at start
-    module = { "telescope" },
-
-    requires = {
-      -- TODO: check!
-      {
-        "ThePrimeagen/git-worktree.nvim",
-        config = function()
-          require("git-worktree").setup {}
-        end,
-      },
-    },
-
-    -- module = "telescope",
-  },
 
   -- Colorize open and close symbols to distinguish them
   ["p00f/nvim-ts-rainbow"] = {},
@@ -161,6 +191,18 @@ return {
   --   requires = "nvim-lua/plenary.nvim",
   -- },
 
+ ["nvim-neorg/neorg"] = {
+    tag = "0.0.12",
+    ft = "norg",
+    after = "nvim-treesitter",
+    -- setup = function()
+    --   require("custom.plugins.neorg").autocmd()
+    -- end,
+    config = function()
+      require("custom.plugins.neorg").setup()
+    end,
+  },
+
   -- Show name of current function on the line when function is to long
   ["nvim-treesitter/nvim-treesitter-context"] = {},
 
@@ -187,28 +229,28 @@ return {
   --       require("nvim.diagnostic_virtual_text_config").setup { }
   --    end,
   -- },
-  ["neovim/nvim-lspconfig"] = {
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.plugins.lspconfig"
-    end,
-  },
 
-  ["JoosepAlviste/nvim-ts-context-commentstring"] = {
-    -- requires = "nvim-treesitter/nvim-treesitter",
-  },
+  ["JoosepAlviste/nvim-ts-context-commentstring"] = {},
 
   ["nvim-treesitter/playground"] = {},
 
   ["segeljakt/vim-silicon"] = {},
 
   ["kevinhwang91/nvim-bqf"] = {
-    ft = 'qf'
+    ft = "qf",
   },
 
   ["junegunn/fzf"] = {
     run = function()
-        vim.fn['fzf#install']()
-    end
+      vim.fn["fzf#install"]()
+    end,
+  },
+
+  -- basic diagrams for flow charts etc
+  ["jbyuki/venn.nvim"] = {
+    module = "venn.nvim",
+    config = function()
+      require("custom.plugins.venn").setup()
+    end,
   },
 }
