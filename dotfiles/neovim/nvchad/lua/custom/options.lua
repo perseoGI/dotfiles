@@ -5,6 +5,7 @@ local opt = vim.opt
 vim.cmd[[
    syntax on
    highlight ColorColumn ctermbg=0 guibg=lightgrey
+   set wrap!
 ]]
 
 opt.showmatch = false
@@ -12,7 +13,6 @@ opt.hidden = true
 opt.errorbells = false                -- Stop sound effects
 opt.number = true                      -- Line numbers
 opt.relativenumber = true
-opt.wrap = false                      -- If a line goes our of screen it will not go line below
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
 opt.updatetime=50
@@ -20,7 +20,7 @@ opt.updatetime=50
 -- Text editor
 opt.tabstop = 8
 opt.softtabstop = 4
-opt.shiftwidth = 3
+opt.shiftwidth = 4
 opt.expandtab = true                   -- Convert tab character to spaces
 opt.smartindent = true                 -- Best job to indent for you
 opt.foldenable = false
@@ -62,4 +62,3 @@ opt.spell = true
 opt.clipboard = "unnamedplus"
 
 opt.completeopt = "menu,menuone,noselect"
-

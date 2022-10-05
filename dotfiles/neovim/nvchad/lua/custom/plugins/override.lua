@@ -11,7 +11,7 @@ M.nvterm = {
 
 M.telescope = {
    defaults = {
-      file_ignore_patterns = {"node_modules", ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip"},
+      file_ignore_patterns = {"node_modules", "build/", ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip"},
       vimgrep_arguments = {
          "rg",
          "--color=never",

@@ -152,14 +152,14 @@ return {
     end,
   },
 
-  ["nvim-neorg/neorg"] = {
-    ft = "norg",
-    after = { "nvim-treesitter" },
-    config = function()
-      require("custom.plugins.neorg").setup()
-    end,
-    requires = "nvim-lua/plenary.nvim",
-  },
+  -- ["nvim-neorg/neorg"] = {
+  --   ft = "norg",
+  --   after = { "nvim-treesitter" },
+  --   config = function()
+  --     require("custom.plugins.neorg").setup()
+  --   end,
+  --   requires = "nvim-lua/plenary.nvim",
+  -- },
 
   -- Show name of current function on the line when function is to long
   ["nvim-treesitter/nvim-treesitter-context"] = {},
@@ -201,4 +201,14 @@ return {
   ["nvim-treesitter/playground"] = {},
 
   ["segeljakt/vim-silicon"] = {},
+
+  ["kevinhwang91/nvim-bqf"] = {
+    ft = 'qf'
+  },
+
+  ["junegunn/fzf"] = {
+    run = function()
+        vim.fn['fzf#install']()
+    end
+  },
 }
