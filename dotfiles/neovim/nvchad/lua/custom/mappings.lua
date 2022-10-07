@@ -30,6 +30,8 @@ M.disabled = {
     ["[d"] = "",
     ["d]"] = "",
     ["<leader>fm"] = "",
+    ["rr"] = "",
+    ["gr"] = "",
 
     -- nvterm
     ["<A-i>"] = "",
@@ -266,7 +268,7 @@ M.lspconfig = {
       "   lsp definition type",
     },
 
-    ["rr"] = {
+    ["<leader>rr"] = {
       function()
         vim.lsp.buf.rename()
       end,
@@ -568,11 +570,11 @@ M.gitsigns = {
   },
 
   o = {
-   ['ih'] = {"<cmd>Gitsigns select_hunk<CR>", ""}
+    ["ih"] = { "<cmd>Gitsigns select_hunk<CR>", "" },
   },
   x = {
-   ['ih'] = {"<cmd>Gitsigns select_hunk<CR>", ""}
-  }
+    ["ih"] = { "<cmd>Gitsigns select_hunk<CR>", "" },
+  },
 }
 
 return M
