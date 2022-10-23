@@ -392,7 +392,7 @@ type = custom/script
 tail = true
 format-prefix = " "
 format = <label>
-exec = ~/scripts/music-controller/scroll_apple_music_status.sh
+; exec = ~/scripts/music-controller/scroll_apple_music_status.sh
 
 [module/apple-music-prev]
 type = custom/script

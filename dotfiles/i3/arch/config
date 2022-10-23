@@ -294,7 +294,7 @@ for_window [title="BpyTOP"] floating enable resize set 1350 850, move position 1
 # Daemons
 ## Startup polybar daemon
 #exec_always --no-startup-id pkill polybar; polybar -r main
-exec_always --no-startup-id pkill polybar; $HOME/scripts/launch-i3.sh
+exec_always --no-startup-id pkill polybar; /home/perseo/.config/dotpyle/scripts/launch-i3.sh
 
 # Startup picom compositor daemon
 exec_always --no-startup-id pkill picom; picom --no-use-damage
@@ -302,10 +302,10 @@ exec_always --no-startup-id pkill picom; picom --no-use-damage
 
 ## Set keybaord layout
 ### Configure keyboard layout with english international without unconfortable dead keys
-exec_always --no-startup-id /home/perseo/scripts/keyboard-layout/set-keyboard-layout dvorak
+exec_always --no-startup-id /home/perseo/.config/dotpyle/scripts/set-keyboard-layout dvorak
 
 ## Start up hyperx headset server (remove unlink when fixed socket)
-exec_always --no-startup-id pkill hyperx-service; unlink /tmp/hyperx-service; /home/perseo/scripts/hyperx-cloud-flight/hyperx-service
+exec_always --no-startup-id pkill hyperx-service; unlink /tmp/hyperx-service; /home/perseo/.config/dotpyle/scripts/hyperx-cloud-flight/hyperx-service
 
 ## Greenclip daemon
 exec_always --no-startup-id greenclip daemon

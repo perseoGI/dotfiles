@@ -3,7 +3,7 @@
    email = perseo.gutierrez@seddi.com
 
 [core]
-   editor = nvim
+   editor = ~/appimages/nvim.appimage
    pager = delta
    autocrlf = input
 
