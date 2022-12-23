@@ -66,7 +66,7 @@ function M.setup()
       type = "cppdbg",
       request = "launch",
       cwd = "${workspaceFolder}/build/bin",
-      program = "${workspaceFolder}/build/bin/hpc-services",
+      program = "${workspaceFolder}/prj/buildDebug/bin/hpc-services",
       stopAtEntry = true,
       args = { "${workspaceFolder}/docker/hpc/Batch.json" },
       setupCommands = {

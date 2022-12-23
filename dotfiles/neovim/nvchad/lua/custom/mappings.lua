@@ -160,6 +160,10 @@ M.general = {
       end,
       "",
     },
+
+    -- Diff
+    ["<leader>dt"] = {"<cmd>diffthis<CR>", " diff current buffer"},
+    ["<leader>dg"] = {"<cmd>diffget<CR>", " diff get differences"},
   },
   v = {
     -- X as a i<backspace>

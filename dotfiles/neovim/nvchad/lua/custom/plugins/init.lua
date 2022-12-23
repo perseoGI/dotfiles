@@ -49,7 +49,6 @@ return {
     end,
   },
 
-
   -- Custom plugins
   ["nvim-telescope/telescope-media-files.nvim"] = {
     after = "telescope.nvim",
@@ -58,13 +57,15 @@ return {
     end,
   },
 
-  -- TODO
+  -- Theme
   ["gruvbox-community/gruvbox"] = {},
   ["sainnhe/gruvbox-material"] = {
     -- config = function()
     --    require("custom.plugins.gruvbox").setup ()
     -- end,
   },
+
+  -- ["shaunsingh/oxocarbon.nvim"] = { run = "./install.sh" },
 
   -- Harpoon
   ["ThePrimeagen/harpoon"] = {},
@@ -191,7 +192,7 @@ return {
   --   requires = "nvim-lua/plenary.nvim",
   -- },
 
- ["nvim-neorg/neorg"] = {
+  ["nvim-neorg/neorg"] = {
     tag = "0.0.12",
     ft = "norg",
     after = "nvim-treesitter",
@@ -253,4 +254,19 @@ return {
       require("custom.plugins.venn").setup()
     end,
   },
+
+  -- TODO
+  ["Badhi/nvim-treesitter-cpp-tools"] = {
+    requires = "nvim-treesitter/nvim-treesitter",
+    before = "nvim-treesitter",
+  },
+
+  ["sindrets/diffview.nvim"] = {
+    requires = "nvim-lua/plenary.nvim",
+  },
+  ['andymass/vim-matchup'] = {
+    setup = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end
+   }
 }
