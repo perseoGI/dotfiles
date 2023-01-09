@@ -27,7 +27,7 @@ opt.foldenable = false
 
 -- Search
 opt.smartcase = true                   -- Case sensitive searching
-opt.hlsearch = false
+-- opt.hlsearch = false
 opt.incsearch = true                   -- By the time start searching it highlight results before press enter
 
 -- File manipulation and versioning

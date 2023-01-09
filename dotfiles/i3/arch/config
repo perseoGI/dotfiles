@@ -1,5 +1,9 @@
-# FYI: i3-gaps must be installed
+# FYI: i3-gaps must be installed or i3-wm >= 4.22
 
+# APP VARIABLES
+set $browser	brave-browser
+set $music  	spotify
+set $term   	alacritty
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font

@@ -264,9 +264,14 @@ return {
   ["sindrets/diffview.nvim"] = {
     requires = "nvim-lua/plenary.nvim",
   },
-  ['andymass/vim-matchup'] = {
+  ["andymass/vim-matchup"] = {
     setup = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end
-   }
+    end,
+  },
+  ["kevinhwang91/nvim-hlslens"] = {
+    config = function()
+        require('hlslens').setup()
+    end,
+  },
 }

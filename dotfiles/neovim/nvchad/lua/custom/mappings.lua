@@ -162,8 +162,8 @@ M.general = {
     },
 
     -- Diff
-    ["<leader>dt"] = {"<cmd>diffthis<CR>", " diff current buffer"},
-    ["<leader>dg"] = {"<cmd>diffget<CR>", " diff get differences"},
+    ["<leader>dt"] = { "<cmd>diffthis<CR>", " diff current buffer" },
+    ["<leader>dg"] = { "<cmd>diffget<CR>", " diff get differences" },
   },
   v = {
     -- X as a i<backspace>
@@ -579,6 +579,17 @@ M.gitsigns = {
   x = {
     ["ih"] = { "<cmd>Gitsigns select_hunk<CR>", "" },
   },
+}
+
+M.hlslens = {
+    n = {
+        ['n'] = { "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", ""},
+        ['N'] = { "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", ""},
+        ['*'] = { "*<Cmd>lua require('hlslens').start()<CR>", ""},
+        ['#'] = { "#<Cmd>lua require('hlslens').start()<CR>", ""},
+        ['g*'] = { "g*<Cmd>lua require('hlslens').start()<CR>", ""},
+        ['g#'] = { "g#<Cmd>lua require('hlslens').start()<CR>", ""},
+    }
 }
 
 return M
