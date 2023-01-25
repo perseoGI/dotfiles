@@ -271,7 +271,20 @@ return {
   },
   ["kevinhwang91/nvim-hlslens"] = {
     config = function()
-        require('hlslens').setup()
+      require("hlslens").setup()
     end,
+  },
+  ["jackMort/ChatGPT.nvim"] = {
+    config = function()
+      require("chatgpt").setup {
+        -- optional configuration
+      }
+    end,
+    after = "telescope.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
   },
 }
