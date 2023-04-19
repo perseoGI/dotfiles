@@ -56,14 +56,14 @@ alias \
 	bc="bc -ql" \
 	mkd="mkdir -pv" \
 	ffmpeg="ffmpeg -hide_banner" \
-        # Use exa, ls made in Rust, with color highlighting
-        l='exa -lagh'\
-        ll='exa -lh' \
-        du='dust' \
-        df='duf' \
-        ping='gping' \
-        ps='process' \
-        dig='dog'
+    # Use exa, ls made in Rust, with color highlighting
+  l='exa -lagh'\
+  ll='exa -lh' \
+  du='dust' \
+  df='duf' \
+  ping='gping' \
+  ps='process' \
+  dig='dog'
 
 
 
@@ -75,6 +75,7 @@ alias \
 #
 ## Add pip installed packages
 PATH="${PATH}:$(python3 -c 'import site; print(site.USER_BASE)')/bin:/home/perseo/.local/share/gem/ruby/3.0.0/bin"
+PATH="/opt/clang-format-static:$PATH"
 #
 #PATH="/home/perseo/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL5LIB="/home/perseo/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -94,4 +95,5 @@ if [ ! $VIM ]; then
   # neofetch
 fi
 
-source /home/perseo/.config/broot/launcher/bash/br
+source ~/.workrc
+#source /home/perseo/.config/broot/launcher/bash/br
