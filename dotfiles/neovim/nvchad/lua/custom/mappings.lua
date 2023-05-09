@@ -582,14 +582,35 @@ M.gitsigns = {
 }
 
 M.hlslens = {
-    n = {
-        ['n'] = { "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", ""},
-        ['N'] = { "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", ""},
-        ['*'] = { "*<Cmd>lua require('hlslens').start()<CR>", ""},
-        ['#'] = { "#<Cmd>lua require('hlslens').start()<CR>", ""},
-        ['g*'] = { "g*<Cmd>lua require('hlslens').start()<CR>", ""},
-        ['g#'] = { "g#<Cmd>lua require('hlslens').start()<CR>", ""},
-    }
+  n = {
+    ["n"] = { "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", "" },
+    ["N"] = { "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", "" },
+    ["*"] = { "*<Cmd>lua require('hlslens').start()<CR>", "" },
+    ["#"] = { "#<Cmd>lua require('hlslens').start()<CR>", "" },
+    ["g*"] = { "g*<Cmd>lua require('hlslens').start()<CR>", "" },
+    ["g#"] = { "g#<Cmd>lua require('hlslens').start()<CR>", "" },
+  },
+}
+
+M.spider = {
+  n = {
+    ["w"] = { "<cmd>lua require('spider').motion('w')<CR>", "Spider-w" },
+    ["e"] = { "<cmd>lua require('spider').motion('e')<CR>", "Spider-e" },
+    ["b"] = { "<cmd>lua require('spider').motion('b')<CR>", "Spider-b" },
+    ["ge"] = { "<cmd>lua require('spider').motion('ge')<CR>", "Spider-ge" },
+  },
+  o = {
+    ["w"] = { "<cmd>lua require('spider').motion('w')<CR>", "Spider-w" },
+    ["e"] = { "<cmd>lua require('spider').motion('e')<CR>", "Spider-e" },
+    ["b"] = { "<cmd>lua require('spider').motion('b')<CR>", "Spider-b" },
+    ["ge"] = { "<cmd>lua require('spider').motion('ge')<CR>", "Spider-ge" },
+  },
+  x = {
+    ["w"] = { "<cmd>lua require('spider').motion('w')<CR>", "Spider-w" },
+    ["e"] = { "<cmd>lua require('spider').motion('e')<CR>", "Spider-e" },
+    ["b"] = { "<cmd>lua require('spider').motion('b')<CR>", "Spider-b" },
+    ["ge"] = { "<cmd>lua require('spider').motion('ge')<CR>", "Spider-ge" },
+  },
 }
 
 return M

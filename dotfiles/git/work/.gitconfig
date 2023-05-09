@@ -28,7 +28,7 @@
 
    # Open repository on GitHub
     hub = "!f() { \
-        open \"$(git ls-remote --get-url \
+        exo-open \"$(git ls-remote --get-url \
         | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
         | sed 's|\\.git$||'; \
         )\"; \
@@ -36,7 +36,7 @@
 
    # Open repository on GitLab
     lab = "!f() { \
-        open \"$(git ls-remote --get-url \
+        exo-open \"$(git ls-remote --get-url \
         | sed 's|git@gitlab.com:\\(.*\\)$|https://gitlab.com/\\1|' \
         | sed 's|\\.git$||'; \
         )\"; \

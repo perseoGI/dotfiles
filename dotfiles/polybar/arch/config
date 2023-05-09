@@ -71,19 +71,27 @@ module-margin-left = 4
 module-margin-right = 0
 
 # ;number allow to change vertical alignment
-font-0 = Noto Mono:pixelsize=10:antialias=true;2
+font-0 = San Francisco Display Regular:size=13;1
+font-1 = unifont:fontformat=truetype:size=24:antialias=false;0
+font-2 = Noto Sans Symbols2:style=Regular;+3
+; font-3 = "MaterialIcons:size=24:antialias=false;1"
+font-3 = SauceCodePro Nerd Font Mono:pixelsize=17:antialias=true;2
+
+
+; font-2 = Source Code Pro Mono:pixelsize=15:antialias=true;1
+; font-0 = Noto Mono:pixelsize=10:antialias=true;2
 # Temp, clock ...
-font-1 = Noto Sans Symbols2:style=Regular;+3
 # Scroll volume
-font-2 = DejaVuSans;+3
+; font-2 = DejaVuSans;+3
 # Cpu (chip)
-font-3 = FontAwesome;+2
+; font-3 = FontAwesome;+2
 
-font-4 = Font Awesome 5 Free Solid:style=Solid;+2
+; font-2 = Font Awesome 5 Free Solid:style=Solid;+2
 
-;font-5 = Unifont
-;font-4 = MaterialIcons
-;font-1 = FontAwesome:style=Regular:pixelsize=10:antialias=true;2
+
+; font-5 = Unifont
+; font-0 = Material Icons Outlined:style=Regular
+; font-1 = FontAwesome:style=Regular:pixelsize=10:antialias=true;2
 ;font-2 = FontAwesome:style=Regular:pixelsize=10:antialias=true;2
 
 tray-position = right
@@ -97,7 +105,7 @@ enable-ipc = true
 inherit = bar/main
 width = 100%
 offset-x = 0%
-modules-left = desk i3 time date xkeyboard memory cpu gpu-usage eth temperature fs-root fs-hdd headset-battery-level headset-mic-status sct powermenu pulseaudio apple-music apple-music-prev apple-music-play-pause apple-music-next
+modules-left = desk i3 time date xkeyboard memory cpu gpu-usage eth temperature fs-root fs-hdd headset-battery-level headset-mic-status sct powermenu pulseaudio pulseaudioapple-music apple-music-prev apple-music-play-pause apple-music-next
 
 [bar/5120x1440]
 inherit = bar/main
@@ -105,8 +113,10 @@ width = 52%
 offset-x = 25%
 ; Moved everything to the center because I use an ultrawide (5120 x 1440)
 modules-left = xwindow
-modules-center = i3 time date xkeyboard memory cpu gpu-usage eth temperature fs-root fs-hdd headset-battery-level headset-mic-status sct powermenu
-modules-right =  pulseaudio apple-music apple-music-prev apple-music-play-pause apple-music-next
+; modules-center = i3 time date xkeyboard memory cpu gpu-usage eth temperature fs-root fs-hdd headset-battery-level headset-mic-status sct powermenu
+modules-center = i3 time date xkeyboard memory cpu gpu-usage eth temperature fs-root fs-hdd sct powermenu
+; modules-right =  pulseaudio pulseaudio-headset apple-music apple-music-prev apple-music-play-pause apple-music-next
+modules-right =   apple-music apple-music-prev apple-music-play-pause apple-music-next pulseaudio pulseaudio-headset
 
 
 [module/xwindow]
@@ -216,7 +226,7 @@ format-prefix = " "
 ;format-underline = #4bffdc
 format-underline = ${colors.gradient-3}
 ;label = %percentage_used%%
-label = %{A1:alacritty -e bpytop -b mem&:}%percentage_used%%%{A}
+label = %{A1:alacritty -e btop -b mem&:}%percentage_used%%%{A}
 
 [module/cpu]
 type = internal/cpu
@@ -226,17 +236,20 @@ format-prefix = " "
 ;format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.gradient-4}
 ;label = %percentage:2%%
-label = %{A1:alacritty -e bpytop -b cpu&:}%percentage%%%{A}
+label = %{A1:alacritty -e btop -b cpu&:}%percentage%%%{A}
 
 [module/gpu-usage]
 type = custom/script
 tail = true
 format-prefix = " "
+format-padding = 2
 format = <label>%
+label = %output:3:.%
+ 
 exec = nvidia-smi --format=csv --query-gpu=utilization.gpu | tail -1 | cut -d ' ' -f 1
 format-underline = ${colors.gradient-5}
 ;format-prefix-foreground = ${colors.foreground-alt}
-click-left = alacritty -e bpytop
+click-left = alacritty -e btop
 
 [module/eth]
 type = internal/network
@@ -288,7 +301,7 @@ label-mounted-underline = ${colors.gradient-8}
 [module/fs-hdd]
 type = internal/fs
 interval = 25
-mount-0 = /home/perseo/hdd
+mount-0 = /mnt
 label-mounted = 🖴%{F-} %percentage_used%% %free%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
@@ -314,7 +327,7 @@ type = custom/ipc
 hook-0 = echo ""
 hook-1 = echo ""
 initial = 2
-click-left = if [ `xsct | cut -d'~' -f2-` -eq 3500 ]; then xsct 0;  polybar-msg hook sct 1 1>/dev/null 2>&1; else xsct 3500; polybar-msg hook sct 2 1>/dev/null 2>&1; fi
+click-left = if [ `xsct | cut -d' ' -f5` -eq 3500 ]; then xsct 0; polybar-msg action "#sct.hook.1"; else xsct 3500; polybar-msg action "#sct.hook.0"; fi
 
 [module/powermenu]
 type = custom/menu
@@ -385,14 +398,20 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 # Open pavucontrol with right click
 click-right = pavucontrol
+sink = alsa_output.pci-0000_09_00.1.3.hdmi-stereo.2
 
+[module/pulseaudio-headset]
+inherit = module/pulseaudio
+sink = alsa_output.usb-Kingston_HyperX_Cloud_Flight_Wireless_Headset-00.analog-stereo
 
 [module/apple-music]
 type = custom/script
 tail = true
-format-prefix = " "
+; format-prefix = " "
 format = <label>
-; exec = ~/scripts/music-controller/scroll_apple_music_status.sh
+label = %output:0:30:...%
+
+exec = ~/scripts/music-controller/scroll_apple_music_status.sh
 
 [module/apple-music-prev]
 type = custom/script

@@ -77,6 +77,21 @@ function M.setup()
         },
       },
     },
+    {
+      name = "Launch recoloring",
+      type = "cppdbg",
+      request = "launch",
+      cwd = "${workspaceFolder}/build/debug/bin",
+      program = "${workspaceFolder}/build/debug/bin/tst_telemetry",
+      stopAtEntry = true,
+      setupCommands = {
+        {
+          text = "-enable-pretty-printing",
+          description = "enable pretty printing",
+          ignoreFailures = false,
+        },
+      },
+    },
   }
 
   dap.configurations.python = {
