@@ -287,5 +287,5 @@ return {
   --     "nvim-telescope/telescope.nvim",
   --   },
   -- },
-  ["chrisgrieser/nvim-spider"] = {},
+  -- ["chrisgrieser/nvim-spider"] = {},
 }

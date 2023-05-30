@@ -82,7 +82,7 @@ function M.setup()
       type = "cppdbg",
       request = "launch",
       cwd = "${workspaceFolder}/build/debug/bin",
-      program = "${workspaceFolder}/build/debug/bin/tst_telemetry",
+      program = "${workspaceFolder}/build/debug/bin/cpp-recoloring-backend",
       stopAtEntry = true,
       setupCommands = {
         {
