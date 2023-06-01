@@ -46,7 +46,7 @@ font:
   bold_italic:
     family: Source Code Pro
     style: Italic
-  size: 10
+  size: 15
 
   offset:
       x: 0

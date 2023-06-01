@@ -1,3 +1,6 @@
+# x11 config
+xrandr --output "DP-0" --rate "120" --mode "5120x1440"
+
 kill -9 $(pgrep polybar)
 
 if type "xrandr"; then
