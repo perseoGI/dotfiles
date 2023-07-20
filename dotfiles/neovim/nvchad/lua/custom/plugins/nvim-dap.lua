@@ -35,19 +35,26 @@ function M.setup()
   dap.configurations.cpp = {
     {
       name = "Launch file",
-      type = "lldb",
+      type = "cppdbg",
       request = "launch",
       program = function()
         return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
       end,
-      cwd = "${workspaceFolder}",
-      stopOnEntry = true,
+      cwd = "${workspaceFolder}/build/debug/bin",
+      stopAtEntry = true,
       -- args = function()
       -- 	local filter = vim.fn.input("Enter args: ")
       -- 	return { filter }
       -- end,
       -- args = { "-vf", "eq=brightness=0.06:saturation=2", "/home/perseo/Videos/sample-mp4-file.mp4" },
-      args = { "/home/perseo/Videos/sample-mp4-file.mp4" },
+      -- args = { "/home/perseo/Videos/sample-mp4-file.mp4" },
+      setupCommands = {
+        {
+          text = "-enable-pretty-printing",
+          description = "enable pretty printing",
+          ignoreFailures = false,
+        },
+      },
     },
     {
       name = "Attach to gdbserver :1234",
@@ -65,8 +72,8 @@ function M.setup()
       name = "Launch hpc",
       type = "cppdbg",
       request = "launch",
-      cwd = "${workspaceFolder}/build/debug/bin",
-      program = "${workspaceFolder}/build/debug/bin/hpc-services",
+      cwd = "${workspaceFolder}/build/debug-buckets/bin",
+      program = "${workspaceFolder}/build/debug-buckets/bin/hpc-services",
       stopAtEntry = true,
       args = { "${workspaceFolder}/docker/hpc/Batch.json" },
       setupCommands = {
