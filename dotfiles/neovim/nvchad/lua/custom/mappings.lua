@@ -397,7 +397,7 @@ M.telescope = {
     ["<leader>pk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
 
     -- git
-    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
+    ["<leader>gl"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
     ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "  git status" },
 
     -- pick a hidden term
@@ -613,6 +613,18 @@ M.hlslens = {
 --   },
 -- }
 
+M.gitworktree = {
+  n = {
+    ["<leader>gw"] = {
+      "<Cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>",
+      "Switch git-worktree",
+    },
+    ["<leader>gc"] = {
+      "<Cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>",
+      "Create git-worktree",
+    },
+  },
+}
 return M
 
 -- OLD TODO STUFF

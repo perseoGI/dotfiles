@@ -24,7 +24,7 @@ return {
       {
         "ThePrimeagen/git-worktree.nvim",
         config = function()
-          require("git-worktree").setup {}
+          require("custom.plugins.git-worktree").setup()
         end,
       },
     },
@@ -153,9 +153,9 @@ return {
   -- Flutter development
   ["akinsho/flutter-tools.nvim"] = {
     requires = {
-            "nvim-lua/plenary.nvim",
-            "stevearc/dressing.nvim",
-        },
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim",
+    },
     config = function()
       require("flutter-tools").setup {}
     end,
