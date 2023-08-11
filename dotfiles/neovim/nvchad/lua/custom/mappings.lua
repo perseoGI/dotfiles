@@ -62,33 +62,33 @@ M.general = {
   i = {
 
     -- go to  beginning and end
-    ["<C-b>"] = { "<ESC>^i", "論 beginning of line" },
-    ["<C-e>"] = { "<End>", "壟 end of line" },
+    ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
+    ["<C-e>"] = { "<End>", "End of line" },
 
     -- navigate within insert mode
-    ["<C-h>"] = { "<Left>", "  move left" },
-    ["<C-l>"] = { "<Right>", " move right" },
-    ["<C-j>"] = { "<Down>", " move down" },
-    ["<C-k>"] = { "<Up>", " move up" },
+    ["<C-h>"] = { "<Left>", "Move left" },
+    ["<C-l>"] = { "<Right>", "Move right" },
+    ["<C-j>"] = { "<Down>", "Move down" },
+    ["<C-k>"] = { "<Up>", "Move up" },
 
     ["<C-c>"] = { "<esc>", "" },
 
     -- Move lines up/down while on insert mode
-    ["<c-j>"] = { "<esc>:m .+1<CR>==a", "  move line down while insert mode" },
-    ["<c-k>"] = { "<esc>:m .-2<CR>==a", "  move line up while insert mode" },
-    ["<C-u>"] = { "<esc>viw~ea", "  Capitalize or lower case current word" },
+    ["<c-j>"] = { "<esc>:m .+1<CR>==a", "Move line down while insert mode" },
+    ["<c-k>"] = { "<esc>:m .-2<CR>==a", "Move line up while insert mode" },
+    ["<C-u>"] = { "<esc>viw~ea", "Capitalize or lower case current word" },
   },
 
   n = {
     -- Make Y as it should be!
-    ["Y"] = { "y$", " yank to end of line" },
+    ["Y"] = { "y$", "yank to end of line" },
     -- Remap convenient change between windows commands
-    ["<leader>h"] = { "<C-w>h", " window left" },
-    ["<leader>l"] = { "<C-w>l", " window right" },
-    ["<leader>j"] = { "<C-w>j", " window down" },
-    ["<leader>k"] = { "<C-w>k", " window up" },
+    ["<leader>h"] = { "<C-w>h", "Window left" },
+    ["<leader>l"] = { "<C-w>l", "Window right" },
+    ["<leader>j"] = { "<C-w>j", "Window down" },
+    ["<leader>k"] = { "<C-w>k", "Window up" },
 
-    ["<leader>s"] = { "<cmd> w <CR>", "﬚  save file" },
+    ["<leader>s"] = { "<cmd> w <CR>", "Save file" },
 
     -- remove help message "Type :qa ..."
     ["<C-c>"] = { "<silent> <C-c>" },
@@ -99,27 +99,27 @@ M.general = {
     ["<Leader>rp"] = { "<cmd> resize 100<CR>", "" },
 
     -- Keep movements centered
-    ["n"] = { "nzzzv", " next match centered" },
-    ["N"] = { "Nzzzv", " prev match centered" },
-    ["J"] = { "mzJ`zmz", " center J" },
+    ["n"] = { "nzzzv", "Next match centered" },
+    ["N"] = { "Nzzzv", "Prev match centered" },
+    ["J"] = { "mzJ`zmz", "Center J" },
 
     -- Automatically save movements larger than 5 lines to the jumplist (useful for
     -- relativenumber)
     ["<expr>j"] = {
       "v:count ? (v:count > 5 ? \"m'\" . v:count : '') . 'j' : 'gj'",
-      " relative jump save to jumplist",
+      "Relative jump save to jumplist",
     },
     ["<expr>k"] = {
       "v:count ? (v:count > 5 ? \"m'\" . v:count : '') . 'k' : 'gk'",
-      " relative jump save to jumplist",
+      "Relative jump save to jumplist",
     },
 
     -- From justinmk
-    ["gj"] = { "i<c-j><esc>k$", "  un-join (split) the current line at the cursor position " },
-    ["gV"] = { "`[v`]", "  select last inserted text" },
+    ["gj"] = { "i<c-j><esc>k$", "Un-join (split) the current line at the cursor position " },
+    ["gV"] = { "`[v`]", "Select last inserted text" },
 
-    [",p"] = { '"0p', "  Paste from 0 registre easily" },
-    ["<Leader>i"] = { "gg=G<C-o>", "  auto indent all file" },
+    [",p"] = { '"0p', "Paste from 0 registre easily" },
+    ["<Leader>i"] = { "gg=G<C-o>", "Auto indent all file" },
 
     -- Quick fix list
 
@@ -162,22 +162,22 @@ M.general = {
     },
 
     -- Diff
-    ["<leader>dt"] = { "<cmd>diffthis<CR>", " diff current buffer" },
-    ["<leader>dg"] = { "<cmd>diffget<CR>", " diff get differences" },
+    ["<leader>dt"] = { "<cmd>diffthis<CR>", "Diff current buffer" },
+    ["<leader>dg"] = { "<cmd>diffget<CR>", "Diff get differences" },
   },
   v = {
     -- X as a i<backspace>
-    ["X"] = { '"_d', " i<backspace>" },
+    ["X"] = { '"_d', "i<backspace>" },
 
     -- Visual-Line move lines up or down
-    ["J"] = { "<cmd> m '>+1<CR>gv=gv", " visual movement line up" },
-    ["K"] = { "<cmd> m '<-2<CR>gv=gv", " visual movement line down" },
+    ["J"] = { "<cmd> m '>+1<CR>gv=gv", "Visual movement line up" },
+    ["K"] = { "<cmd> m '<-2<CR>gv=gv", "Visual movement line down" },
 
-    ["<"] = { "<gv", "  visual selection after shifting" },
-    [">"] = { ">gv", "  visual selection after shifting" },
+    ["<"] = { "<gv", "Visual selection after shifting" },
+    [">"] = { ">gv", "Visual selection after shifting" },
   },
   x = {
-    ["."] = { "<cmd> normal .<CR>", "  repeat last command for each line of a visual selection" },
+    ["."] = { "<cmd> normal .<CR>", "Repeat last command for each line of a visual selection" },
 
     -- Visual Line macros: apply a macro to multiple lines by:
     --   1. Recording a macro
@@ -214,21 +214,21 @@ M.bufferline = {
       function()
         require("nvchad_ui.tabufline").tabuflineNext()
       end,
-      "goto next buffer",
+      "Goto next buffer",
     },
 
     ["<C-h>"] = {
       function()
         require("nvchad_ui.tabufline").tabuflinePrev()
       end,
-      "goto prev buffer",
+      "Goto prev buffer",
     },
 
     ["<leader>X"] = {
       function()
         require("nvchad_ui.tabufline").closeAllBufs()
       end,
-      "   close all buffers",
+      "Close all buffers",
     },
   },
 }
@@ -241,84 +241,84 @@ M.lspconfig = {
       function()
         vim.lsp.buf.declaration()
       end,
-      "   lsp declaration",
+      " LSP declaration",
     },
 
     ["gd"] = {
       function()
         vim.lsp.buf.definition()
       end,
-      "   lsp definition",
+      " LSP definition",
     },
 
     ["K"] = {
       function()
         vim.lsp.buf.hover()
       end,
-      "   lsp hover",
+      " LSP hover",
     },
 
     ["<leader>gi"] = {
       function()
         vim.lsp.buf.implementation()
       end,
-      "   lsp implementation",
+      " LSP implementation",
     },
 
     ["<leader>D"] = {
       function()
         vim.lsp.buf.type_definition()
       end,
-      "   lsp definition type",
+      " LSP definition type",
     },
 
     ["<leader>rr"] = {
       function()
         vim.lsp.buf.rename()
       end,
-      "   lsp rename",
+      " LSP rename",
     },
 
     ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
       end,
-      "   lsp code_action",
+      " LSP code_action",
     },
 
     ["<leader>gr"] = {
       function()
         vim.lsp.buf.references()
       end,
-      "   lsp references",
+      " LSP references",
     },
 
     ["<leader>f"] = {
       function()
         vim.diagnostic.open_float()
       end,
-      "   floating diagnostic",
+      " Floating diagnostic",
     },
 
     ["<leader>["] = {
       function()
         vim.diagnostic.goto_prev()
       end,
-      "   goto prev",
+      " Goto prev",
     },
 
     ["<leader>]"] = {
       function()
         vim.diagnostic.goto_next()
       end,
-      "   goto_next",
+      " Goto next",
     },
 
     ["<leader>q"] = {
       function()
         vim.diagnostic.setloclist()
       end,
-      "   diagnostic setloclist",
+      " Diagnostic setloclist",
     },
 
     -- ["<leader>fo"] = {
@@ -332,21 +332,21 @@ M.lspconfig = {
       function()
         vim.lsp.buf.add_workspace_folder()
       end,
-      "   add workspace folder",
+      "Add workspace folder",
     },
 
     ["<leader>wr"] = {
       function()
         vim.lsp.buf.remove_workspace_folder()
       end,
-      "   remove workspace folder",
+      "Remove workspace folder",
     },
 
     ["<leader>wl"] = {
       function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
-      "   list workspace folders",
+      "List workspace folders",
     },
   },
 }
@@ -355,7 +355,7 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<leader>pv"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
+    ["<leader>pv"] = { "<cmd> NvimTreeToggle <CR>", " Toggle nvimtree" },
   },
 }
 
@@ -366,45 +366,45 @@ M.nvterm = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
-      "   toggle horizontal term",
+      " Toggle horizontal term",
     },
 
     ["<leader>T"] = {
       function()
         require("nvterm.terminal").toggle "vertical"
       end,
-      "   toggle vertical term",
+      " Toggle vertical term",
     },
   },
 }
 
 M.telescope = {
   n = {
-    ["<C-p>"] = { "<cmd> Telescope git_files <CR>", " git files" },
-    ["<leader>pf"] = { "<cmd> Telescope find_files<CR>", "  find all" },
+    ["<C-p>"] = { "<cmd> Telescope git_files <CR>", " Git files" },
+    ["<leader>pf"] = { "<cmd> Telescope find_files<CR>", " Find all" },
     ["<leader>ps"] = {
       "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>",
       "",
     },
     ["<leader>pw"] = {
       "<cmd>lua require('telescope.builtin').grep_string { search = vim.fn.expand(\"<cword>\") }<CR>",
-      " Grep",
+      "Grep",
     },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "   live grep" },
-    ["<leader>pb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
-    ["<leader>pt"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
-    ["<leader>pm"] = { "<cmd> Telescope media_files <CR>", "  find media" },
-    ["<leader>pk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
+    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", " Live grep" },
+    ["<leader>pb"] = { "<cmd> Telescope buffers <CR>", " Find buffers" },
+    ["<leader>pt"] = { "<cmd> Telescope help_tags <CR>", "  Help page" },
+    ["<leader>pm"] = { "<cmd> Telescope media_files <CR>", " Find media" },
+    ["<leader>pk"] = { "<cmd> Telescope keymaps <CR>", " Show keys" },
 
     -- git
-    ["<leader>gl"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
-    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "  git status" },
+    ["<leader>gl"] = { "<cmd> Telescope git_commits <CR>", " Git commits" },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", " Git status" },
 
     -- pick a hidden term
-    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "   pick hidden term" },
+    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", " Pick hidden term" },
 
     -- theme switcher
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "   nvchad themes" },
+    ["<leader>th"] = { "<cmd> Telescope themes <CR>", " Nvchad themes" },
   },
 }
 
@@ -412,20 +412,20 @@ M.telescope = {
 
 M.harpoon = {
   n = {
-    ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file()<CR>", "  add harpoon file" },
-    ["<leader>e"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu()<CR>", "  open harpoon menu" },
+    ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file()<CR>", "Add harpoon file" },
+    ["<leader>e"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu()<CR>", "Open harpoon menu" },
   },
 }
 
 M.maximizer = {
   n = {
-    ["<leader>m"] = { "<cmd> MaximizerToggle!<CR>", "  toggle buffer maximizer" },
+    ["<leader>m"] = { "<cmd> MaximizerToggle!<CR>", "Toggle buffer maximizer" },
   },
 }
 
 M.undotreeshow = {
   n = {
-    ["<leader>u"] = { "<cmd> UndotreeShow<CR>", "  open UndotreeShow" },
+    ["<leader>u"] = { "<cmd> UndotreeShow<CR>", "Open UndotreeShow" },
   },
 }
 
@@ -519,19 +519,48 @@ M.dap = {
 
 M.trouble = {
   n = {
-    ["<leader>xx"] = { "<cmd>Trouble<cr>", " " },
-    ["<leader>xw"] = { "<cmd>Trouble workspace_diagnostics<cr>", " " },
-    ["<leader>xd"] = { "<cmd>Trouble document_diagnostics<cr>", "" },
+    ["<leader>xx"] = {
+      function()
+        require("trouble").open()
+      end,
+      "",
+    },
+    ["<leader>xw"] = {
+      function()
+        require("trouble").open "workspace_diagnostics"
+      end,
+      "",
+    },
+    ["<leader>xd"] = {
+      function()
+        require("trouble").open "document_diagnostics"
+      end,
+      "",
+    },
+    ["<leader>xq"] = {
+      function()
+        require("trouble").open "quickfix"
+      end,
+      "",
+    },
+    ["<leader>xl"] = {
+      function()
+        require("trouble").open "loclist"
+      end,
+      "",
+    },
 
-    ["<leader>xl"] = { "<cmd>Trouble loclist<cr>", "" },
-    ["<leader>xq"] = { "<cmd>Trouble quickfix<cr>", "" },
-    ["gR"] = { "<cmd>Trouble lsp_references<cr>", "" },
+    ["gR"] = {
+      function()
+        require("trouble").open "lsp_references"
+      end,
+    },
   },
 }
 
 M.neoformat = {
   n = {
-    ["<leader>fo"] = { "<cmd>Neoformat<cr>", "   lsp formatting" },
+    ["<leader>fo"] = { "<cmd>Neoformat<cr>", " LSP formatting" },
   },
 }
 
@@ -540,7 +569,7 @@ M.refactoring = {
     -- ["<leader>rf"] = { "<cmd>lua require('refactoring').select_refactor()<CR>", "   Treesitter refactoring" },
     ["<leader>rf"] = {
       "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-      "   Treesitter refactoring",
+      " Treesitter refactoring",
     },
   },
 }
