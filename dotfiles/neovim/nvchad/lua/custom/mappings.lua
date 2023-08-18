@@ -212,21 +212,21 @@ M.bufferline = {
     -- cycle through buffers
     ["<C-l>"] = {
       function()
-        require("nvchad_ui.tabufline").tabuflineNext()
+        require("nvchad.tabufline").tabuflineNext()
       end,
       "Goto next buffer",
     },
 
     ["<C-h>"] = {
       function()
-        require("nvchad_ui.tabufline").tabuflinePrev()
+        require("nvchad.tabufline").tabuflinePrev()
       end,
       "Goto prev buffer",
     },
 
     ["<leader>X"] = {
       function()
-        require("nvchad_ui.tabufline").closeAllBufs()
+        require("nvchad.tabufline").closeAllBufs()
       end,
       "Close all buffers",
     },
@@ -566,9 +566,10 @@ M.neoformat = {
 
 M.refactoring = {
   v = {
-    -- ["<leader>rf"] = { "<cmd>lua require('refactoring').select_refactor()<CR>", "   Treesitter refactoring" },
     ["<leader>rf"] = {
-      "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+      function()
+        require("telescope").extensions.refactoring.refactors()
+      end,
       " Treesitter refactoring",
     },
   },

@@ -178,6 +178,7 @@ local plugins = {
     config = function()
       require("refactoring").setup {}
     end,
+    cmd = "Refactor",
   },
 
   -- ["nvim-neorg/neorg"] = {
