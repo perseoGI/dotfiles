@@ -331,3 +331,6 @@ exec_always --no-startup-id greenclip daemon
 #bindsym $mod+semicolon exec ~/.config/i3/scripts/alsa down Headphone
 #bindsym $mod+comma exec ~/.config/i3/scripts/alsa up Headphone
 #bindsym $mod+m move workspace to output left
+
+# Autostart applications
+# exec alacritty 

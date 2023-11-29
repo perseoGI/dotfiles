@@ -3,6 +3,7 @@
 export ZSH="${HOME}/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
+ZSH_TMUX_AUTOSTART=true
 
 export UPDATE_ZSH_DAYS=13
 
@@ -18,6 +19,7 @@ plugins=(
     zsh-z
     docker
     docker-compose
+    tmux
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -94,6 +96,7 @@ if [ ! $VIM ]; then
   # Execute when opening a terminal (outside vim/nvim)
   # neofetch
 fi
+
 
 source ~/.workrc
 #source /home/perseo/.config/broot/launcher/bash/br

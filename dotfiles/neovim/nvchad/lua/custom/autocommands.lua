@@ -26,12 +26,13 @@ api.nvim_create_autocmd(
   { pattern = "*", command = "set nocursorline", group = cursorGrp }
 )
 
-local markdownGrp = api.nvim_create_augroup("Markdown", { clear = true })
--- Wrap only markdown files
-api.nvim_create_autocmd("FileType markdown", {
-  command = "set wrap",
-  group = markdownGrp
-})
+-- TODO not working
+--local markdownGrp = api.nvim_create_augroup("Markdown", { clear = true })
+---- Wrap only markdown files
+--api.nvim_create_autocmd("FileType markdown", {
+--  command = "set wrap",
+--  group = markdownGrp
+--})
 
 
 -- TODO

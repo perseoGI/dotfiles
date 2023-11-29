@@ -65,7 +65,7 @@ local plugins = {
   "ThePrimeagen/vim-be-good",
 
   -- Undo tree
-  "mbbill/undotree",
+  { "mbbill/undotree", cmd = "UndotreeShow" },
   -- Show marks
   "kshenoy/vim-signature",
   -- Minimalist TODO list management
@@ -131,10 +131,12 @@ local plugins = {
   { "sbdchd/neoformat", cmd = "Neoformat" },
 
   -- Debugger
+    { "mfussenegger/nvim-dap", lazy = false },
   {
     "rcarriga/nvim-dap-ui",
+    lazy = false, -- TODO
     -- opt = true,
-    requires = { "mfussenegger/nvim-dap" },
+    requires = { "mfussenegger/nvim-dap", lazy = false }, -- TODO
     config = function()
       require("custom.configs.nvim-dap").setup()
     end,
@@ -147,6 +149,7 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim",
     },
+    lazy = false,
     config = function()
       require("flutter-tools").setup {}
     end,
@@ -204,7 +207,7 @@ local plugins = {
   },
 
   -- Show name of current function on the line when function is to long
-    {"nvim-treesitter/nvim-treesitter-context", lazy = false},
+  { "nvim-treesitter/nvim-treesitter-context", lazy = false },
 
   -- TODO: check!
   -- ["ray-x/navigator.lua"] = {

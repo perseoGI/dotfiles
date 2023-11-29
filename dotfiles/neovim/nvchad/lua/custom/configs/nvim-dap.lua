@@ -40,7 +40,7 @@ function M.setup()
       program = function()
         return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
       end,
-      cwd = "${workspaceFolder}/build/debug/bin",
+      cwd = "${workspaceFolder}/build/Debug/bin",
       stopAtEntry = true,
       -- args = function()
       -- 	local filter = vim.fn.input("Enter args: ")
@@ -72,8 +72,8 @@ function M.setup()
       name = "Launch hpc",
       type = "cppdbg",
       request = "launch",
-      cwd = "${workspaceFolder}/build/debug-buckets/bin",
-      program = "${workspaceFolder}/build/debug-buckets/bin/hpc-services",
+      cwd = "${workspaceFolder}/build/Debug/bin",
+      program = "${workspaceFolder}/build/Debug/bin/hpc-services",
       stopAtEntry = true,
       args = { "${workspaceFolder}/docker/hpc/Batch.json" },
       setupCommands = {
@@ -90,6 +90,21 @@ function M.setup()
       request = "launch",
       cwd = "${workspaceFolder}/build/debug/bin",
       program = "${workspaceFolder}/build/debug/bin/cpp-recoloring-backend",
+      stopAtEntry = true,
+      setupCommands = {
+        {
+          text = "-enable-pretty-printing",
+          description = "enable pretty printing",
+          ignoreFailures = false,
+        },
+      },
+    },
+    {
+      name = "Launch garment exporter",
+      type = "cppdbg",
+      request = "launch",
+      cwd = "${workspaceFolder}/build/dev-debug/bin",
+      program = "${workspaceFolder}/build/dev-debug/bin/garment-exporter",
       stopAtEntry = true,
       setupCommands = {
         {
