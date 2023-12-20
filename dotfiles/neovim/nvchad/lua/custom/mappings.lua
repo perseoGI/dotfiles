@@ -140,25 +140,31 @@ M.general = {
       function()
         require("harpoon.ui").nav_file(1)
       end,
-      "",
+      "Navigate to file 1",
     },
     ["<A-o>"] = {
       function()
         require("harpoon.ui").nav_file(2)
       end,
-      "",
+      "Navigate to file 2",
     },
     ["<A-e>"] = {
       function()
         require("harpoon.ui").nav_file(3)
       end,
-      "",
+      "Navigate to file 3",
     },
     ["<A-u>"] = {
       function()
         require("harpoon.ui").nav_file(4)
       end,
-      "",
+      "Navigate to file 4",
+    },
+    ["<A-i>"] = {
+      function()
+        require("harpoon.ui").nav_file(5)
+      end,
+      "Navigate to file 5",
     },
 
     -- Diff
