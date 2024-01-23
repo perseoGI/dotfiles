@@ -2,8 +2,8 @@ dotfiles:
   alacritty:
     arch:
       paths:
-      - alacritty.yml
-      root: ~/.config/alacritty
+      - alacritty.toml
+      root: /home/perseo/.config/alacritty
     macos:
       paths:
       - alacritty.yml
