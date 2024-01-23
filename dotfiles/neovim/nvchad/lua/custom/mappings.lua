@@ -435,93 +435,86 @@ M.undotreeshow = {
   },
 }
 
-M.dap = {
-  n = {
-    ["<leader>db"] = {
-      function()
-        require("dap").toggle_breakpoint()
-      end,
-      "",
-    },
-    ["<leader>dB"] = { "<cmd> lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "" },
-    ["<leader>dk"] = {
-      function()
-        require("dap").step_out()
-      end,
-      "",
-    },
-    ["<leader>dl"] = {
-      function()
-        require("dap").step_into()
-      end,
-      "",
-    },
-    ["<leader>dj"] = {
-      function()
-        require("dap").step_over()
-      end,
-      "",
-    },
-    ["<leader>dn"] = {
-      function()
-        require("dap").continue()
-      end,
-      "",
-    },
-    ["<leader>dc"] = {
-      function()
-        require("dap").run_to_cursor()
-      end,
-      "",
-    },
-    ["<leader>ds"] = {
-      function()
-        require("dap").terminate()
-      end,
-      "",
-    },
-    ["<leader>dR"] = {
-      function()
-        require("dap").clear_breakpoints()
-      end,
-      "",
-    },
-    ["<leader>de"] = {
-      function()
-        require("dap").set_exception_breakpoints { "all" }
-      end,
-      "",
-    },
-    ["<leader>da"] = {
-      function()
-        require("debugHelper").attach()
-      end,
-      "",
-    },
-    ["<leader>dA"] = {
-      function()
-        require("debugHelper").attachToRemote()
-      end,
-      "",
-    },
-    ["<leader>di"] = {
-      function()
-        require("dap.ui.widgets").hover()
-      end,
-      "",
-    },
-    ["<leader>d?"] = {
-      function()
-        local widgets = require "dap.ui.widgets"
-        widgets.centered_float(widgets.scopes)
-      end,
-      "",
-    },
-    -- map('n', '<leader>dk', ':lua require"dap".up()<CR>zz')
-    -- map('n', '<leader>dj', ':lua require"dap".down()<CR>zz')
-    -- map('n', '<leader>dr', ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
-  },
-}
+-- M.dap = {
+--   n = {
+--     ["<leader>dk"] = {
+--       function()
+--         require("dap").step_out()
+--       end,
+--       "",
+--     },
+--     ["<leader>dl"] = {
+--       function()
+--         require("dap").step_into()
+--       end,
+--       "",
+--     },
+--     ["<leader>dj"] = {
+--       function()
+--         require("dap").step_over()
+--       end,
+--       "",
+--     },
+--     ["<leader>dn"] = {
+--       function()
+--         require("dap").continue()
+--       end,
+--       "",
+--     },
+--     ["<leader>dc"] = {
+--       function()
+--         require("dap").run_to_cursor()
+--       end,
+--       "",
+--     },
+--     ["<leader>ds"] = {
+--       function()
+--         require("dap").terminate()
+--       end,
+--       "",
+--     },
+--     ["<leader>dR"] = {
+--       function()
+--         require("dap").clear_breakpoints()
+--       end,
+--       "",
+--     },
+--     ["<leader>de"] = {
+--       function()
+--         require("dap").set_exception_breakpoints { "all" }
+--       end,
+--       "",
+--     },
+--     ["<leader>da"] = {
+--       function()
+--         require("debugHelper").attach()
+--       end,
+--       "",
+--     },
+--     ["<leader>dA"] = {
+--       function()
+--         require("debugHelper").attachToRemote()
+--       end,
+--       "",
+--     },
+--     ["<leader>di"] = {
+--       function()
+--         require("dap.ui.widgets").hover()
+--       end,
+--       "",
+--     },
+--     ["<leader>d?"] = {
+--       function()
+--         local widgets = require "dap.ui.widgets"
+--         widgets.centered_float(widgets.scopes)
+--       end,
+--       "",
+--     },
+--     -- map('n', '<leader>dk', ':lua require"dap".up()<CR>zz')
+--     -- map('n', '<leader>dj', ':lua require"dap".down()<CR>zz')
+--     -- map('n', '<leader>dr', ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
+--   },
+-- }
 
 M.trouble = {
   n = {
