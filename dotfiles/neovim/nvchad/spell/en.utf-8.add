@@ -29,7 +29,12 @@ has/!
 #td/!
 std/!
 Result/!
+<<<<<<< Updated upstream
 ||||||| Stash base
 =======
 res/!
+>>>>>>> Stashed changes
+||||||| Stash base
+=======
+pi/!
 >>>>>>> Stashed changes

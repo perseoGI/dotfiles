@@ -27,7 +27,8 @@ function M.setup()
 
   dap.adapters.python = {
     type = "executable",
-    command = python_path,
+    -- command = python_path,
+    command = "python",
     -- command = vim.fn.getcwd() .. string.format("%s/bin/python", venv),
     args = { "-m", "debugpy.adapter" },
   }
@@ -122,28 +123,20 @@ function M.setup()
       type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
       request = "launch",
       name = "Launch file",
-
-      -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-
       program = function()
         return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
       end,
-      -- program = "${file}", -- This configuration will launch the current file if used.
       pythonPath = python_path,
-      args = { "edit", "config" },
-      -- pythonPath = function()
-      --   -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-      --   -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-      --   -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-      --   local cwd = vim.fn.getcwd()
-      --   if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-      --     return cwd .. "/venv/bin/python"
-      --   elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-      --     return cwd .. "/.venv/bin/python"
-      --   else
-      --     return "/usr/bin/python"
-      --   end
-      -- end,
+      -- args = { "edit", "config" },
+    },
+    {
+      type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+      request = "launch",
+      name = "Launch poetry",
+      program = "${workspaceFolder}/.venv/bin/poetry",
+      args = { "run", "start" },
+      cwd = vim.fn.getcwd(),
+      pythonPath = python_path,
     },
   }
 

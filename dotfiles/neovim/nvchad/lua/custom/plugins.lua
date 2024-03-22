@@ -399,6 +399,7 @@ local plugins = {
       require("hlslens").setup()
     end,
   },
+<<<<<<< Updated upstream
   {
     "https://codeberg.org/esensar/nvim-dev-container",
     config = function()
@@ -407,6 +408,36 @@ local plugins = {
     requires = { "nvim-treesitter/nvim-treesitter" },
     lazy = false,
   },
+||||||| Stash base
+=======
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+    config = true,
+    lazy = false,
+  },
+  -- best to add to dependencies of `neotest`:
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "alfaix/neotest-gtest",
+      -- your other adapters here
+    },
+    config = function()
+      require("custom.configs.neotest").setup()
+    end,
+    lazy = false,
+  },
+
+>>>>>>> Stashed changes
   -- ["jackMort/ChatGPT.nvim"] = {
   --   config = function()
   --     require("chatgpt").setup {
