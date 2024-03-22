@@ -28,7 +28,14 @@ local plugins = {
     },
   },
 
-  { "nvim-treesitter/nvim-treesitter", opts = overrides.treesitter },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = overrides.treesitter,
+
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+  },
 
   { "williamboman/mason.nvim", opts = overrides.mason },
 
@@ -391,6 +398,14 @@ local plugins = {
     config = function()
       require("hlslens").setup()
     end,
+  },
+  {
+    "https://codeberg.org/esensar/nvim-dev-container",
+    config = function()
+      require("devcontainer").setup {}
+    end,
+    requires = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
   },
   -- ["jackMort/ChatGPT.nvim"] = {
   --   config = function()

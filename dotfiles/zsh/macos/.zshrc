@@ -72,10 +72,10 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
-if [ ! $VIM ]; then
-  # Execute when opening a terminal (outside vim/nvim)
-  neofetch
-fi
+# if [ ! $VIM ]; then
+#   # Execute when opening a terminal (outside vim/nvim)
+#   neofetch
+# fi
 
 export LC_CTYPE=es_ES.UTF-8
 export LC_ALL=es_ES.UTF-8
@@ -85,3 +85,9 @@ export LC_ALL=es_ES.UTF-8
 source ~/.dotpyle-complete.zsh
 source $HOME/.cargo/env
 source ~/.dotpyle-complete.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/Users/perseo/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/perseo/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+# if [ -f '/Users/perseo/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/perseo/google-cloud-sdk/completion.zsh.inc'; fi

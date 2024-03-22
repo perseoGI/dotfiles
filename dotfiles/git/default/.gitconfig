@@ -1,56 +1,82 @@
 [user]
-   name = Perseo
-   email = perseo.gi98@gmail.com
+    name = Perseo
+    email = perseo.gi98@gmail.com
 
 [core]
-   editor = nvim
-   pager = delta
-   autocrlf = input
+    editor = nvim
+    pager = delta
+    autocrlf = input
 
 [pretty]
-   onelinedate = %C(auto)%h %C(green)%ad%C(auto)%d%C(reset) %s %C(white)(%an)%C(reset)
+    onelinedate = %C(auto)%h %C(green)%ad%C(auto)%d%C(reset) %s %C(white)(%an)%C(reset)
 
 [alias]
-   s = status -sb
-   l = log --graph --decorate --oneline
-   co = checkout
-   logd  = log --abbrev-commit --decorate
-   logg  = log --abbrev-commit --decorate --graph
-   logo  = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate
-   logop = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate --first-parent
-   loga  = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate --all
-   logap = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate --all --first-parent
-   wdiff = diff --color-words
-   wshow = show --color-words
+    s = status -sb
+    l = log --graph --decorate --oneline
+    co = checkout
+    logd  = log --abbrev-commit --decorate
+    logg  = log --abbrev-commit --decorate --graph
+    logo  = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate
+    logop = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate --first-parent
+    loga  = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate --all
+    logap = log --abbrev-commit --decorate --graph --date=short --pretty=onelinedate --all --first-parent
+    wdiff = diff --color-words
+    wshow = show --color-words
+    amend = commit --amend 
+    mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
+    squash = "!git rebase -v -i $(git mainbranch)"
+
+   # Open repository on GitHub
+    hub = "!f() { \
+        exo-open \"$(git ls-remote --get-url \
+        | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
+        | sed 's|\\.git$||'; \
+        )\"; \
+        }; f"
+
+   # Open repository on GitLab
+    lab = "!f() { \
+        exo-open \"$(git ls-remote --get-url \
+        | sed 's|git@gitlab.com:\\(.*\\)$|https://gitlab.com/\\1|' \
+        | sed 's|\\.git$||'; \
+        )\"; \
+        }; f"
 
 [interactive]
-   diffFilter = delta --color-only
+    diffFilter = delta --color-only
 
 [color]
-   ui = true
+    ui = true
 
 [color "diff-highlight"]
-   oldNormal = red bold
-   oldHighlight = red bold 52
-   newNormal = green bold
-   newHighlight = green bold 22
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 
 [color "diff"]
-   meta = 11
-   frag = magenta bold
-   func = 146 bold
-   commit = yellow bold
-   old = red bold
-   new = green bold
-   whitespace = red reverse
+    meta = 11
+    frag = magenta bold
+    func = 146 bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 
 [delta]
-   navigate = true
+    navigate = true
 
 [merge]
-   conflictstyle = diff3
+    conflictstyle = diff3
 
 [diff]
-   colorMoved = default
+    colorMoved = default
+
+[filter "lfs"]
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+
 [safe]
 	directory = /opt/flutter

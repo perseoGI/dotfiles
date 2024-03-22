@@ -22,9 +22,14 @@ extension/!
 post/!
 name/!
 deHDF/!
+<<<<<<< Updated upstream
 unleash/!
 token/!
 has/!
 #td/!
 std/!
 Result/!
+||||||| Stash base
+=======
+res/!
+>>>>>>> Stashed changes
