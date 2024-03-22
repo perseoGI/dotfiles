@@ -1,62 +1,63 @@
+-- require "nvchad.mappings"
 local M = {}
 
-M.disabled = {
-  n = {
-    -- General
-    ["<C-h>"] = "",
-    ["<C-l>"] = "",
-    ["<C-j>"] = "",
-    ["<C-k>"] = "",
-    ["<C-s>"] = "",
-    ["<leader>n"] = "",
-    ["<leader>rn"] = "",
-
-    -- Remove wrapping jumping functionality
-    ["j"] = "",
-    ["k"] = "",
-
-    -- Comment
-    ["<leader>/"] = "",
-    -- new buffer
-    ["<S-b>"] = "",
-    -- cycle through buffers
-    ["<TAB>"] = "",
-    ["<S-Tab>"] = "",
-
-    -- Lsp
-    ["gi"] = "",
-    ["<leader>ls"] = "",
-    ["<leader>ra"] = "",
-    ["[d"] = "",
-    ["d]"] = "",
-    ["<leader>fm"] = "",
-    ["rr"] = "",
-    ["gr"] = "",
-
-    -- nvterm
-    ["<A-i>"] = "",
-    ["<A-h>"] = "",
-    ["<A-v>"] = "",
-    ["<leader>h"] = "",
-    ["<leader>v"] = "",
-
-    -- Telescope
-    ["<leader>fo"] = "",
-    ["<leader>tk"] = "",
-
-    ["<leader>cm"] = "",
-    ["<leader>gt"] = "",
-
-    -- NvTree
-    ["<C-n>"] = "",
-    ["<leader>e"] = "",
-  },
-
-  v = {
-    -- Comment
-    ["<leader>/"] = "",
-  },
-}
+-- M.disabled = {
+--   n = {
+--     -- General
+--     ["<C-h>"] = "",
+--     ["<C-l>"] = "",
+--     ["<C-j>"] = "",
+--     ["<C-k>"] = "",
+--     ["<C-s>"] = "",
+--     ["<leader>n"] = "",
+--     ["<leader>rn"] = "",
+--
+--     -- Remove wrapping jumping functionality
+--     ["j"] = "",
+--     ["k"] = "",
+--
+--     -- Comment
+--     ["<leader>/"] = "",
+--     -- new buffer
+--     ["<S-b>"] = "",
+--     -- cycle through buffers
+--     ["<TAB>"] = "",
+--     ["<S-Tab>"] = "",
+--
+--     -- Lsp
+--     ["gi"] = "",
+--     ["<leader>ls"] = "",
+--     ["<leader>ra"] = "",
+--     ["[d"] = "",
+--     ["d]"] = "",
+--     ["<leader>fm"] = "",
+--     ["rr"] = "",
+--     ["gr"] = "",
+--
+--     -- nvterm
+--     ["<A-i>"] = "",
+--     ["<A-h>"] = "",
+--     ["<A-v>"] = "",
+--     ["<leader>h"] = "",
+--     ["<leader>v"] = "",
+--
+--     -- Telescope
+--     ["<leader>fo"] = "",
+--     ["<leader>tk"] = "",
+--
+--     ["<leader>cm"] = "",
+--     ["<leader>gt"] = "",
+--
+--     -- NvTree
+--     ["<C-n>"] = "",
+--     ["<leader>e"] = "",
+--   },
+--
+--   v = {
+--     -- Comment
+--     ["<leader>/"] = "",
+--   },
+-- }
 
 M.general = {
   i = {
@@ -94,9 +95,9 @@ M.general = {
     ["<C-c>"] = { "<silent> <C-c>" },
 
     -- Buffer resizing
-    ["<Leader>+"] = { "<cmd> vertical resize +5<CR>", "" },
-    ["<Leader>-"] = { "<cmd> vertical resize -5<CR>", "" },
-    ["<Leader>rp"] = { "<cmd> resize 100<CR>", "" },
+    ["<Leader>+"] = { "<cmd> vertical resize +5<CR>", "Resize window" },
+    ["<Leader>-"] = { "<cmd> vertical resize -5<CR>", "Resize window" },
+    ["<Leader>rp"] = { "<cmd> resize 100<CR>", "Resize 100 window" },
 
     -- Keep movements centered
     ["n"] = { "nzzzv", "Next match centered" },
@@ -130,42 +131,10 @@ M.general = {
     -- :cfdo <command>
     -- Example: :cfdo s/pattern/replacePattern/gc | update
 
-    ["<c-j>"] = { "<cmd> call QFList(1)<CR>", "" },
-    ["<c-k>"] = { "<cmd> call QFList(0)<CR>", "" },
+    ["<c-j>"] = { "<cmd> call QFList(1)<CR>", "QFix next" },
+    ["<c-k>"] = { "<cmd> call QFList(0)<CR>", "QFix prev" },
 
-    ["<leader>gth"] = { "<cmd> ClangdSwitchSourceHeader<CR>", "" },
-
-    -- Harpoon nav files
-    ["<A-a>"] = {
-      function()
-        require("harpoon.ui").nav_file(1)
-      end,
-      "Navigate to file 1",
-    },
-    ["<A-o>"] = {
-      function()
-        require("harpoon.ui").nav_file(2)
-      end,
-      "Navigate to file 2",
-    },
-    ["<A-e>"] = {
-      function()
-        require("harpoon.ui").nav_file(3)
-      end,
-      "Navigate to file 3",
-    },
-    ["<A-u>"] = {
-      function()
-        require("harpoon.ui").nav_file(4)
-      end,
-      "Navigate to file 4",
-    },
-    ["<A-i>"] = {
-      function()
-        require("harpoon.ui").nav_file(5)
-      end,
-      "Navigate to file 5",
-    },
+    ["<leader>gth"] = { "<cmd> ClangdSwitchSourceHeader<CR>", "Switch source header" },
 
     -- Diff
     ["<leader>dt"] = { "<cmd>diffthis<CR>", "Diff current buffer" },
@@ -210,6 +179,42 @@ M.general = {
     ["<C-k>"] = { [[<C-\><C-n><C-W>k]], "" },
     ["<C-l>"] = { [[<C-\><C-n><C-W>l]], "" },
   },
+}
+
+M.harpoon = {
+  n = {
+    -- Harpoon nav files
+    ["<A-a>"] = {
+      function()
+        require("harpoon.ui").nav_file(1)
+      end,
+      "Navigate to file 1",
+    },
+    ["<A-o>"] = {
+      function()
+        require("harpoon.ui").nav_file(2)
+      end,
+      "Navigate to file 2",
+    },
+    ["<A-e>"] = {
+      function()
+        require("harpoon.ui").nav_file(3)
+      end,
+      "Navigate to file 3",
+    },
+    ["<A-u>"] = {
+      function()
+        require("harpoon.ui").nav_file(4)
+      end,
+      "Navigate to file 4",
+    },
+    ["<A-i>"] = {
+      function()
+        require("harpoon.ui").nav_file(5)
+      end,
+      "Navigate to file 5",
+    },
+  }
 }
 
 M.bufferline = {
@@ -586,7 +591,7 @@ M.gitsigns = {
         end)
         return "<Ignore>"
       end,
-      "",
+      "Next git sign",
     },
     ["[h"] = {
       function()
@@ -598,26 +603,26 @@ M.gitsigns = {
         end)
         return "<Ignore>"
       end,
-      "",
+      "Prev git sign",
     },
   },
 
   o = {
-    ["ih"] = { "<cmd>Gitsigns select_hunk<CR>", "" },
+    ["ih"] = { "<cmd>Gitsigns select_hunk<CR>", "Select git hunk" },
   },
   x = {
-    ["ih"] = { "<cmd>Gitsigns select_hunk<CR>", "" },
+    ["ih"] = { "<cmd>Gitsigns select_hunk<CR>", "Select git hunk" },
   },
 }
 
 M.hlslens = {
   n = {
-    ["n"] = { "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", "" },
-    ["N"] = { "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", "" },
-    ["*"] = { "*<Cmd>lua require('hlslens').start()<CR>", "" },
-    ["#"] = { "#<Cmd>lua require('hlslens').start()<CR>", "" },
-    ["g*"] = { "g*<Cmd>lua require('hlslens').start()<CR>", "" },
-    ["g#"] = { "g#<Cmd>lua require('hlslens').start()<CR>", "" },
+    ["n"] = { "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", "hlslens next" },
+    ["N"] = { "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", "hlslens prev" },
+    ["*"] = { "*<Cmd>lua require('hlslens').start()<CR>", "hlnlens *" },
+    ["#"] = { "#<Cmd>lua require('hlslens').start()<CR>", "hlnlens #" },
+    ["g*"] = { "g*<Cmd>lua require('hlslens').start()<CR>", "hlnlens g*" },
+    ["g#"] = { "g#<Cmd>lua require('hlslens').start()<CR>", "hlnlens g#" },
   },
 }
 
@@ -654,7 +659,6 @@ M.gitworktree = {
     },
   },
 }
-return M
 
 -- OLD TODO STUFF
 -- + Clipboard config --------------------------------------------------------{{{
@@ -678,3 +682,22 @@ return M
 --    map P <Plug>(miniyank-autoPut)
 -- endif
 -- + }}}
+
+-- return M
+
+-- Workaround to migrate to standard nvim mappings TODO
+local map = vim.keymap.set
+
+file = io.open("test.lua", "a")
+io.output(file)
+for name, maps in pairs(M) do
+    io.write(string.format("-- %s\n\n", name))
+    for mode, data in pairs(maps) do 
+        for key, val in pairs(data) do
+            map(mode, key, val[1], {desc = val[2]})
+            io.write(string.format("map(\"%s\", \"%s\", \"%s\", { desc = \"%s\" })\n", mode, key, val[1], val[2]))
+        end
+        io.write(string.format("\n", name))
+    end
+end
+io.close(file)

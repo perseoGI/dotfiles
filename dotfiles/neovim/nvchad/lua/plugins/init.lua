@@ -1,10 +1,16 @@
-local overrides = require "custom.configs.override"
+local overrides = require "configs.override"
 
-local plugins = {
+return {
+  {
+    "stevearc/conform.nvim",
+    -- event = 'BufWritePre' -- uncomment for format on save
+    config = function()
+      require "configs.conform"
+    end,
+  },
 
   -- Remove default plugins
   { "windwp/nvim-autopairs", enabled = false },
-  -- { "folke/which-key.nvim", enabled = false },
 
   -- Override default plugins
   { "NvChad/nvterm", opts = overrides.nvterm },
@@ -22,7 +28,7 @@ local plugins = {
       {
         "ThePrimeagen/git-worktree.nvim",
         config = function()
-          require("custom.configs.git-worktree").setup()
+          require("configs.git-worktree").setup()
         end,
       },
     },
@@ -44,8 +50,8 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
     end,
   },
 
@@ -62,7 +68,7 @@ local plugins = {
   "gruvbox-community/gruvbox",
   "sainnhe/gruvbox-material",
   --   -- config = function()
-  --   --    require("custom.configs.gruvbox").setup ()
+  --   --    require("configs.gruvbox").setup ()
   --   -- end,
   --
   -- -- ["shaunsingh/oxocarbon.nvim"] = { run = "./install.sh" },
@@ -90,7 +96,7 @@ local plugins = {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-      require("custom.configs.nvim-surround").setup()
+      require("configs.nvim-surround").setup()
     end,
   },
 
@@ -120,14 +126,14 @@ local plugins = {
       vim.fn["mkdp#util#install"]()
     end,
     config = function()
-      require("custom.configs.markdown-preview").setup()
+      require("configs.markdown-preview").setup()
     end,
   },
 
   -- Discord vimscene
   -- ["andweeb/presence.nvim"] = {
   --   config = function()
-  --     require("custom.configs.presence").setup ()
+  --     require("configs.presence").setup ()
   --   end,
   -- },
   -- Show lsp errors on Telescope
@@ -243,7 +249,7 @@ local plugins = {
     --   end
     -- end,
     -- config = function()
-    --   require("custom.configs.nvim-dap").setup()
+    --   require("configs.nvim-dap").setup()
     -- end,
   },
 
@@ -293,7 +299,7 @@ local plugins = {
   --   ft = "norg",
   --   after = { "nvim-treesitter" },
   --   config = function()
-  --     require("custom.configs.neorg").setup()
+  --     require("configs.neorg").setup()
   --   end,
   --   requires = "nvim-lua/plenary.nvim",
   -- },
@@ -304,10 +310,10 @@ local plugins = {
     ft = "norg",
     after = "nvim-treesitter",
     -- setup = function()
-    --   require("custom.configs.neorg").autocmd()
+    --   require("configs.neorg").autocmd()
     -- end,
     config = function()
-      require("custom.configs.neorg").setup()
+      require("configs.neorg").setup()
     end,
   },
 
@@ -360,7 +366,7 @@ local plugins = {
     "jbyuki/venn.nvim",
     module = "venn.nvim",
     config = function()
-      require("custom.configs.venn").setup()
+      require("configs.venn").setup()
     end,
   },
 
@@ -399,7 +405,6 @@ local plugins = {
       require("hlslens").setup()
     end,
   },
-<<<<<<< Updated upstream
   {
     "https://codeberg.org/esensar/nvim-dev-container",
     config = function()
@@ -408,8 +413,6 @@ local plugins = {
     requires = { "nvim-treesitter/nvim-treesitter" },
     lazy = false,
   },
-||||||| Stash base
-=======
   {
     "NeogitOrg/neogit",
     dependencies = {
@@ -427,17 +430,18 @@ local plugins = {
   {
     "nvim-neotest/neotest",
     dependencies = {
+      "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
       "alfaix/neotest-gtest",
-      -- your other adapters here
     },
     config = function()
-      require("custom.configs.neotest").setup()
+      require("configs.neotest").setup()
     end,
     lazy = false,
   },
 
->>>>>>> Stashed changes
   -- ["jackMort/ChatGPT.nvim"] = {
   --   config = function()
   --     require("chatgpt").setup {
@@ -453,4 +457,3 @@ local plugins = {
   -- },
   -- ["chrisgrieser/nvim-spider"] = {},
 }
-return plugins

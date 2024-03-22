@@ -8,11 +8,9 @@ function M.setup()
   vim.o.background = "dark"
   vim.o.termguicolors = true
 
-
   vim.cmd [[
    colorscheme gruvbox
 ]]
 end
 
 return M
-

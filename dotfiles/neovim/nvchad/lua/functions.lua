@@ -1,4 +1,5 @@
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+  [[
 
 function! TrimWhitespace()
    let l:save = winsaveview()
@@ -102,5 +103,6 @@ function! g:Open_browser(url)
    endif
 endfunction
 
-]], false)
-
+]],
+  false
+)

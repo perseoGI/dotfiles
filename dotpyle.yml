@@ -41,10 +41,10 @@ dotfiles:
       root: ~/.config/nvim
     nvchad:
       paths:
-      - lua/custom
+      - init.lua
+      - lua
       - spell
-      pre:
-      - git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+      - .stylua.toml
       root: ~/.config/nvim
     work:
       paths:
