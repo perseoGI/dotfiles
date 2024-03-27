@@ -1,6 +1,7 @@
 local overrides = require "configs.override"
 
 return {
+  -- Formater
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre' -- uncomment for format on save
@@ -138,9 +139,6 @@ return {
   -- },
   -- Show lsp errors on Telescope
   "folke/trouble.nvim",
-
-  -- Formater
-  { "sbdchd/neoformat", cmd = "Neoformat" },
 
   -- Debugger
   {

@@ -257,9 +257,10 @@ map("v", "<leader>rf", function()
   require("telescope").extensions.refactoring.refactors()
 end, { desc = " Treesitter refactoring" })
 
--- Neoformat
-
-map("n", "<leader>fo", "<cmd>Neoformat<cr>", { desc = " LSP formatting" })
+-- Conform
+map("n", "<leader>fo", function()
+  require("conform").format { lsp_fallback = true }
+end, { desc = "Format Files" })
 
 -- Nvterm
 
