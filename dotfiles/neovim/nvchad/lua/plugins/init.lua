@@ -138,7 +138,7 @@ return {
   --   end,
   -- },
   -- Show lsp errors on Telescope
-  "folke/trouble.nvim",
+  { "folke/trouble.nvim", cmd = "TroubleToggle", keys = { "<leader>xx" } },
 
   -- Debugger
   {
@@ -267,10 +267,6 @@ return {
   -----------------------------------------
   -- Tree-sitter & Telescope dependencies -
   -----------------------------------------
-
-  -- Colorize open and close symbols to distinguish them
-  { "p00f/nvim-ts-rainbow", lazy = false },
-
   -- Auto generate documentation based on file type with `:Neogen`
   {
     "danymat/neogen",
@@ -438,6 +434,34 @@ return {
       require("configs.neotest").setup()
     end,
     lazy = false,
+  },
+  {
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
+    opts = {},
+    keys = {
+      { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+      { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+    },
+  },
+  {
+    "dlvhdr/gh-blame.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+    keys = {
+      { "<leader>gg", "<cmd>GhBlameCurrentLine<cr>", desc = "GitHub Blame Current Line" },
+    },
+  },
+  {
+    "dlvhdr/gh-addressed.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "folke/trouble.nvim",
+    },
+    cmd = "GhReviewComments",
+    keys = {
+      { "<leader>grc", "<cmd>GhReviewComments<cr>", desc = "GitHub Review Comments" },
+    },
   },
 
   -- ["jackMort/ChatGPT.nvim"] = {

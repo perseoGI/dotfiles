@@ -3,7 +3,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "bashls", "tsserver", "clangd", "pyright", "rust_analyzer", "yamlls", "ruff_lsp" }
+local servers = { "html", "cssls", "bashls", "clangd", "pyright", "rust_analyzer", "yamlls", "ruff_lsp" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -13,3 +13,9 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" }
+}
