@@ -1,7 +1,6 @@
 local overrides = require "configs.override"
 
 return {
-  -- Formater
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre' -- uncomment for format on save

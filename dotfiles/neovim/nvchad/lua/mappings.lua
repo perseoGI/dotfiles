@@ -6,8 +6,6 @@ local map = vim.keymap.set
 map("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "End of line" })
 
-map("i", "<C-c>", "<esc>", { desc = "" })
-
 -- Navigate within insert mode
 map("i", "<C-h>", "<Left>", { desc = "Move left" })
 map("i", "<C-l>", "<Right>", { desc = "Move right" })
@@ -31,7 +29,8 @@ map("n", "<leader>j", "<C-w>j", { desc = "Window down" })
 map("n", "<leader>s", "<cmd> w <CR>", { desc = "Save file" })
 
 -- Remove help message "Type :qa ..."
-map("n", "<C-c>", "<silent> <C-c>", { desc = "nil" })
+map("n", "<C-c>", "<silent> <C-c> :noh<CR>", { desc = "nil" })
+map("n", "<Esc>", "<Esc> :noh<CR>", { desc = "nil" })
 
 -- Buffer resizing
 map("n", "<Leader>+", "<cmd> vertical resize +5<CR>", { desc = "Resize window" })
@@ -188,10 +187,17 @@ map("n", "g*", "g*<Cmd>lua require('hlslens').start()<CR>", { desc = "hlnlens g*
 map("n", "*", "*<Cmd>lua require('hlslens').start()<CR>", { desc = "hlnlens *" })
 map("n", "#", "#<Cmd>lua require('hlslens').start()<CR>", { desc = "hlnlens #" })
 
--- harpoon
+-- Harpoon
 
 map("n", "<leader>e", "<cmd> lua require('harpoon.ui').toggle_quick_menu()<CR>", { desc = "Open harpoon menu" })
 map("n", "<leader>a", "<cmd> lua require('harpoon.mark').add_file()<CR>", { desc = "Add harpoon file" })
+
+-- Harpoon nav files
+map("n", "<A-a>", function() require("harpoon.ui").nav_file(1) end, { desc = "Navigate to file 1"})
+map("n", "<A-o>", function() require("harpoon.ui").nav_file(2) end, { desc = "Navigate to file 2"})
+map("n", "<A-e>", function() require("harpoon.ui").nav_file(3) end, { desc = "Navigate to file 3"})
+map("n", "<A-u>", function() require("harpoon.ui").nav_file(4) end, { desc = "Navigate to file 4"})
+map("n", "<A-i>", function() require("harpoon.ui").nav_file(5) end, { desc = "Navigate to file 5"})
 
 -- Nvimtree
 

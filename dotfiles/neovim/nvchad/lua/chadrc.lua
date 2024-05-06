@@ -2,6 +2,8 @@ local M = {}
 
 M.ui = {
   theme = "gruvchad",
+  -- theme = "tokyodark",
+  -- theme = "gruvbox",
   theme_toggle = { "gruvchad", "gruvbox_light" },
   nvdash = { load_on_startup = true },
 
