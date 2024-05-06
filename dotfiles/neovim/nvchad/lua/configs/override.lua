@@ -117,6 +117,7 @@ M.mason = {
 
     "clang-format",
     "prettier",
+    "ruff-lsp"
   },
 }
 

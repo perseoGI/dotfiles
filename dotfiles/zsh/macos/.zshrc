@@ -35,13 +35,11 @@ export MANPAGER='nvim +Man!'
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
-#alias nvim=~/sources/nvim-osx64/bin/nvim
-alias python=python3.9
-alias pip=pip3
+alias python=python3.12
+alias pip=pip3.12
 PATH="/Users/perseo/Library/Python/3.9/bin:$PATH"
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 alias v=nvim
 alias dotfiles='/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}'
@@ -59,8 +57,8 @@ alias \
 
 
 # Use exa, ls made in Rust, with color highlighting
-alias l='exa -lagh'
-alias ll='exa -lh'
+alias l='eza -lagh'
+alias ll='eza -lh'
 # Also, bat is a very nice cat implementation which integrates a paginator and a syntax highlighter
 
 ## Add pip installed packages
@@ -82,9 +80,8 @@ export LC_ALL=es_ES.UTF-8
 
 
 # Dotpyle autocompletion
-source ~/.dotpyle-complete.zsh
-source $HOME/.cargo/env
-source ~/.dotpyle-complete.zsh
+#source ~/.dotpyle-complete.zsh
+#source $HOME/.cargo/env
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/perseo/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/perseo/google-cloud-sdk/path.zsh.inc'; fi
@@ -93,3 +90,4 @@ source ~/.dotpyle-complete.zsh
 # if [ -f '/Users/perseo/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/perseo/google-cloud-sdk/completion.zsh.inc'; fi
 
 export ANDROID_HOME=/Users/perseo/Library/Android/sdk
+export XDG_CONFIG_HOME=~/.config
