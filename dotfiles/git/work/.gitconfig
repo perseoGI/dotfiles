@@ -1,6 +1,6 @@
 [user]
-    name = Perseo
-    email = perseog@jfrog.com
+	name = PerseoGI
+	email = perseog@jfrog.com
 
 [core]
     editor = nvim
@@ -28,7 +28,7 @@
 
    # Open repository on GitHub
     hub = "!f() { \
-        exo-open \"$(git ls-remote --get-url \
+        open \"$(git ls-remote --get-url \
         | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
         | sed 's|\\.git$||'; \
         )\"; \
@@ -36,7 +36,7 @@
 
    # Open repository on GitLab
     lab = "!f() { \
-        exo-open \"$(git ls-remote --get-url \
+        open \"$(git ls-remote --get-url \
         | sed 's|git@gitlab.com:\\(.*\\)$|https://gitlab.com/\\1|' \
         | sed 's|\\.git$||'; \
         )\"; \

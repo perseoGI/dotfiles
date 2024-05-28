@@ -81,7 +81,7 @@ export LC_ALL=es_ES.UTF-8
 
 # Dotpyle autocompletion
 #source ~/.dotpyle-complete.zsh
-#source $HOME/.cargo/env
+source $HOME/.cargo/env
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/perseo/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/perseo/google-cloud-sdk/path.zsh.inc'; fi
@@ -91,3 +91,13 @@ export LC_ALL=es_ES.UTF-8
 
 export ANDROID_HOME=/Users/perseo/Library/Android/sdk
 export XDG_CONFIG_HOME=~/.config
+PATH=${PATH}:~/.rd/bin:~/.local/bin:
+
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

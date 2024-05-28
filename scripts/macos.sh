@@ -44,6 +44,8 @@ defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
 # Adjust toolbar title rollover delay
 defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
 
+defaults write com.apple.menuextra.battery ShowPercent YES
+
 # Disable smooth scrolling
 # (Uncomment if you’re on an older Mac that messes up the animation)
 #defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false

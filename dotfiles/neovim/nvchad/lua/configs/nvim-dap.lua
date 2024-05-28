@@ -129,15 +129,15 @@ function M.setup()
       pythonPath = python_path,
       -- args = { "edit", "config" },
     },
-    {
-      type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
-      request = "launch",
-      name = "Launch poetry",
-      program = "${workspaceFolder}/.venv/bin/poetry",
-      args = { "run", "start" },
-      cwd = vim.fn.getcwd(),
-      pythonPath = python_path,
-    },
+    -- {
+    --   type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+    --   request = "launch",
+    --   name = "Launch poetry",
+    --   program = "${workspaceFolder}/.venv/bin/poetry",
+    --   args = { "run", "start" },
+    --   cwd = vim.fn.getcwd(),
+    --   pythonPath = python_path,
+    -- },
   }
 
   -- dap.adapters.dart = {

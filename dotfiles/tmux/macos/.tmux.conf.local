@@ -367,7 +367,7 @@ bind-key H previous-window
 #set -g status-position top
 
 bind-key -r k run-shell "tmux neww ~/.config/dotpyle/scripts/tmux-cht.sh"
-bind-key -r r run-shell "tmux neww ~/.config/dotpyle/scripts/tmux-sessionizer.sh"
+# bind-key -r r run-shell "tmux neww ~/.config/dotpyle/scripts/tmux-sessionizer.sh"
 bind-key -r f run-shell "tmux neww ~/.config/dotpyle/scripts/tmux-session-finder.sh finder"
 
 # -- tpm -----------------------------------------------------------------------

@@ -245,9 +245,9 @@ return {
     --     )
     --   end
     -- end,
-    -- config = function()
-    --   require("configs.nvim-dap").setup()
-    -- end,
+    config = function()
+      require("configs.nvim-dap").setup()
+    end,
   },
 
   -- Flutter development
@@ -428,6 +428,7 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "alfaix/neotest-gtest",
+      "nvim-neotest/neotest-python",
     },
     config = function()
       require("configs.neotest").setup()
@@ -460,6 +461,41 @@ return {
     cmd = "GhReviewComments",
     keys = {
       { "<leader>grc", "<cmd>GhReviewComments<cr>", desc = "GitHub Review Comments" },
+    },
+  },
+
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("configs.copilot").setup()
+    end,
+    dependencies = {
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+          local cmp = require "cmp"
+
+          cmp.setup {
+            sources = {
+              -- Copilot Source
+              { name = "copilot", group_index = 2 },
+              { name = "nvim_lsp", group_index = 2 },
+              { name = "path", group_index = 2 },
+              { name = "luasnip", group_index = 2 },
+            },
+          }
+        end,
+      },
+      {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "canary",
+        opts = {
+          debug = true, -- Enable debugging
+        },
+      },
     },
   },
 

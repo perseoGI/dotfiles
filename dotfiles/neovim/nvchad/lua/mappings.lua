@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local cmd = vim.keymap.cmd
 
 -- General
 
@@ -29,8 +30,8 @@ map("n", "<leader>j", "<C-w>j", { desc = "Window down" })
 map("n", "<leader>s", "<cmd> w <CR>", { desc = "Save file" })
 
 -- Remove help message "Type :qa ..."
-map("n", "<C-c>", "<silent> <C-c> :noh<CR>", { desc = "nil" })
-map("n", "<Esc>", "<Esc> :noh<CR>", { desc = "nil" })
+map("n", "<C-c>", "<Esc>", { silent = true, desc = "nil" })
+map("n", "<Esc>", "<Esc>:noh<CR>", { silent = true, desc = "nil" })
 
 -- Buffer resizing
 map("n", "<Leader>+", "<cmd> vertical resize +5<CR>", { desc = "Resize window" })
@@ -53,6 +54,10 @@ map("n", "gj", "i<c-j><esc>k$", { desc = "Un-join (split) the current line at th
 map("n", "gV", "`[v`]", { desc = "Select last inserted text" })
 
 map("n", ",p", '"0p', { desc = "Paste from 0 registre easily" })
+
+-- TODO review
+-- map({"n", "v"}, "<leader>y", [["+y]])
+-- map("x", "<leader>pp", [["_dP]])
 
 -- Quick fix list
 
@@ -98,12 +103,12 @@ map("o", "il(", "<cmd> <c-u>normal! F)vi(<cr>", { desc = "" })
 map("o", "in{", "<cmd> <c-u>normal! f{vi{<cr>", { desc = "" })
 map("o", "il{", "<cmd> <c-u>normal! F}vi{<cr>", { desc = "" })
 
--- Terminal TODO
--- map("t", "<C-l>", "<C-\><C-n><C-W>l", { desc = "" })
--- map("t", "<C-k>", "<C-\><C-n><C-W>k", { desc = "" })
--- map("t", "<C-j>", "<C-\><C-n><C-W>j", { desc = "" })
--- map("t", "<esc>", "<C-\><C-n>", { desc = "" })
--- map("t", "<C-h>", "<C-\><C-n><C-W>h", { desc = "" })
+-- Terminal
+map("t", "<C-l>", "<C-\\><C-n><C-W>l", { desc = "" })
+map("t", "<C-k>", "<C-\\><C-n><C-W>k", { desc = "" })
+map("t", "<C-j>", "<C-\\><C-n><C-W>j", { desc = "" })
+map("t", "<esc>", "<C-\\><C-n>", { desc = "" })
+map("t", "<C-h>", "<C-\\><C-n><C-W>h", { desc = "" })
 
 -- Bufferline
 
