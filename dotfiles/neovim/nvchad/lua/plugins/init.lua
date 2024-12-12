@@ -17,21 +17,22 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    opts = overrides.telescope,
+    branch = "0.1.x",
+    -- opts = overrides.telescope,
     -- Enable telescope lazy loading at Cmds and now at modules!
     -- Refactoring, etc extensions to telescope will also load telescope
     -- plugin at start
-    module = { "telescope" },
-
-    dependencies = {
-      -- TODO: check!
-      {
-        "ThePrimeagen/git-worktree.nvim",
-        config = function()
-          require("configs.git-worktree").setup()
-        end,
-      },
-    },
+    -- module = { "telescope" },
+    --
+    -- dependencies = {
+    --   -- TODO: check!
+    --   {
+    --     "ThePrimeagen/git-worktree.nvim",
+    --     config = function()
+    --       require("configs.git-worktree").setup()
+    --     end,
+    --   },
+    -- },
   },
 
   {
@@ -137,7 +138,43 @@ return {
   --   end,
   -- },
   -- Show lsp errors on Telescope
-  { "folke/trouble.nvim", cmd = "TroubleToggle", keys = { "<leader>xx" } },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
 
   -- Debugger
   {
@@ -146,31 +183,31 @@ return {
     dependencies = {
 
       -- fancy UI for the debugger
-      {
-        "rcarriga/nvim-dap-ui",
-      -- stylua: ignore
-      keys = {
-        { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
-        { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
-      },
-        opts = {},
-        config = function(_, opts)
-          -- setup dap config by VsCode launch.json file
-          -- require("dap.ext.vscode").load_launchjs()
-          local dap = require "dap"
-          local dapui = require "dapui"
-          dapui.setup(opts)
-          dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open {}
-          end
-          dap.listeners.before.event_terminated["dapui_config"] = function()
-            dapui.close {}
-          end
-          dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close {}
-          end
-        end,
-      },
+      -- {
+      --   "rcarriga/nvim-dap-ui",
+      -- -- stylua: ignore
+      -- keys = {
+      --   { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
+      --   { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
+      -- },
+      --   opts = {},
+      --   config = function(_, opts)
+      --     -- setup dap config by VsCode launch.json file
+      --     -- require("dap.ext.vscode").load_launchjs()
+      --     local dap = require "dap"
+      --     local dapui = require "dapui"
+      --     dapui.setup(opts)
+      --     dap.listeners.after.event_initialized["dapui_config"] = function()
+      --       dapui.open {}
+      --     end
+      --     dap.listeners.before.event_terminated["dapui_config"] = function()
+      --       dapui.close {}
+      --     end
+      --     dap.listeners.before.event_exited["dapui_config"] = function()
+      --       dapui.close {}
+      --     end
+      --   end,
+      -- },
 
       -- virtual text for the debugger
       {
@@ -192,22 +229,15 @@ return {
       -- mason.nvim integration
       {
         "jay-babu/mason-nvim-dap.nvim",
-        dependencies = "mason.nvim",
+        dependencies = {
+          "williamboman/mason.nvim",
+          "mfussenegger/nvim-dap",
+        },
         cmd = { "DapInstall", "DapUninstall" },
         opts = {
-          -- Makes a best effort to setup the various debuggers with
-          -- reasonable debug configurations
           automatic_installation = true,
-
-          -- You can provide additional configuration to the handlers,
-          -- see mason-nvim-dap README for more information
           handlers = {},
-
-          -- You'll need to check that you have the required things installed
-          -- online, please don't ask me how to install them :)
-          ensure_installed = {
-            -- Update this to ensure that you have the debuggers for the langs you want
-          },
+          ensure_installed = { "python" },
         },
       },
     },
@@ -245,9 +275,9 @@ return {
     --     )
     --   end
     -- end,
-    config = function()
-      require("configs.nvim-dap").setup()
-    end,
+    -- config = function()
+    --   require("configs.nvim-dap").setup()
+    -- end,
   },
 
   -- Flutter development
@@ -311,7 +341,15 @@ return {
   },
 
   -- Show name of current function on the line when function is to long
-  { "nvim-treesitter/nvim-treesitter-context", lazy = false },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    lazy = false,
+    config = function()
+      require("treesitter-context").setup {
+        max_lines = 3,
+      }
+    end,
+  },
 
   -- TODO: check!
   -- ["ray-x/navigator.lua"] = {
@@ -438,7 +476,15 @@ return {
   {
     "linrongbin16/gitlinker.nvim",
     cmd = "GitLink",
-    opts = {},
+    config = function()
+        require"gitlinker".setup({
+          opts = {
+            remote = "origin", -- force the use of a specific remote
+          },
+        -- default mapping to call url generation with action_callback
+          mappings = "<leader>gy"
+        })
+    end,
     keys = {
       { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
       { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },

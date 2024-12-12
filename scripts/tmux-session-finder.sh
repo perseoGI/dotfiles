@@ -7,6 +7,7 @@ debug=
 
 if [ "$cmd" = "debug" ]; then
 	debug=true
+        echo "debug"
 	cmd=$2
 fi
 

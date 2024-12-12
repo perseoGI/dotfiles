@@ -49,6 +49,10 @@ family = "Source Code Pro"
 style = "Italic"
 
 [font.normal]
+# family = "Source Nerd Font Mono"
+# family = "Source Code Pro"
+
+# family = "Source Code Pro Powerline"
 family = "Hack Nerd Font Mono"
 # family = "SauceCodePro Nerd Font"
 style = "Regular"

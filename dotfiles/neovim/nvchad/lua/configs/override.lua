@@ -117,7 +117,9 @@ M.mason = {
 
     "clang-format",
     "prettier",
-    "ruff-lsp"
+    "ruff-lsp",
+
+    "yaml-language-server",
   },
 }
 

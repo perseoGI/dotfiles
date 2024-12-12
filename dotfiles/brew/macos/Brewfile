@@ -20,6 +20,7 @@ brew 'pkg-config' # https://github.com/driesvints/dotfiles/issues/20
 brew 'svn' # Needed to install fonts
 brew 'fzf'
 brew 'rg'  # Ripgrep
+brew 'fd'
 brew 'eza' # ls replacement
 brew 'tldr'
 brew 'nvm'
@@ -35,12 +36,17 @@ brew 'tree'
 brew 'graphviz'
 brew 'enchant'
 brew 'pyenv'
+brew 'neofetch'
 
 # Development
 brew 'imagemagick'
 brew 'yarn'
 brew 'tmux'
 brew 'git-delta'
+brew 'xcodegen'
+
+cask 'flutter'
+cask 'android-studio'
 
 # Apps
 cask 'caffeine'
@@ -73,6 +79,7 @@ cask 'font-hack-nerd-font'
 cask 'home-assistant'
 cask 'google-cloud-sdk'
 cask 'amethyst'
+cask 'scroll-reverser'
 
 # Mac App Store
 mas 'xcode', id: 497799835

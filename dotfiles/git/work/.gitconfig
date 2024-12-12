@@ -25,6 +25,7 @@
     amend = commit --amend 
     mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
     squash = "!git rebase -v -i $(git mainbranch)"
+    yolo = "!git commit -m \"$(curl -s https://whatthecommit.com/index.txt)\""
 
    # Open repository on GitHub
     hub = "!f() { \
