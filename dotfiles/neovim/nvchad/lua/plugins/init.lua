@@ -477,13 +477,13 @@ return {
     "linrongbin16/gitlinker.nvim",
     cmd = "GitLink",
     config = function()
-        require"gitlinker".setup({
-          opts = {
-            remote = "origin", -- force the use of a specific remote
-          },
+      require("gitlinker").setup {
+        opts = {
+          remote = "origin", -- force the use of a specific remote
+        },
         -- default mapping to call url generation with action_callback
-          mappings = "<leader>gy"
-        })
+        mappings = "<leader>gy",
+      }
     end,
     keys = {
       { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
@@ -511,38 +511,34 @@ return {
   },
 
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("configs.copilot").setup()
-    end,
+    "hrsh7th/nvim-cmp",
     dependencies = {
-      {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-          require("copilot_cmp").setup()
-          local cmp = require "cmp"
-
-          cmp.setup {
-            sources = {
-              -- Copilot Source
-              { name = "copilot", group_index = 2 },
-              { name = "nvim_lsp", group_index = 2 },
-              { name = "path", group_index = 2 },
-              { name = "luasnip", group_index = 2 },
-            },
-          }
-        end,
-      },
-      {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        branch = "canary",
-        opts = {
-          debug = true, -- Enable debugging
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      config = function()
+        require("configs.copilot").setup()
+      end,
+      dependencies = {
+        {
+          "zbirenbaum/copilot-cmp",
+          config = function()
+            require("copilot_cmp").setup()
+          end,
+        },
+        {
+          "CopilotC-Nvim/CopilotChat.nvim",
+          -- opts = {
+          --   debug = true, -- Enable debugging
+          -- },
         },
       },
     },
+
+    -- Override NvChad config
+    opts = function()
+      return require "configs.cmp"
+    end,
   },
 
   -- ["jackMort/ChatGPT.nvim"] = {

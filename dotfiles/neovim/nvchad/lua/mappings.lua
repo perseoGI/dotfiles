@@ -53,7 +53,8 @@ map("n", "J", "mzJ`zmz", { desc = "Center J" })
 map("n", "gj", "i<c-j><esc>k$", { desc = "Un-join (split) the current line at the cursor position " })
 map("n", "gV", "`[v`]", { desc = "Select last inserted text" })
 
-map("n", ",p", '"0p', { desc = "Paste from 0 registre easily" })
+-- Visual Line macros: apply a macro to multiple lines by:
+map("n", ",p", '"0p', { desc = "Paste from 0 register easily" })
 
 -- TODO review
 -- map({"n", "v"}, "<leader>y", [["+y]])
