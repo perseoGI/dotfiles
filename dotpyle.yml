@@ -45,6 +45,7 @@ dotfiles:
       - lua
       - spell
       - .stylua.toml
+      - lazy-lock.json
       root: ~/.config/nvim
     work:
       paths:
