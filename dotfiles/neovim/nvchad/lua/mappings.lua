@@ -236,7 +236,7 @@ require("gitsigns").setup {
     end
 
     -- Navigation
-    map("n", "]c", function()
+    map("n", "<leader>h.", function()
       if vim.wo.diff then
         return "]c"
       end
@@ -244,9 +244,10 @@ require("gitsigns").setup {
         gs.next_hunk()
       end)
       return "<Ignore>"
-    end, { expr = true })
+    end, { expr = true, desc = "Go to next git hunk" })
 
-    map("n", "[c", function()
+
+    map("n", "<leader>h,", function()
       if vim.wo.diff then
         return "[c"
       end
@@ -254,7 +255,7 @@ require("gitsigns").setup {
         gs.prev_hunk()
       end)
       return "<Ignore>"
-    end, { expr = true })
+    end, { expr = true, desc = "Go to prev git hunk" })
 
     -- Actions
     map("n", "<leader>hs", gs.stage_hunk, { desc = "Stage hunk" })
