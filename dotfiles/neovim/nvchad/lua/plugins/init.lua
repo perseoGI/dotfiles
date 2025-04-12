@@ -541,6 +541,8 @@ return {
     end,
   },
 
+  { dir="/Users/perseo/sources/conan.nvim", lazy=false }
+
   -- ["jackMort/ChatGPT.nvim"] = {
   --   config = function()
   --     require("chatgpt").setup {

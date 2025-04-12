@@ -1,11 +1,11 @@
 vim.api.nvim_exec(
   [[
 
-function! TrimWhitespace()
-   let l:save = winsaveview()
-   keeppatterns %s/\s\+$//e
-   call winrestview(l:save)
-endfunction
+-- function! TrimWhitespace()  
+--    let l:save = winsaveview()
+--    keeppatterns %s/\s\+$//e
+--    call winrestview(l:save)
+-- endfunction
 
 function! ExecuteMacroOverVisualRange()
    echo "@".getcmdline()

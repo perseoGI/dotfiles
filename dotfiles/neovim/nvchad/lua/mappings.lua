@@ -337,3 +337,10 @@ map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", { desc = " Live grep
 map("n", "<leader>gs", "<cmd> Telescope git_status <CR>", { desc = " Git status" })
 map("n", "<leader>pb", "<cmd> Telescope buffers <CR>", { desc = " Find buffers" })
 map("n", "<leader>pf", "<cmd> Telescope find_files<CR>", { desc = " Find all" })
+
+
+-- Nvim plugin development
+
+map("n", "<leader><leader><CR>", "<cmd>source %<CR>", { desc = "Source current file" })
+map("n", "<leader><CR>", ":.lua<CR>", { desc = "Execute current lua line" })
+map("v", "<leader><CR>", ":lua<CR>", { desc = "Execute selected lua lines" })

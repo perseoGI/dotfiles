@@ -50,7 +50,9 @@ export LC_ALL=es_ES.UTF-8
 alias \
         alacritty='WINIT_HIDPI_FACTOR=1 alacritty' \
         v=nvim \
-        l='eza -lagh' \
+        l="eza -l --icons --git -a"
+        lt="eza --tree --level=2 --long --icons --git"
+        ltree="eza --tree --level=2  --icons --git"
         ll='eza -lh' \
 	cp="cp -iv" \
         conandev="$HOME/sources/conan-io/.venv/bin/conan" \
@@ -95,9 +97,14 @@ export ANDROID_NDK_HOME="/opt/homebrew/share/android-ndk"
 
 # Zscaler CA certificate to allow conan/python requests validate zscaler cert
 #
-export REQUESTS_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2024-12-31/share/ca-certificates/cacert.pem
-export CURL_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2024-12-31/share/ca-certificates/cacert.pem
+export REQUESTS_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2025-02-25/share/ca-certificates/cacert.pem
+export CURL_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2025-02-25/share/ca-certificates/cacert.pem
+
 # zprof
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
