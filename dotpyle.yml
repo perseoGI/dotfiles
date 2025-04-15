@@ -1,4 +1,9 @@
 dotfiles:
+  aerospace:
+    macos:
+      paths:
+        - aerospace.toml
+      root: ~/.config/aerospace
   alacritty:
     arch:
       paths:
@@ -60,6 +65,12 @@ dotfiles:
       paths:
       - config
       root: ~/.config/polybar
+  sketchybar:
+    macos:
+      paths:
+        - plugins/
+        - sketchybarrc
+      root: ~/.config/sketchybar
   skhd:
     macos:
       paths:
