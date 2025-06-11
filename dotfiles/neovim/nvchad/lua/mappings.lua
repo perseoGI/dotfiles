@@ -338,6 +338,8 @@ map("n", "<leader>gs", "<cmd> Telescope git_status <CR>", { desc = " Git stat
 map("n", "<leader>pb", "<cmd> Telescope buffers <CR>", { desc = " Find buffers" })
 map("n", "<leader>pf", "<cmd> Telescope find_files<CR>", { desc = " Find all" })
 
+-- nvim-spectre
+map('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre" })
 
 -- Nvim plugin development
 

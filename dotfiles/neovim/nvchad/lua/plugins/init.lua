@@ -540,8 +540,22 @@ return {
       return require "configs.cmp"
     end,
   },
+  {
+    "grapp-dev/nui-components.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+  },
+  {
+    -- Renamer
+    "nvim-pack/nvim-spectre",
+    event = "BufRead",
+    config = function()
+      require("spectre").setup()
+    end,
+  },
 
-  { dir="/Users/perseo/sources/conan.nvim", lazy=false }
+  { dir = "/Users/perseo/sources/conan.nvim", lazy = false },
 
   -- ["jackMort/ChatGPT.nvim"] = {
   --   config = function()

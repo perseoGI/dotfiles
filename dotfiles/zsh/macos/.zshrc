@@ -97,8 +97,8 @@ export ANDROID_NDK_HOME="/opt/homebrew/share/android-ndk"
 
 # Zscaler CA certificate to allow conan/python requests validate zscaler cert
 #
-export REQUESTS_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2025-02-25/share/ca-certificates/cacert.pem
-export CURL_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2025-02-25/share/ca-certificates/cacert.pem
+export REQUESTS_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2025-05-20/share/ca-certificates/cacert.pem
+export CURL_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2025-05-20/share/ca-certificates/cacert.pem
 
 # zprof
 
