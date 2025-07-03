@@ -3,10 +3,11 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
-    python = { "isort", "black" },
-    javascript = { { "prettier" } },
-    typescript = { { "prettier" } },
-    typescriptreact = { { "prettier" } },
+    python = { "ruff_format" },
+    javascript = { "prettier" },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
+    yaml = { "yamlfmt" },
   },
 
   -- format_on_save = {
