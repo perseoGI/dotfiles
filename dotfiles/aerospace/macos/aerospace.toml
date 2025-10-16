@@ -155,3 +155,8 @@ automatically-unhide-macos-hidden-apps = false
     # h = 'volume down'
     # t = 'volume up'
     # m = ['volume set 0', 'mode main']
+
+[[on-window-detected]]
+# Not working
+if.app-id = "NULL-APP-BUNDLE-ID"
+run = "layout floating"

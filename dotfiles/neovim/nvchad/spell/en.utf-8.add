@@ -40,3 +40,6 @@ assert/!
 messages/!
 consumer/!
 SET_TARGET_PROPERTIES/!
+self/!
+ref/!
+cmake_file_name/!

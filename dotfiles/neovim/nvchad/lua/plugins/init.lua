@@ -118,18 +118,18 @@ return {
   { "kana/vim-textobj-function", event = "VeryLazy" },
   { "Matt-A-Bennett/vim-surround-funk", event = "VeryLazy" },
 
-  -- Markdown
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-    config = function()
-      require("configs.markdown-preview").setup()
-    end,
-  },
+  -- -- Markdown
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   ft = { "markdown" },
+  --   build = function()
+  --     vim.fn["mkdp#util#install"]()
+  --   end,
+  --   config = function()
+  --     require("configs.markdown-preview").setup()
+  --   end,
+  -- },
 
   -- Discord vimscene
   -- ["andweeb/presence.nvim"] = {
@@ -554,8 +554,15 @@ return {
       require("spectre").setup()
     end,
   },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
 
-  { dir = "/Users/perseo/sources/conan.nvim", lazy = false },
+  -- { dir = "/Users/perseo/sources/conan.nvim", lazy = false },
 
   -- ["jackMort/ChatGPT.nvim"] = {
   --   config = function()

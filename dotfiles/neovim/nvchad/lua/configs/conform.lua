@@ -8,6 +8,7 @@ local options = {
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
     yaml = { "yamlfmt" },
+    json = { "prettier" },
   },
 
   -- format_on_save = {

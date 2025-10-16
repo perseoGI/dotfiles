@@ -1,11 +1,29 @@
 [user]
-	name = PerseoGI
-	email = perseog@jfrog.com
+    name = PerseoGI
+    email = perseog@jfrog.com
+    signingkey = FBF280A16EE62162
+
+[commit]
+    template = ~/.config/git/template
+    verbose = true # More context to commit messages
+    ; gpgSign = true
 
 [core]
     editor = nvim
     pager = delta
     autocrlf = input
+    preloadindex = true  # preload index for faster status
+
+[status]
+    branch = true
+    short = true
+    showStash = true
+    ; showUntrackedFiles = all  # show individual untracked files
+
+[push]
+    ; autoSetupRemote = true  # automatically set up remote tracking branches
+    default = current 
+    followTags = true  # push tags when pushing branches
 
 [pretty]
     onelinedate = %C(auto)%h %C(green)%ad%C(auto)%d%C(reset) %s %C(white)(%an)%C(reset)
@@ -45,6 +63,7 @@
 
 [interactive]
     diffFilter = delta --color-only
+    singlekey = true
 
 [color]
     ui = true
@@ -81,3 +100,19 @@
 
 [safe]
 	directory = /opt/flutter
+
+[pull]
+    rebase = true
+    default = current
+
+[submodule]
+    fetchJobs = 16
+
+[rebase]
+    autoStash = true
+    missingCommitsCheck = warn  # warn if rebasing with missing commits
+
+[pack]
+    threads = 0  # use all available threads
+    windowMemory = 1g  # use 1g of memory for pack window
+    packSizeLimit = 1g  # max size of a packfile
