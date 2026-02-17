@@ -1,7 +1,7 @@
 # FYI: i3-gaps must be installed or i3-wm >= 4.22
 
 # APP VARIABLES
-set $browser	brave-browser
+set $browser	firefox
 set $music  	spotify
 set $term   	alacritty
 set $mod Mod1

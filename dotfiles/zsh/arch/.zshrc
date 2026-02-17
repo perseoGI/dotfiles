@@ -100,3 +100,7 @@ fi
 
 source ~/.workrc
 #source /home/perseo/.config/broot/launcher/bash/br
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
