@@ -1,17 +1,10 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Path to your oh-my-zsh installation.
 # zmodload zsh/zprof
 
 export ZSH="${HOME}/.oh-my-zsh"
 
 # ZSH_THEME="agnoster"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 DISABLE_AUTO_UPDATE=true
 
@@ -26,7 +19,11 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-z
+  zsh-vi-mode
 )
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,16 +93,31 @@ export ANDROID_NDK_HOME="/opt/homebrew/share/android-ndk"
 
 # Zscaler CA certificate to allow conan/python requests validate zscaler cert
 #
-export REQUESTS_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2025-09-09/share/ca-certificates/cacert.pem
-export CURL_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2025-09-09/share/ca-certificates/cacert.pem
+export CURL_CA_BUNDLE=/opt/homebrew/Cellar/ca-certificates/2026-05-14/share/ca-certificates/cacert.pem
 
 # zprof
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # . "$HOME/.atuin/bin/env"
 #
 eval "$(atuin init zsh)"
 
 export GPG_TTY=$(tty)
+
+
+# eval "$(oh-my-posh init zsh --config catppuccin_mocha)"
+# eval "$(oh-my-posh init zsh --config ~/.config/catppuccin_mocha_custom.omp.json)"
+eval "$(oh-my-posh init zsh --config 1_shell)"
+
+export NODE_USE_SYSTEM_CA=1
+export NODE_EXTRA_CA_CERTS="/Users/perseo/IT-Certs/package-route.pem"
+export UV_NATIVE_TLS=true
+export UV_SYSTEM_CERTS=true
+export REQUESTS_CA_BUNDLE="/Users/perseo/IT-Certs/package-route.pem"
+
+
+# PIP_CERT=/etc/ssl/certs/ca-certificates.crt
+export PIP_INDEX_URL=https://jfrogrepo24.jfrog.io/artifactory/api/pypi/pypi-virtual/simple
+export PIP_TRUSTED_HOST=jfrogrepo24.jfrog.io

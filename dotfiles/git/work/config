@@ -1,7 +1,7 @@
 [user]
     name = PerseoGI
     email = perseog@jfrog.com
-    signingkey = FBF280A16EE62162
+	signingkey = D3379697DB6D4DA8
 
 [commit]
     template = ~/.config/git/template
@@ -20,10 +20,10 @@
     showStash = true
     ; showUntrackedFiles = all  # show individual untracked files
 
-[push]
+; [push]
     ; autoSetupRemote = true  # automatically set up remote tracking branches
-    default = current 
-    followTags = true  # push tags when pushing branches
+    ; default = current 
+    ; followTags = true  # push tags when pushing branches
 
 [pretty]
     onelinedate = %C(auto)%h %C(green)%ad%C(auto)%d%C(reset) %s %C(white)(%an)%C(reset)

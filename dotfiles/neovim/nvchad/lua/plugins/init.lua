@@ -17,7 +17,7 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
+    branch = "master",
     -- opts = overrides.telescope,
     -- Enable telescope lazy loading at Cmds and now at modules!
     -- Refactoring, etc extensions to telescope will also load telescope
@@ -37,8 +37,8 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     opts = overrides.treesitter,
-
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
@@ -437,14 +437,6 @@ return {
     end,
   },
   {
-    "https://codeberg.org/esensar/nvim-dev-container",
-    config = function()
-      require("devcontainer").setup {}
-    end,
-    requires = { "nvim-treesitter/nvim-treesitter" },
-    lazy = false,
-  },
-  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
@@ -521,12 +513,6 @@ return {
       end,
       dependencies = {
         {
-          "zbirenbaum/copilot-cmp",
-          config = function()
-            require("copilot_cmp").setup()
-          end,
-        },
-        {
           "CopilotC-Nvim/CopilotChat.nvim",
           -- opts = {
           --   debug = true, -- Enable debugging
@@ -578,4 +564,11 @@ return {
   --   },
   -- },
   -- ["chrisgrieser/nvim-spider"] = {},
+  {
+    "mistricky/codesnap.nvim",
+    cmd = "CodeSnap",
+    config = function()
+      require("configs.codesnap").setup()
+    end,
+  },
 }
